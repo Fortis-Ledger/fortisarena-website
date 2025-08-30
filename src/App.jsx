@@ -33,11 +33,14 @@ import {
   Youtube,
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import PrivacyPolicy from './components/PrivacyPolicy.jsx'
+import TermsOfService from './components/TermsOfService.jsx'
 import './App.css'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
+  const [currentPage, setCurrentPage] = useState('home')
   const [counters, setCounters] = useState({
     tournaments: 0,
     prizes: 0,
@@ -170,6 +173,26 @@ function App() {
       status: "planned"
     }
   ]
+
+  // Handle page navigation
+  const handlePageNavigation = (page) => {
+    setCurrentPage(page)
+    setIsMenuOpen(false)
+  }
+
+  // Handle back navigation
+  const handleBackNavigation = () => {
+    setCurrentPage('home')
+  }
+
+  // Render different pages based on currentPage state
+  if (currentPage === 'privacy') {
+    return <PrivacyPolicy onNavigateBack={handleBackNavigation} />
+  }
+
+  if (currentPage === 'terms') {
+    return <TermsOfService onNavigateBack={handleBackNavigation} />
+  }
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -844,9 +867,9 @@ function App() {
             <div>
               <h3 className="text-white font-semibold mb-4">Legal</h3>
               <div className="space-y-2">
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Terms of Service</a>
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Compliance</a>
+                <button onClick={() => handlePageNavigation('privacy')} className="block text-gray-400 hover:text-white transition-colors text-left">Privacy Policy</button>
+                <button onClick={() => handlePageNavigation('terms')} className="block text-gray-400 hover:text-white transition-colors text-left">Terms of Service</button>
+                <a href="#" className="block text-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Career</a>
                 <a href="#" className="block text-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Contact</a>
               </div>
             </div>
