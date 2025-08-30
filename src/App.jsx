@@ -41,6 +41,7 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [currentPage, setCurrentPage] = useState('home')
+  const [scrollPosition, setScrollPosition] = useState(0)
   const [counters, setCounters] = useState({
     tournaments: 0,
     prizes: 0,
@@ -176,6 +177,8 @@ function App() {
 
   // Handle page navigation
   const handlePageNavigation = (page) => {
+    // Save current scroll position before navigating
+    setScrollPosition(window.scrollY)
     setCurrentPage(page)
     setIsMenuOpen(false)
   }
@@ -183,6 +186,10 @@ function App() {
   // Handle back navigation
   const handleBackNavigation = () => {
     setCurrentPage('home')
+    // Restore scroll position after component re-renders
+    setTimeout(() => {
+      window.scrollTo({ top: scrollPosition, behavior: 'auto' })
+    }, 100)
   }
 
   // Render different pages based on currentPage state
