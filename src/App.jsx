@@ -312,13 +312,13 @@ function App() {
                   <span className="shine-overlay" />
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="w-full sm:w-auto px-8 py-3 rounded-md border-white text-white hover:bg-white hover:text-black glow-button shadow-lg text-base font-semibold" asChild>
-                <a href="https://fortis-arena.com/whitepaper" target="_blank" rel="noopener noreferrer">
-                  Read Whitepaper
-                  <ExternalLink className="ml-2 h-5 w-5" />
-                  <span className="shine-overlay" />
-                </a>
-              </Button>
+                              <Button size="lg" variant="outline" className="w-full sm:w-auto px-8 py-3 rounded-md border-white text-white hover:bg-white hover:text-black glow-button shadow-lg text-base font-semibold" asChild>
+                  <a href="/docs/FortisArena White Paper.pdf" target="_blank" rel="noopener noreferrer">
+                    Read Whitepaper
+                    <ExternalLink className="ml-2 h-5 w-5" />
+                    <span className="shine-overlay" />
+                  </a>
+                </Button>
             </div>
 
             {/* Stats Badges */}
@@ -861,15 +861,15 @@ function App() {
               </div>
             </div>
 
-            <div>
-              <h3 className="text-white font-semibold mb-4">Resources</h3>
-              <div className="space-y-2">
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Whitepaper</a>
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Documentation</a>
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">API</a>
-                <a href="https://substack.com/@fortisarena" className="block text-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Blog</a>
+                          <div>
+                <h3 className="text-white font-semibold mb-4">Resources</h3>
+                <div className="space-y-2">
+                  <a href="/docs/FortisArena White Paper.pdf" className="block text-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Whitepaper</a>
+                  <a href="#" className="block text-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Documentation</a>
+                  <a href="#" className="block text-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">API</a>
+                  <a href="https://substack.com/@fortisarena" className="block text-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Blog</a>
+                </div>
               </div>
-            </div>
 
             <div>
               <h3 className="text-white font-semibold mb-4">Legal</h3>
