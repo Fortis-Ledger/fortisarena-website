@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
@@ -35,9 +36,12 @@ import {
 import { motion, AnimatePresence } from 'framer-motion'
 import PrivacyPolicy from './components/PrivacyPolicy.jsx'
 import TermsOfService from './components/TermsOfService.jsx'
+import Waitlist from './components/Waitlist.jsx'
 import './App.css'
 
 function App() {
+  const navigate = useNavigate()
+  const location = useLocation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [currentPage, setCurrentPage] = useState('home')
@@ -47,6 +51,26 @@ function App() {
     prizes: 0,
     users: 0
   })
+
+  // Update current page when location changes
+  useEffect(() => {
+    if (location.pathname === '/') {
+      setCurrentPage('home')
+      
+      // Check if we're returning from privacy/terms and need to restore scroll
+      if (location.state?.scrollTo && scrollPosition > 0) {
+        setTimeout(() => {
+          window.scrollTo({ top: scrollPosition, behavior: 'smooth' })
+        }, 100)
+      }
+    } else if (location.pathname === '/waitlist') {
+      setCurrentPage('waitlist')
+    } else if (location.pathname === '/privacy') {
+      setCurrentPage('privacy')
+    } else if (location.pathname === '/terms') {
+      setCurrentPage('terms')
+    }
+  }, [location, scrollPosition])
 
   // Animated counters
   useEffect(() => {
@@ -177,10 +201,21 @@ function App() {
 
   // Handle page navigation
   const handlePageNavigation = (page) => {
-    // Save current scroll position before navigating
-    setScrollPosition(window.scrollY)
+    if (page === 'privacy' || page === 'terms') {
+      // Save current scroll position before navigating
+      setScrollPosition(window.scrollY)
+    }
+    
     setCurrentPage(page)
-    setIsMenuOpen(false)
+    if (page === 'waitlist') {
+      navigate('/waitlist')
+    } else if (page === 'privacy') {
+      navigate('/privacy')
+    } else if (page === 'terms') {
+      navigate('/terms')
+    } else if (page === 'home') {
+      navigate('/')
+    }
   }
 
   // Handle back navigation
@@ -192,84 +227,100 @@ function App() {
     }, 100)
   }
 
-  // Render different pages based on currentPage state
+  // Render different pages based on currentPage
+  if (currentPage === 'waitlist') {
+    return <Waitlist />
+  }
+
   if (currentPage === 'privacy') {
-    return <PrivacyPolicy onNavigateBack={handleBackNavigation} />
+    return <PrivacyPolicy />
   }
 
   if (currentPage === 'terms') {
-    return <TermsOfService onNavigateBack={handleBackNavigation} />
+    return <TermsOfService />
   }
 
+  // Main home page content
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Header */}
-      <header className="fixed top-0 w-full bg-black/90 backdrop-blur-sm border-b border-white/10 z-50">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
+            {/* Logo */}
             <div className="flex items-center">
-              <div className="text-2xl font-bold">FortisArena</div>
+              <div className="text-2xl font-bold text-cyan-400">FortisArena</div>
             </div>
-            
+
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8">
               {navigation.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-white hover:text-gray-300 transition-colors duration-200 hover:underline underline-offset-4"
+                  className="text-gray-300 hover:text-cyan-400 transition-colors duration-200"
                 >
                   {item.name}
                 </a>
               ))}
             </nav>
 
+            {/* CTA Buttons */}
             <div className="hidden md:flex items-center space-x-4">
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-black" asChild>
-                <a href="#waitlist">Join Waitlist</a>
+              <Button 
+                variant="outline" 
+                className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black"
+                onClick={() => handlePageNavigation('waitlist')}
+              >
+                Join Waitlist
               </Button>
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-              >
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </Button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-black border-t border-white/10"
+            <button
+              className="md:hidden p-2"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              <div className="px-4 py-4 space-y-4">
-                {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="block text-white hover:text-gray-300 transition-colors"
-                    onClick={(e) => handleMobileNavClick(e, item.href)}
+              {isMenuOpen ? (
+                <X className="h-6 w-6 text-white" />
+              ) : (
+                <Menu className="h-6 w-6 text-white" />
+              )}
+            </button>
+          </div>
+
+          {/* Mobile Navigation */}
+          <AnimatePresence>
+            {isMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="md:hidden border-t border-gray-800"
+              >
+                <div className="py-4 space-y-4">
+                  {navigation.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className="block text-gray-300 hover:text-cyan-400 transition-colors duration-200"
+                      onClick={(e) => handleMobileNavClick(e, item.href)}
+                    >
+                      {item.name}
+                    </a>
+                  ))}
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black"
+                    onClick={() => handlePageNavigation('waitlist')}
                   >
-                    {item.name}
-                  </a>
-                ))}
-                <Button variant="outline" className="w-full border-white text-white hover:bg-white hover:text-black" asChild>
-                  <a href="#waitlist">Join Waitlist</a>
-                </Button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                    Join Waitlist
+                  </Button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </header>
 
       {/* Hero Section */}
@@ -314,7 +365,7 @@ function App() {
               </Button>
                               <Button size="lg" variant="outline" className="w-full sm:w-auto px-8 py-3 rounded-md border-white text-white hover:bg-white hover:text-black glow-button shadow-lg text-base font-semibold" asChild>
                   <a href="/docs/FortisArena White Paper.pdf" target="_blank" rel="noopener noreferrer">
-                    Read Whitepaper
+                    Read Whitepaperpnp
                     <ExternalLink className="ml-2 h-5 w-5" />
                     <span className="shine-overlay" />
                   </a>

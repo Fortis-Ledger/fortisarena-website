@@ -1,13 +1,21 @@
 import React, { useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { ArrowLeft, Mail, Globe } from 'lucide-react'
 
-function TermsOfService({ onNavigateBack }) {
+function TermsOfService() {
+  const navigate = useNavigate()
+  const location = useLocation()
+  
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+  const handleBack = () => {
+    navigate('/', { state: { scrollTo: 'terms' } })
+  }
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -16,7 +24,7 @@ function TermsOfService({ onNavigateBack }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="sm" onClick={onNavigateBack}>
+              <Button variant="ghost" size="sm" onClick={handleBack}>
                 <ArrowLeft className="h-5 w-5 mr-2" />
                 Back
               </Button>
