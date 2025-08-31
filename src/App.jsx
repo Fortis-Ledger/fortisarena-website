@@ -363,13 +363,13 @@ function App() {
                   <span className="shine-overlay" />
                 </a>
               </Button>
-                              <Button size="lg" variant="outline" className="w-full sm:w-auto px-8 py-3 rounded-md border-white text-white hover:bg-white hover:text-black glow-button shadow-lg text-base font-semibold" asChild>
-                  <a href="/docs/FortisArena White Paper.pdf" target="_blank" rel="noopener noreferrer">
-                    Read Whitepaperpnp
-                    <ExternalLink className="ml-2 h-5 w-5" />
-                    <span className="shine-overlay" />
-                  </a>
-                </Button>
+                                                             <Button size="lg" variant="outline" className="w-full sm:w-auto px-8 py-3 rounded-md border-white text-white hover:bg-white hover:text-black glow-button shadow-lg text-base font-semibold" asChild>
+                   <a href="/docs/FortisArena White Paper.pdf" target="_blank" rel="noopener noreferrer">
+                     Read Whitepaper
+                     <ExternalLink className="ml-2 h-5 w-5" />
+                     <span className="shine-overlay" />
+                   </a>
+                 </Button>
             </div>
 
             {/* Stats Badges */}
