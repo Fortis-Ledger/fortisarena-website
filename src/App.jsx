@@ -32,6 +32,7 @@ import {
   Twitter,
   MessageCircle,
   Youtube,
+  Linkedin,
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import PrivacyPolicy from './components/PrivacyPolicy.jsx'
@@ -900,6 +901,11 @@ function App() {
                 <Button size="sm" variant="ghost" className="text-gray-400 hover:text-white" asChild>
                   <a href="https://github.com/Fortis-Ledger" target="_blank" rel="noopener noreferrer">
                     <Github className="h-5 w-5" />
+                  </a>
+                </Button>
+                <Button size="sm" variant="ghost" className="text-gray-400 hover:text-white" asChild>
+                  <a href="https://linkedin.com/company/fortisarena" target="_blank" rel="noopener noreferrer">
+                    <Linkedin className="h-5 w-5" />
                   </a>
                 </Button>
               </div>
