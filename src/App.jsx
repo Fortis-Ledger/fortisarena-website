@@ -63,6 +63,9 @@ function App() {
           window.scrollTo({ top: scrollPosition, behavior: 'smooth' })
         }, 100)
       }
+      
+      // Reset mobile menu state when returning to home
+      setIsMenuOpen(false)
     } else if (location.pathname === '/waitlist') {
       setCurrentPage('waitlist')
     } else if (location.pathname === '/privacy') {

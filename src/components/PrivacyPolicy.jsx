@@ -14,7 +14,10 @@ function PrivacyPolicy() {
   }, [])
 
   const handleBack = () => {
-    navigate('/', { state: { scrollTo: 'privacy' } })
+    navigate('/', { 
+      state: { scrollTo: 'privacy' },
+      replace: true 
+    })
   }
 
   return (

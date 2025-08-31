@@ -26,7 +26,7 @@ const Waitlist = () => {
         setIsSubmitted(true);
         // Auto redirect to home page after 3 seconds
         setTimeout(() => {
-          navigate('/');
+          navigate('/', { replace: true });
         }, 3000);
       } else {
         alert('Something went wrong. Please try again.');

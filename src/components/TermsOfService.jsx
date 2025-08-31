@@ -14,7 +14,10 @@ function TermsOfService() {
   }, [])
 
   const handleBack = () => {
-    navigate('/', { state: { scrollTo: 'terms' } })
+    navigate('/', { 
+      state: { scrollTo: 'terms' },
+      replace: true 
+    })
   }
 
   return (
