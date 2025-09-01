@@ -274,9 +274,12 @@ function App() {
               <Button 
                 variant="outline" 
                 className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black"
-                onClick={() => handlePageNavigation('waitlist')}
+                asChild
               >
-                Join Waitlist
+                <a href="/docs/FortisArena White Paper.pdf" target="_blank" rel="noopener noreferrer">
+                  Read Whitepaper
+                  <ExternalLink className="ml-2 h-4 w-4" />
+                </a>
               </Button>
             </div>
 
@@ -316,9 +319,12 @@ function App() {
                   <Button 
                     variant="outline" 
                     className="w-full border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black"
-                    onClick={() => handlePageNavigation('waitlist')}
+                    asChild
                   >
-                    Join Waitlist
+                    <a href="/docs/FortisArena White Paper.pdf" target="_blank" rel="noopener noreferrer">
+                      Read Whitepaper
+                      <ExternalLink className="ml-2 h-4 w-4" />
+                    </a>
                   </Button>
                 </div>
               </motion.div>
@@ -367,13 +373,11 @@ function App() {
                   <span className="shine-overlay" />
                 </a>
               </Button>
-                                                             <Button size="lg" variant="outline" className="w-full sm:w-auto px-8 py-3 rounded-md border-white text-white hover:bg-white hover:text-black glow-button shadow-lg text-base font-semibold" asChild>
-                   <a href="/docs/FortisArena White Paper.pdf" target="_blank" rel="noopener noreferrer">
-                     Read Whitepaper
-                     <ExternalLink className="ml-2 h-5 w-5" />
-                     <span className="shine-overlay" />
-                   </a>
-                 </Button>
+              <Button size="lg" variant="outline" className="w-full sm:w-auto px-8 py-3 rounded-md border-white text-white hover:bg-white hover:text-black glow-button shadow-lg text-base font-semibold" onClick={() => handlePageNavigation('waitlist')}>
+                Join Waitlist
+                <ChevronRight className="ml-2 h-5 w-5" />
+                <span className="shine-overlay" />
+              </Button>
             </div>
 
             {/* Stats Badges */}
