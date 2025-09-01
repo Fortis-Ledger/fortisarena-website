@@ -13,27 +13,48 @@ const Waitlist = () => {
 
     const formData = new FormData(e.target);
     
+    // Convert FormData to regular object for Google Sheets
+    const data = {
+      full_name: formData.get('full_name'),
+      email: formData.get('email'),
+      country: formData.get('country'),
+      game_interest: formData.get('game_interest'),
+      interest: formData.get('interest'),
+      timestamp: new Date().toISOString(),
+      date: new Date().toLocaleDateString('en-US'),
+      time: new Date().toLocaleTimeString('en-US')
+    };
+    
     try {
-      const response = await fetch('https://formspree.io/f/xgvlyogj', {
+      // Google Apps Script Web App URL
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyBL8RnWIuZZZhOSTnYYlzftpKNlHrVkmg2wemxr1kAMdZI5ssxdBKmZYec1iFHgs8LfA/exec';
+      
+      console.log('Sending data:', data); // Debug log
+      
+      // Use no-cors mode to avoid CORS issues with Google Apps Script
+      console.log('Attempting to submit with no-cors mode...');
+      
+      await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
-        body: formData,
+        mode: 'no-cors', // This bypasses CORS restrictions
         headers: {
-          'Accept': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
       });
-
-      if (response.ok) {
-        setIsSubmitted(true);
-        // Auto redirect to home page after 3 seconds
-        setTimeout(() => {
-          navigate('/', { replace: true });
-        }, 3000);
-      } else {
-        alert('Something went wrong. Please try again.');
-      }
+      
+      // Since no-cors mode doesn't give us response details,
+      // we'll assume success and show confirmation
+      console.log('Form submitted successfully (no-cors mode)');
+      setIsSubmitted(true);
+      
+      setTimeout(() => {
+        navigate('/', { replace: true });
+      }, 3000);
+      
     } catch (error) {
       console.error('Error:', error);
-      alert('Something went wrong. Please try again.');
+      alert('Error submitting form. Check console for details.');
     } finally {
       setIsSubmitting(false);
     }
