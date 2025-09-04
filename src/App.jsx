@@ -940,7 +940,7 @@ function App() {
               <div className="space-y-2">
                 <button onClick={() => handlePageNavigation('privacy')} className="block text-gray-400 hover:text-white transition-colors text-left">Privacy Policy</button>
                 <button onClick={() => handlePageNavigation('terms')} className="block text-gray-400 hover:text-white transition-colors text-left">Terms of Service</button>
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Career</a>
+                <a href="https://career.fortisledger.io" className="block text-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Career</a>
                 <a href="#" className="block text-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Contact</a>
               </div>
             </div>
