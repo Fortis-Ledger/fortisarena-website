@@ -120,36 +120,37 @@ const CommunityContent = () => {
   };
 
   return (
-    <div className="bg-card border border-border rounded-xl p-6">
-      <div className="flex items-center justify-between mb-6">
+    <div className="bg-card border border-border rounded-xl p-4 sm:p-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 sm:mb-6 gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-foreground mb-2">Community Showcase</h2>
-          <p className="text-muted-foreground">Amazing content created by our community</p>
+          <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-2">Community Showcase</h2>
+          <p className="text-sm sm:text-base text-muted-foreground">Amazing content created by our community</p>
         </div>
-        <Button variant="default" className="bg-golden-cta hover:bg-golden-cta/90 text-gaming-dark">
-          <Icon name="Upload" size={16} />
+        <Button variant="default" className="bg-golden-cta hover:bg-golden-cta/90 text-gaming-dark w-full sm:w-auto text-sm sm:text-base">
+          <Icon name="Upload" size={14} className="sm:w-4 sm:h-4" />
           Share Content
         </Button>
       </div>
       {/* Filter Tabs */}
-      <div className="flex flex-wrap gap-2 mb-6">
+      <div className="flex flex-wrap gap-2 mb-4 sm:mb-6">
         {filters?.map((filter) => (
           <button
             key={filter?.id}
             onClick={() => setActiveFilter(filter?.id)}
-            className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+            className={`flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all ${
               activeFilter === filter?.id
                 ? 'bg-accent text-accent-foreground shadow-gaming'
                 : 'bg-muted text-muted-foreground hover:text-foreground hover:bg-muted/80'
             }`}
           >
-            <Icon name={filter?.icon} size={16} />
-            <span>{filter?.label}</span>
+            <Icon name={filter?.icon} size={14} className="sm:w-4 sm:h-4" />
+            <span className="hidden xs:inline">{filter?.label}</span>
+            <span className="xs:hidden">{filter?.label.split(' ')[0]}</span>
           </button>
         ))}
       </div>
       {/* Content Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {filteredContent?.map((item) => (
           <div
             key={item?.id}
@@ -180,8 +181,8 @@ const CommunityContent = () => {
             </div>
 
             {/* Content */}
-            <div className="p-4">
-              <h3 className="font-semibold text-foreground mb-2 line-clamp-2 group-hover:text-accent transition-colors">
+            <div className="p-3 sm:p-4">
+              <h3 className="font-semibold text-foreground mb-2 line-clamp-2 group-hover:text-accent transition-colors text-sm sm:text-base">
                 {item?.title}
               </h3>
 
@@ -190,25 +191,25 @@ const CommunityContent = () => {
                 <Image
                   src={item?.authorAvatar}
                   alt={item?.author}
-                  className="w-6 h-6 rounded-full object-cover"
+                  className="w-5 h-5 sm:w-6 sm:h-6 rounded-full object-cover"
                 />
-                <span className="text-sm text-muted-foreground">{item?.author}</span>
+                <span className="text-xs sm:text-sm text-muted-foreground truncate">{item?.author}</span>
                 <span className="text-xs text-muted-foreground">•</span>
                 <span className="text-xs text-muted-foreground">{item?.timeAgo}</span>
               </div>
 
               {/* Stats */}
-              <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-3">
+              <div className="flex items-center space-x-3 sm:space-x-4 text-xs sm:text-sm text-muted-foreground mb-3">
                 <div className="flex items-center space-x-1">
-                  <Icon name="Eye" size={14} />
+                  <Icon name="Eye" size={12} className="sm:w-3.5 sm:h-3.5" />
                   <span>{item?.views}</span>
                 </div>
                 <div className="flex items-center space-x-1">
-                  <Icon name="Heart" size={14} />
+                  <Icon name="Heart" size={12} className="sm:w-3.5 sm:h-3.5" />
                   <span>{item?.likes}</span>
                 </div>
                 <div className="flex items-center space-x-1">
-                  <Icon name="MessageCircle" size={14} />
+                  <Icon name="MessageCircle" size={12} className="sm:w-3.5 sm:h-3.5" />
                   <span>{item?.comments}</span>
                 </div>
               </div>

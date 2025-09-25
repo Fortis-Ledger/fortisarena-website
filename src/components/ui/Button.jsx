@@ -18,6 +18,15 @@ const buttonVariants = cva(
                 success: "bg-success text-success-foreground hover:bg-success/90",
                 warning: "bg-warning text-warning-foreground hover:bg-warning/90",
                 danger: "bg-error text-error-foreground hover:bg-error/90",
+                // Advanced Web3 Button Variants
+                advanced: "btn-17 btn-primary",
+                "advanced-accent": "btn-17 btn-accent",
+                "advanced-outline": "btn-17 btn-outline",
+                "advanced-gradient": "btn-17 btn-gradient",
+                // Glow Button Variants
+                glow: "btn-glow btn-gradient",
+                "glow-primary": "btn-glow btn-primary",
+                "glow-accent": "btn-glow btn-accent",
             },
             size: {
                 default: "h-10 px-4 py-2",
@@ -26,6 +35,14 @@ const buttonVariants = cva(
                 icon: "h-10 w-10",
                 xs: "h-8 rounded-md px-2 text-xs",
                 xl: "h-12 rounded-md px-10 text-base",
+                // Advanced Button Sizes
+                "advanced-sm": "btn-17 btn-sm",
+                "advanced-lg": "btn-17 btn-lg",
+                "advanced-xl": "btn-17 btn-xl",
+                // Glow Button Sizes
+                "glow-sm": "btn-glow btn-sm",
+                "glow-lg": "btn-glow btn-lg",
+                "glow-xl": "btn-glow btn-xl",
             },
         },
         defaultVariants: {
@@ -73,6 +90,28 @@ const Button = React.forwardRef(({
 
     const renderIcon = () => {
         if (!iconName) return null;
+        
+        // Special handling for Play icon in glow buttons
+        if (isGlowButton && iconName === 'Play') {
+            return (
+                <svg
+                    className="w-5 h-5 mr-2"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    stroke="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M8.18003 13.4261C6.8586 14.3918 5 13.448 5 11.8113V5.43865C5 3.80198 6.8586 2.85821 8.18003 3.82387L12.5403 7.01022C13.6336 7.80916 13.6336 9.44084 12.5403 10.2398L8.18003 13.4261Z"
+                        strokeWidth="2"
+                        strokeMiterlimit="10"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    />
+                </svg>
+            );
+        }
+        
         try {
             return (
                 <Icon
@@ -88,6 +127,64 @@ const Button = React.forwardRef(({
             return null;
         }
     };
+
+    const isAdvancedButton = variant?.startsWith('advanced') || size?.startsWith('advanced');
+    const isGlowButton = variant?.startsWith('glow') || size?.startsWith('glow');
+
+    const renderAdvancedButton = () => (
+        <button
+            className={cn(
+                buttonVariants({ variant, size, className }),
+                fullWidth && "w-full"
+            )}
+            ref={ref}
+            disabled={disabled || loading}
+            {...props}
+        >
+            <div className="text-container">
+                <span className="text">
+                    {loading && <LoadingSpinner />}
+                    {iconName && iconPosition === 'left' && renderIcon()}
+                    {children}
+                    {iconName && iconPosition === 'right' && renderIcon()}
+                </span>
+            </div>
+        </button>
+    );
+
+    const renderGlowButton = () => (
+        <div className={cn("btn-glow", variant, size, fullWidth && "w-full", className)}>
+            <button
+                className="btn-content"
+                ref={ref}
+                disabled={disabled || loading}
+                {...props}
+            >
+                {loading && <LoadingSpinner />}
+                {iconName && iconPosition === 'left' && renderIcon()}
+                {children}
+                {iconName && iconPosition === 'right' && (
+                    <svg
+                        aria-hidden="true"
+                        viewBox="0 0 10 10"
+                        height="10"
+                        width="10"
+                        fill="none"
+                        className="btn-icon"
+                    >
+                        <path
+                            d="M0 5h7"
+                            className="path-1"
+                        />
+                        <path
+                            d="M1 1l4 4-4 4"
+                            className="path-2"
+                        />
+                    </svg>
+                )}
+            </button>
+        </div>
+    );
 
     const renderFallbackButton = () => (
         <button
@@ -141,6 +238,16 @@ const Button = React.forwardRef(({
         } catch {
             return renderFallbackButton();
         }
+    }
+
+    // Use glow button for glow variants
+    if (isGlowButton) {
+        return renderGlowButton();
+    }
+
+    // Use advanced button for advanced variants
+    if (isAdvancedButton) {
+        return renderAdvancedButton();
     }
 
     return (

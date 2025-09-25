@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import Header from '../../components/ui/Header';
 import CommunityStats from './components/CommunityStats';
@@ -8,6 +9,8 @@ import CommunityMap from './components/CommunityMap';
 import UserTestimonials from './components/UserTestimonials';
 import CommunityContent from './components/CommunityContent';
 import SocialIntegration from './components/SocialIntegration';
+import { RainbowButton } from '../../components/ui/RainbowButton';
+import { AnimatedShinyText } from '../../components/ui/AnimatedShinyText';
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
 
@@ -22,43 +25,86 @@ const CommunityPage = () => {
       <Header />
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="relative py-20 overflow-hidden">
+        <section className="relative py-20 overflow-hidden bg-gaming-dark">
           <div className="absolute inset-0 neural-network opacity-30"></div>
+          {/* Floating Particles */}
+          <div className="absolute inset-0">
+            {[...Array(20)]?.map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 bg-primary rounded-full opacity-60"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                }}
+                animate={{
+                  y: [-20, 20, -20],
+                  opacity: [0.3, 1, 0.3],
+                }}
+                transition={{
+                  duration: 3 + Math.random() * 2,
+                  repeat: Infinity,
+                  delay: Math.random() * 2,
+                }}
+              />
+            ))}
+          </div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center space-x-2 px-4 py-2 bg-accent/10 rounded-full text-accent font-medium text-sm mb-6">
-                <Icon name="Users" size={16} />
-                <span>47,832+ Active Members</span>
-              </div>
+            <motion.div 
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <motion.div 
+                className="group rounded-full border border-white/10 bg-white/5 text-sm text-white transition-all ease-in hover:cursor-pointer hover:bg-white/10 mb-6 inline-block"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <AnimatedShinyText className="inline-flex items-center justify-center px-3 py-1.5 transition ease-out hover:text-neutral-300 hover:duration-300">
+                  <Icon name="Users" size={14} className="text-accent mr-2" />
+                  <span>47,832+ Active Members</span>
+                </AnimatedShinyText>
+              </motion.div>
               
-              <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+              <motion.h1 
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
                 Community
                 <span className="block text-transparent bg-gradient-to-r from-electric-blue via-neon-purple to-golden-cta bg-clip-text">
                   Nexus
                 </span>
-              </h1>
+              </motion.h1>
               
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+              <motion.p 
+                className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6 sm:mb-8 px-4 sm:px-0"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
                 Join the revolution. Shape the future. Own your gaming destiny through community governance, 
                 global competitions, and decentralized decision-making.
-              </p>
+              </motion.p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <Button 
-                  variant="default" 
-                  size="lg"
-                  className="bg-golden-cta hover:bg-golden-cta/90 text-gaming-dark font-semibold electric-pulse"
-                >
-                  <Icon name="MessageSquare" size={20} />
+              <motion.div 
+                className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 px-4 sm:px-0"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
+                <RainbowButton className="font-semibold w-full sm:w-auto">
                   Join Discord Community
-                </Button>
+                </RainbowButton>
                 
-                <Button variant="outline" size="lg">
-                  <Icon name="Vote" size={20} />
+                <RainbowButton className="font-semibold w-full sm:w-auto">
                   Participate in DAO
-                </Button>
-              </div>
-            </div>
+                </RainbowButton>
+              </motion.div>
+            </motion.div>
 
             {/* Community Stats Overview */}
             <CommunityStats />
@@ -73,9 +119,9 @@ const CommunityPage = () => {
         </section>
 
         {/* Community Features Grid */}
-        <section className="py-16">
+        <section className="py-12 sm:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
               {/* Leaderboard */}
               <CommunityLeaderboard />
               
@@ -86,21 +132,21 @@ const CommunityPage = () => {
         </section>
 
         {/* User Testimonials */}
-        <section className="py-16 bg-muted/30">
+        <section className="py-12 sm:py-16 bg-muted/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <UserTestimonials />
           </div>
         </section>
 
         {/* Community Content Showcase */}
-        <section className="py-16">
+        <section className="py-12 sm:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <CommunityContent />
           </div>
         </section>
 
         {/* Social Integration Hub */}
-        <section className="py-16 bg-muted/30">
+        <section className="py-12 sm:py-16 bg-muted/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SocialIntegration />
           </div>
@@ -123,44 +169,50 @@ const CommunityPage = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
               <div className="text-center">
-                <div className="w-16 h-16 bg-electric-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Vote" size={24} className="text-electric-blue" />
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-electric-blue/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <Icon name="Vote" size={20} className="text-electric-blue sm:w-6 sm:h-6" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Govern</h3>
-                <p className="text-gray-300 text-sm">Vote on proposals and shape platform decisions</p>
+                <h3 className="text-base sm:text-lg font-semibold text-white mb-2">Govern</h3>
+                <p className="text-gray-300 text-xs sm:text-sm">Vote on proposals and shape platform decisions</p>
               </div>
               
               <div className="text-center">
-                <div className="w-16 h-16 bg-neon-purple/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Trophy" size={24} className="text-neon-purple" />
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-neon-purple/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <Icon name="Trophy" size={20} className="text-neon-purple sm:w-6 sm:h-6" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Compete</h3>
-                <p className="text-gray-300 text-sm">Join tournaments and climb the leaderboards</p>
+                <h3 className="text-base sm:text-lg font-semibold text-white mb-2">Compete</h3>
+                <p className="text-gray-300 text-xs sm:text-sm">Join tournaments and climb the leaderboards</p>
               </div>
               
-              <div className="text-center">
-                <div className="w-16 h-16 bg-golden-cta/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Coins" size={24} className="text-golden-cta" />
+              <div className="text-center sm:col-span-2 lg:col-span-1">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-golden-cta/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <Icon name="Coins" size={20} className="text-golden-cta sm:w-6 sm:h-6" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Earn</h3>
-                <p className="text-gray-300 text-sm">Get rewarded for your contributions and skills</p>
+                <h3 className="text-base sm:text-lg font-semibold text-white mb-2">Earn</h3>
+                <p className="text-gray-300 text-xs sm:text-sm">Get rewarded for your contributions and skills</p>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 px-4 sm:px-0">
               <Button 
-                variant="default" 
-                size="lg"
-                className="bg-golden-cta hover:bg-golden-cta/90 text-gaming-dark font-semibold"
+                variant="glow" 
+                size="glow-lg"
+                className="font-semibold w-full sm:w-auto"
+                iconName="Rocket"
+                iconPosition="left"
               >
-                <Icon name="Rocket" size={20} />
                 Start Your Journey
               </Button>
               
-              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-gaming-dark">
-                <Icon name="BookOpen" size={20} />
+              <Button 
+                variant="glow-accent" 
+                size="glow-lg" 
+                className="font-semibold w-full sm:w-auto"
+                iconName="BookOpen"
+                iconPosition="left"
+              >
                 Learn More
               </Button>
             </div>

@@ -2,10 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
+import { AnimatedShinyText } from '../../../components/ui/AnimatedShinyText';
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gaming-dark via-gaming-secondary to-gaming-dark">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gaming-dark">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 neural-network opacity-30"></div>
       {/* Floating Particles */}
@@ -37,19 +38,21 @@ const HeroSection = () => {
           transition={{ duration: 0.8 }}
           className="mb-8"
         >
-          <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-3 mb-6">
-            <Icon name="Zap" size={20} className="text-electric-blue" />
-            <span className="text-white font-medium">Revolution Manifesto</span>
+          <div className="group rounded-full border border-white/10 bg-white/5 text-sm text-white transition-all ease-in hover:cursor-pointer hover:bg-white/10 mb-6 inline-block">
+            <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-2 transition ease-out hover:text-neutral-300 hover:duration-300">
+              <Icon name="Zap" size={16} className="text-electric-blue mr-2" />
+              <span>Revolution Manifesto</span>
+            </AnimatedShinyText>
           </div>
           
-          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
+          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 sm:mb-6 leading-tight">
             Gaming
             <span className="block text-transparent bg-gradient-to-r from-electric-blue to-neon-purple bg-clip-text">
               Liberation
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed px-4 sm:px-0">
             Where players aren't just participants but owners of their digital destiny. 
             The intersection of cutting-edge technology and gaming passion.
           </p>
@@ -59,39 +62,29 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6"
+          className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 px-4 sm:px-0"
         >
           <Button 
-            variant="default" 
-            size="lg"
-            className="bg-golden-cta hover:bg-golden-cta/90 text-gaming-dark font-semibold electric-pulse"
+            variant="glow" 
+            size="glow-lg"
+            className="font-semibold w-full sm:w-auto"
+            iconName="Play"
+            iconPosition="left"
           >
-            <Icon name="Play" size={20} />
             Experience the Vision
           </Button>
           
-          <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10">
-            <Icon name="FileText" size={20} />
+          <Button 
+            variant="glow-accent" 
+            size="glow-lg" 
+            className="font-semibold w-full sm:w-auto"
+            iconName="FileText"
+            iconPosition="left"
+          >
             Read Manifesto
           </Button>
         </motion.div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center text-white/60"
-          >
-            <span className="text-sm mb-2">Discover the Revolution</span>
-            <Icon name="ChevronDown" size={24} />
-          </motion.div>
-        </motion.div>
       </div>
     </section>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 
 const TokenDistribution = () => {
+
   const distributionData = [
     { name: 'Community Rewards', value: 35, color: '#00D4FF', description: 'Tournament prizes and player rewards' },
     { name: 'Staking Rewards', value: 20, color: '#8A2BE2', description: 'Long-term staking incentives' },
@@ -33,23 +34,29 @@ const TokenDistribution = () => {
 
   const CustomLegend = ({ payload }) => {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
-        {payload?.map((entry, index) => (
-          <div key={index} className="flex items-center space-x-3">
-            <div
-              className="w-3 h-3 rounded-full"
-              style={{ backgroundColor: entry?.color }}
-            />
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-foreground truncate">
-                {entry?.value}
-              </p>
-              <p className="text-xs text-muted-foreground">
-                {entry?.payload?.value}% • {(entry?.payload?.value * 10000000)?.toLocaleString()} FRT
-              </p>
+      <div className="space-y-4">
+        <h4 className="text-lg font-semibold text-foreground mb-4">Distribution Breakdown</h4>
+        <div className="space-y-3">
+          {payload?.map((entry, index) => (
+            <div key={index} className="chart-legend-item flex items-center space-x-4 p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors">
+              <div
+                className="w-4 h-4 rounded-full flex-shrink-0"
+                style={{ backgroundColor: entry?.color }}
+              />
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-foreground">
+                  {entry?.name}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  {entry?.value}% • {(entry?.value * 10000000)?.toLocaleString()} FRT
+                </p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  {entry?.description}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     );
   };
@@ -62,26 +69,37 @@ const TokenDistribution = () => {
           Strategic allocation designed for sustainable ecosystem growth
         </p>
       </div>
-      <div className="h-80" aria-label="Token Distribution Pie Chart">
-        <ResponsiveContainer width="100%" height="100%">
-          <PieChart>
-            <Pie
-              data={distributionData}
-              cx="50%"
-              cy="50%"
-              innerRadius={60}
-              outerRadius={120}
-              paddingAngle={2}
-              dataKey="value"
-            >
-              {distributionData?.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry?.color} />
-              ))}
-            </Pie>
-            <Tooltip content={<CustomTooltip />} />
-            <Legend content={<CustomLegend />} />
-          </PieChart>
-        </ResponsiveContainer>
+      
+      {/* Chart Container with proper layout */}
+      <div className="flex flex-col lg:flex-row gap-8 items-start">
+        {/* Pie Chart */}
+        <div className="flex-1 w-full lg:w-1/2" aria-label="Token Distribution Pie Chart">
+          <div className="w-full h-[400px] bg-gaming-dark border border-border rounded-lg p-4">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={distributionData}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={60}
+                  outerRadius={120}
+                  paddingAngle={2}
+                  dataKey="value"
+                >
+                  {distributionData?.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry?.color} />
+                  ))}
+                </Pie>
+                <Tooltip content={<CustomTooltip />} />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+        
+        {/* Legend */}
+        <div className="w-full lg:w-1/2 chart-legend">
+          <CustomLegend payload={distributionData} />
+        </div>
       </div>
     </div>
   );

@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import Header from '../../components/ui/Header';
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
+import { RainbowButton } from '../../components/ui/RainbowButton';
+import { AnimatedShinyText } from '../../components/ui/AnimatedShinyText';
 import TimelineItem from './components/TimelineItem';
 import RoadmapStats from './components/RoadmapStats';
 import PhaseFilter from './components/PhaseFilter';
@@ -314,43 +317,88 @@ const RoadmapPage = () => {
       <Header />
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="relative py-20 lg:py-32 overflow-hidden">
-          <div className="absolute inset-0 neural-network"></div>
+        <section className="relative py-20 lg:py-32 overflow-hidden bg-gaming-dark">
+          <div className="absolute inset-0 neural-network opacity-30"></div>
+          {/* Floating Particles */}
+          <div className="absolute inset-0">
+            {[...Array(20)]?.map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 bg-primary rounded-full opacity-60"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                }}
+                animate={{
+                  y: [-20, 20, -20],
+                  opacity: [0.3, 1, 0.3],
+                }}
+                transition={{
+                  duration: 3 + Math.random() * 2,
+                  repeat: Infinity,
+                  delay: Math.random() * 2,
+                }}
+              />
+            ))}
+          </div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="inline-flex items-center space-x-2 bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <Icon name="Map" size={16} />
-              <span>Roadmap Observatory</span>
-            </div>
+            <motion.div 
+              className="group rounded-full border border-white/10 bg-white/5 text-sm text-white transition-all ease-in hover:cursor-pointer hover:bg-white/10 mb-6 inline-block"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <AnimatedShinyText className="inline-flex items-center justify-center px-3 py-1.5 transition ease-out hover:text-neutral-300 hover:duration-300">
+                <Icon name="Map" size={14} className="text-accent mr-2" />
+                <span>Roadmap Observatory</span>
+              </AnimatedShinyText>
+            </motion.div>
             
-            <h1 className="text-4xl lg:text-6xl font-heading font-bold text-foreground mb-6">
+            <motion.h1 
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-4 sm:mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
               Charting the Future of
               <span className="block text-electric-blue">Decentralized Gaming</span>
-            </h1>
+            </motion.h1>
             
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            <motion.p 
+              className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6 sm:mb-8 px-4 sm:px-0"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               Follow our journey as we build the most advanced Web3 gaming ecosystem. 
               Track milestones, participate in governance, and shape the future together.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <motion.div 
+              className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 px-4 sm:px-0"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
               <Button
-                variant="default"
-                size="lg"
-                className="bg-golden-cta hover:bg-golden-cta/90 text-gaming-dark font-semibold electric-pulse"
+                variant="glow"
+                size="glow-lg"
+                className="font-semibold w-full sm:w-auto"
                 iconName="Vote"
                 iconPosition="left"
               >
                 Join Governance
               </Button>
               <Button
-                variant="outline"
-                size="lg"
+                variant="glow-accent"
+                size="glow-lg"
+                className="font-semibold w-full sm:w-auto"
                 iconName="Download"
                 iconPosition="left"
               >
                 Download Whitepaper
               </Button>
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -364,19 +412,25 @@ const RoadmapPage = () => {
           {/* Phase Filter */}
           <PhaseFilter activePhase={activePhase} onPhaseChange={setActivePhase} />
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
             {/* Timeline */}
             <div className="lg:col-span-2">
-              <div className="bg-card rounded-xl p-6 border border-border">
-                <div className="flex items-center justify-between mb-8">
-                  <h2 className="text-2xl font-heading font-bold text-foreground">Development Timeline</h2>
-                  <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                    <div className="w-2 h-2 bg-success rounded-full"></div>
-                    <span>Completed</span>
-                    <div className="w-2 h-2 bg-accent rounded-full ml-4"></div>
-                    <span>In Progress</span>
-                    <div className="w-2 h-2 bg-muted rounded-full ml-4"></div>
-                    <span>Upcoming</span>
+              <div className="bg-card rounded-xl p-4 sm:p-6 border border-border">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8 gap-4">
+                  <h2 className="text-xl sm:text-2xl font-heading font-bold text-foreground">Development Timeline</h2>
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
+                    <div className="flex items-center space-x-1">
+                      <div className="w-2 h-2 bg-success rounded-full"></div>
+                      <span>Completed</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <div className="w-2 h-2 bg-accent rounded-full"></div>
+                      <span>In Progress</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <div className="w-2 h-2 bg-muted rounded-full"></div>
+                      <span>Upcoming</span>
+                    </div>
                   </div>
                 </div>
 
@@ -394,48 +448,48 @@ const RoadmapPage = () => {
             </div>
 
             {/* Sidebar */}
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {/* Community Voting */}
               <CommunityVoting />
 
               {/* Quick Stats */}
-              <div className="bg-card rounded-xl p-6 border border-border">
-                <h3 className="text-lg font-heading font-bold text-foreground mb-4">Development Activity</h3>
-                <div className="space-y-4">
+              <div className="bg-card rounded-xl p-4 sm:p-6 border border-border">
+                <h3 className="text-base sm:text-lg font-heading font-bold text-foreground mb-3 sm:mb-4">Development Activity</h3>
+                <div className="space-y-3 sm:space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">Code Commits (30d)</span>
-                    <span className="font-semibold text-foreground">247</span>
+                    <span className="text-xs sm:text-sm text-muted-foreground">Code Commits (30d)</span>
+                    <span className="font-semibold text-foreground text-sm sm:text-base">247</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">Pull Requests</span>
-                    <span className="font-semibold text-foreground">42</span>
+                    <span className="text-xs sm:text-sm text-muted-foreground">Pull Requests</span>
+                    <span className="font-semibold text-foreground text-sm sm:text-base">42</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">Issues Resolved</span>
-                    <span className="font-semibold text-foreground">89</span>
+                    <span className="text-xs sm:text-sm text-muted-foreground">Issues Resolved</span>
+                    <span className="font-semibold text-foreground text-sm sm:text-base">89</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">Test Coverage</span>
-                    <span className="font-semibold text-success">94.2%</span>
+                    <span className="text-xs sm:text-sm text-muted-foreground">Test Coverage</span>
+                    <span className="font-semibold text-success text-sm sm:text-base">94.2%</span>
                   </div>
                 </div>
                 
-                <Button variant="outline" size="sm" fullWidth className="mt-4" iconName="Github" iconPosition="left">
+                <RainbowButton className="mt-3 sm:mt-4 w-full text-sm sm:text-base">
                   View Repository
-                </Button>
+                </RainbowButton>
               </div>
 
               {/* Newsletter Signup */}
-              <div className="bg-gradient-to-br from-accent/10 to-accent/5 rounded-xl p-6 border border-accent/20">
+              <div className="bg-gradient-to-br from-accent/10 to-accent/5 rounded-xl p-4 sm:p-6 border border-accent/20">
                 <div className="text-center">
-                  <Icon name="Bell" size={32} className="text-accent mx-auto mb-3" />
-                  <h3 className="text-lg font-heading font-bold text-foreground mb-2">Stay Updated</h3>
-                  <p className="text-sm text-muted-foreground mb-4">
+                  <Icon name="Bell" size={24} className="text-accent mx-auto mb-2 sm:mb-3 sm:w-8 sm:h-8" />
+                  <h3 className="text-base sm:text-lg font-heading font-bold text-foreground mb-2">Stay Updated</h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">
                     Get notified about milestone completions and major announcements.
                   </p>
-                  <Button variant="default" size="sm" fullWidth className="bg-accent hover:bg-accent/90">
+                  <RainbowButton className="w-full text-sm sm:text-base">
                     Subscribe to Updates
-                  </Button>
+                  </RainbowButton>
                 </div>
               </div>
             </div>

@@ -11,7 +11,7 @@ const NotFound = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-background p-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gaming-dark p-4">
       <div className="text-center max-w-md">
         <div className="flex justify-center mb-6">
           <div className="relative">
@@ -26,19 +26,23 @@ const NotFound = () => {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button
-            variant="primary"
-            icon={<Icon name="ArrowLeft" />}
+            variant="glow"
+            size="glow-lg"
+            iconName="ArrowLeft"
             iconPosition="left"
             onClick={() => window.history?.back()}
+            className="font-semibold"
           >
             Go Back
           </Button>
 
           <Button
-            variant="outline"
-            icon={<Icon name="Home" />}
+            variant="glow-accent"
+            size="glow-lg"
+            iconName="Home"
             iconPosition="left"
             onClick={handleGoHome}
+            className="font-semibold"
           >
             Back to Home
           </Button>

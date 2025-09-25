@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import Header from '../../components/ui/Header';
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
+import { RainbowButton } from '../../components/ui/RainbowButton';
+import { AnimatedShinyText } from '../../components/ui/AnimatedShinyText';
 import TokenMetrics from './components/TokenMetrics';
 import TokenDistribution from './components/TokenDistribution';
 import StakingCalculator from './components/StakingCalculator';
@@ -114,25 +117,25 @@ const TokenomicsPage = () => {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {tokenUtilities?.map((utility) => (
                   <div
                     key={utility?.id}
-                    className="border border-border rounded-lg p-4 hover:shadow-gaming transition-all duration-300 group"
+                    className="border border-border rounded-lg p-3 sm:p-4 hover:shadow-gaming transition-all duration-300 group"
                   >
-                    <div className="flex items-start space-x-3">
-                      <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center group-hover:bg-accent/10 transition-colors">
+                    <div className="flex items-start space-x-2 sm:space-x-3">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 bg-muted rounded-lg flex items-center justify-center group-hover:bg-accent/10 transition-colors flex-shrink-0">
                         <Icon 
                           name={utility?.icon} 
-                          size={20} 
-                          className={`${utility?.color} group-hover:text-accent transition-colors`}
+                          size={16} 
+                          className={`${utility?.color} group-hover:text-accent transition-colors sm:w-5 sm:h-5`}
                         />
                       </div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-foreground mb-1">
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">
                           {utility?.title}
                         </h4>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-xs sm:text-sm text-muted-foreground">
                           {utility?.description}
                         </p>
                       </div>
@@ -150,18 +153,18 @@ const TokenomicsPage = () => {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {economicMetrics?.map((metric, index) => (
                   <div
                     key={index}
-                    className="border border-border rounded-lg p-4"
+                    className="border border-border rounded-lg p-3 sm:p-4"
                   >
                     <div className="flex justify-between items-start mb-2">
-                      <span className="text-sm text-muted-foreground">
+                      <span className="text-xs sm:text-sm text-muted-foreground">
                         {metric?.label}
                       </span>
                     </div>
-                    <p className="text-lg font-bold text-foreground mb-1">
+                    <p className="text-base sm:text-lg font-bold text-foreground mb-1">
                       {metric?.value}
                     </p>
                     <p className="text-xs text-muted-foreground">
@@ -192,66 +195,116 @@ const TokenomicsPage = () => {
     <div className="min-h-screen bg-background">
       <Header />
       {/* Hero Section */}
-      <section className="pt-24 pb-12 bg-gradient-to-br from-gaming-dark via-gaming-secondary to-gaming-dark relative overflow-hidden">
+      <section className="pt-24 pb-12 bg-gaming-dark relative overflow-hidden">
         {/* Particle Background */}
         <div className="absolute inset-0 neural-network opacity-30"></div>
+        {/* Floating Particles */}
+        <div className="absolute inset-0">
+          {[...Array(20)]?.map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-primary rounded-full opacity-60"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [-20, 20, -20],
+                opacity: [0.3, 1, 0.3],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
+        </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center">
-            <div className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 rounded-full px-4 py-2 mb-6">
-              <Icon name="Coins" size={16} className="text-accent" />
-              <span className="text-sm font-medium text-accent">FRT Token Economy</span>
-            </div>
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.div 
+              className="group rounded-full border border-white/10 bg-white/5 text-sm text-white transition-all ease-in hover:cursor-pointer hover:bg-white/10 mb-6 inline-block"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <AnimatedShinyText className="inline-flex items-center justify-center px-3 py-1.5 transition ease-out hover:text-neutral-300 hover:duration-300">
+                <Icon name="Coins" size={14} className="text-accent mr-2" />
+                <span>FRT Token Economy</span>
+              </AnimatedShinyText>
+            </motion.div>
             
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <motion.h1 
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
               Tokenomics
               <span className="block text-accent">Built for Gaming</span>
-            </h1>
+            </motion.h1>
             
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+            <motion.p 
+              className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8 px-4 sm:px-0"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               Discover the economic model powering the future of decentralized gaming. 
               FRT tokens drive tournaments, governance, and rewards in the FortisArena ecosystem.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <motion.div 
+              className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 px-4 sm:px-0"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
               <Button 
-                variant="default"
-                size="lg"
-                className="bg-golden-cta hover:bg-golden-cta/90 text-gaming-dark font-semibold electric-pulse"
+                variant="glow"
+                size="glow-lg"
+                className="font-semibold w-full sm:w-auto"
                 iconName="Download"
                 iconPosition="left"
               >
                 Download Whitepaper
               </Button>
               <Button 
-                variant="outline"
-                size="lg"
-                className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
+                variant="glow-accent"
+                size="glow-lg"
+                className="font-semibold w-full sm:w-auto"
                 iconName="BarChart3"
                 iconPosition="left"
               >
                 View Live Metrics
               </Button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
       {/* Navigation Tabs */}
       <section className="bg-background border-b border-border sticky top-16 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center space-x-1 overflow-x-auto py-4">
+          <div className="flex items-center space-x-1 overflow-x-auto py-3 sm:py-4 scrollbar-hide">
             {tabs?.map((tab) => (
               <button
                 key={tab?.id}
                 onClick={() => setActiveTab(tab?.id)}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all duration-200 ${
+                className={`flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-200 ${
                   activeTab === tab?.id
                     ? 'bg-accent text-accent-foreground shadow-gaming'
                     : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                 }`}
               >
-                <Icon name={tab?.icon} size={16} />
-                <span>{tab?.label}</span>
+                <Icon name={tab?.icon} size={14} className="sm:w-4 sm:h-4" />
+                <span className="hidden xs:inline">{tab?.label}</span>
+                <span className="xs:hidden">{tab?.label.split(' ')[0]}</span>
               </button>
             ))}
           </div>
@@ -273,24 +326,13 @@ const TokenomicsPage = () => {
             Get FRT tokens and become part of the decentralized gaming future
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <Button 
-              variant="default"
-              size="lg"
-              className="bg-accent hover:bg-accent/90 text-accent-foreground"
-              iconName="Wallet"
-              iconPosition="left"
-            >
+          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 px-4 sm:px-0">
+            <RainbowButton className="font-semibold w-full sm:w-auto">
               Buy FRT Tokens
-            </Button>
-            <Button 
-              variant="outline"
-              size="lg"
-              iconName="Users"
-              iconPosition="left"
-            >
+            </RainbowButton>
+            <RainbowButton className="font-semibold w-full sm:w-auto">
               Join Community
-            </Button>
+            </RainbowButton>
           </div>
         </div>
       </section>

@@ -7,6 +7,7 @@ import MonetizationCalculator from './components/MonetizationCalculator';
 import CreatorSpotlight from './components/CreatorSpotlight';
 import CommunityGuidelines from './components/CommunityGuidelines';
 import CreatorProgram from './components/CreatorProgram';
+import { RainbowButton } from '../../components/ui/RainbowButton';
 
 const CreatorStudio = () => {
   return (
