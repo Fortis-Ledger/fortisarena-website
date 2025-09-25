@@ -19,10 +19,10 @@ const FooterSection = () => {
     community: {
       title: 'Community',
       links: [
-        { name: 'Discord', path: '#', external: true },
-        { name: 'Twitter', path: '#', external: true },
-        { name: 'Telegram', path: '#', external: true },
-        { name: 'YouTube', path: '#', external: true }
+    { name: 'Discord', path: 'https://discord.com/invite/qTTYxTnK3s', external: true },
+    { name: 'Twitter', path: 'https://x.com/fortisarena', external: true },
+    { name: 'Telegram', path: 'https://t.me/fortisarena', external: true },
+    { name: 'YouTube', path: 'https://youtube.com/@fortisarena', external: true }
       ]
     },
     resources: {
@@ -46,11 +46,12 @@ const FooterSection = () => {
   };
 
   const socialLinks = [
-    { name: 'Discord', icon: 'MessageSquare', url: '#', color: 'hover:text-indigo-400' },
-    { name: 'Twitter', icon: 'Twitter', url: '#', color: 'hover:text-blue-400' },
-    { name: 'Telegram', icon: 'Send', url: '#', color: 'hover:text-blue-500' },
-    { name: 'YouTube', icon: 'Play', url: '#', color: 'hover:text-red-500' },
-    { name: 'GitHub', icon: 'Github', url: '#', color: 'hover:text-gray-300' }
+    { name: 'Discord', icon: 'MessageSquare', url: 'https://discord.com/invite/qTTYxTnK3s', color: 'hover:text-indigo-400' },
+    { name: 'Twitter', icon: 'Twitter', url: 'https://x.com/fortisarena', color: 'hover:text-blue-400' },
+    { name: 'Telegram', icon: 'Send', url: 'https://t.me/fortisarena', color: 'hover:text-blue-500' },
+    { name: 'YouTube', icon: 'Play', url: 'https://youtube.com/@fortisarena', color: 'hover:text-red-500' },
+    { name: 'GitHub', icon: 'Github', url: 'https://github.com/Fortis-Ledger', color: 'hover:text-gray-300' },
+    { name: 'LinkedIn', icon: 'Linkedin', url: 'https://linkedin.com/company/fortisarena', color: 'hover:text-blue-600' }
   ];
 
   const Logo = () => (

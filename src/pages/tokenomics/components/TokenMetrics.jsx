@@ -6,7 +6,7 @@ const TokenMetrics = () => {
     {
       id: 1,
       label: "Total Supply",
-      value: "1,000,000,000",
+      value: "200,000,000",
       symbol: "FRT",
       change: "+0.00%",
       changeType: "neutral",
@@ -15,7 +15,7 @@ const TokenMetrics = () => {
     {
       id: 2,
       label: "Initial Supply",
-      value: "250,000,000",
+      value: "100,000,000",
       symbol: "FRT",
       change: "+0.0%",
       changeType: "neutral",
@@ -71,7 +71,14 @@ const TokenMetrics = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="bg-card border border-border rounded-xl p-6">
+      <div className="mb-6">
+        <h3 className="text-xl font-bold text-foreground mb-2">FRT Token Metrics</h3>
+        <p className="text-muted-foreground">
+          Fortis Token (FRT) - Utility token for staking, governance, and ecosystem support
+        </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {metrics?.map((metric) => (
         <div
           key={metric?.id}
@@ -105,6 +112,7 @@ const TokenMetrics = () => {
           </div>
         </div>
       ))}
+      </div>
     </div>
   );
 };

@@ -13,7 +13,7 @@ const CreatorTools = () => {
         description: "Create custom tournaments with bracket management, prize pools, and automated payouts.",
         icon: "Trophy",
         features: ["Bracket Generation", "Prize Pool Management", "Automated Payouts", "Live Streaming Integration"],
-        status: "Available"
+        status: "Coming Soon"
       },
       {
         id: 2,
@@ -21,7 +21,7 @@ const CreatorTools = () => {
         description: "Schedule matches across time zones with automated notifications and reminders.",
         icon: "Calendar",
         features: ["Multi-timezone Support", "Auto Notifications", "Conflict Detection", "Calendar Integration"],
-        status: "Available"
+        status: "Coming Soon"
       },
       {
         id: 3,
@@ -29,7 +29,7 @@ const CreatorTools = () => {
         description: "Automated prize distribution system with NFT rewards and token payments.",
         icon: "Gift",
         features: ["Smart Contracts", "NFT Rewards", "Token Payments", "Tax Reporting"],
-        status: "Beta"
+        status: "Coming Soon"
       }
     ],
     content: [
@@ -39,7 +39,7 @@ const CreatorTools = () => {
         description: "Professional overlay templates with real-time tournament data and branding.",
         icon: "Monitor",
         features: ["Custom Branding", "Real-time Data", "Multi-platform Support", "Interactive Elements"],
-        status: "Available"
+        status: "Coming Soon"
       },
       {
         id: 5,
@@ -47,7 +47,7 @@ const CreatorTools = () => {
         description: "Pre-designed templates for social media, thumbnails, and promotional materials.",
         icon: "Image",
         features: ["Social Media Templates", "Thumbnail Generator", "Brand Guidelines", "Asset Library"],
-        status: "Available"
+        status: "Coming Soon"
       },
       {
         id: 6,
@@ -55,7 +55,7 @@ const CreatorTools = () => {
         description: "Comprehensive analytics for audience engagement, revenue tracking, and growth metrics.",
         icon: "BarChart3",
         features: ["Audience Insights", "Revenue Tracking", "Growth Metrics", "Performance Reports"],
-        status: "Available"
+        status: "Coming Soon"
       }
     ],
     monetization: [
@@ -73,7 +73,7 @@ const CreatorTools = () => {
         description: "Create and manage NFT collections for tournaments, achievements, and exclusive content.",
         icon: "Hexagon",
         features: ["NFT Minting", "Collection Management", "Marketplace Integration", "Royalty Tracking"],
-        status: "Beta"
+        status: "Coming Soon"
       },
       {
         id: 9,
@@ -81,7 +81,7 @@ const CreatorTools = () => {
         description: "Manage subscriber tiers, exclusive content, and community access levels.",
         icon: "Crown",
         features: ["Tier Management", "Exclusive Content", "Access Control", "Subscriber Analytics"],
-        status: "Available"
+        status: "Coming Soon"
       }
     ]
   };

@@ -83,10 +83,10 @@ const CreatorHero = () => {
               transition={{ duration: 0.8, delay: 0.5 }}
             >
               <RainbowButton className="font-semibold w-full sm:w-auto">
-                Start Creating
+                Creator Studio Soon
               </RainbowButton>
               <RainbowButton className="font-semibold w-full sm:w-auto">
-                Watch Demo
+                Beta Testing Soon
               </RainbowButton>
             </motion.div>
 
@@ -98,15 +98,15 @@ const CreatorHero = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               <div className="text-center">
-                <div className="text-lg sm:text-xl lg:text-2xl font-bold text-white">2.5K+</div>
+                <div className="text-lg sm:text-xl lg:text-2xl font-bold text-white">00.0</div>
                 <div className="text-xs sm:text-sm text-gray-400">Active Creators</div>
               </div>
               <div className="text-center">
-                <div className="text-lg sm:text-xl lg:text-2xl font-bold text-white">$1.2M+</div>
+                <div className="text-lg sm:text-xl lg:text-2xl font-bold text-white">$00.0</div>
                 <div className="text-xs sm:text-sm text-gray-400">Creator Earnings</div>
               </div>
               <div className="text-center">
-                <div className="text-lg sm:text-xl lg:text-2xl font-bold text-white">15K+</div>
+                <div className="text-lg sm:text-xl lg:text-2xl font-bold text-white">00.0</div>
                 <div className="text-xs sm:text-sm text-gray-400">Tournaments Created</div>
               </div>
             </motion.div>

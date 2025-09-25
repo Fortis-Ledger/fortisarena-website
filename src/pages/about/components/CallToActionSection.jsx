@@ -20,9 +20,10 @@ const CallToActionSection = () => {
       title: "Join Community",
       description: "Connect with thousands of players building the future",
       action: "Join Discord",
-      link: "/community",
+      link: "https://discord.com/invite/qTTYxTnK3s",
       color: "from-neon-purple to-purple-600",
-      delay: 0.1
+      delay: 0.1,
+      external: true
     },
     {
       icon: "FileText",
@@ -125,26 +126,49 @@ const CallToActionSection = () => {
               viewport={{ once: true }}
               className="group"
             >
-              <Link to={card?.link}>
-                <div className="glassmorphism rounded-2xl p-8 h-full hover:shadow-2xl transition-all duration-300 group-hover:scale-105 border border-white/10 hover:border-white/30">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${card?.color} rounded-xl flex items-center justify-center mb-6 group-hover:gaming-glow transition-all duration-300`}>
-                    <Icon name={card?.icon} size={28} className="text-white" />
+              {card?.external ? (
+                <a href={card?.link} target="_blank" rel="noopener noreferrer">
+                  <div className="glassmorphism rounded-2xl p-8 h-full hover:shadow-2xl transition-all duration-300 group-hover:scale-105 border border-white/10 hover:border-white/30">
+                    <div className={`w-16 h-16 bg-gradient-to-br ${card?.color} rounded-xl flex items-center justify-center mb-6 group-hover:gaming-glow transition-all duration-300`}>
+                      <Icon name={card?.icon} size={28} className="text-white" />
+                    </div>
+                    
+                    <h3 className="font-heading text-xl font-bold mb-4">
+                      {card?.title}
+                    </h3>
+                    
+                    <p className="text-gray-300 leading-relaxed mb-6">
+                      {card?.description}
+                    </p>
+                    
+                    <div className="flex items-center space-x-2 text-electric-blue font-semibold group-hover:text-golden-cta transition-colors duration-300">
+                      <span>{card?.action}</span>
+                      <Icon name="ArrowRight" size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
                   </div>
-                  
-                  <h3 className="font-heading text-xl font-bold mb-4">
-                    {card?.title}
-                  </h3>
-                  
-                  <p className="text-gray-300 leading-relaxed mb-6">
-                    {card?.description}
-                  </p>
-                  
-                  <div className="flex items-center space-x-2 text-electric-blue font-semibold group-hover:text-golden-cta transition-colors duration-300">
-                    <span>{card?.action}</span>
-                    <Icon name="ArrowRight" size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+                </a>
+              ) : (
+                <Link to={card?.link}>
+                  <div className="glassmorphism rounded-2xl p-8 h-full hover:shadow-2xl transition-all duration-300 group-hover:scale-105 border border-white/10 hover:border-white/30">
+                    <div className={`w-16 h-16 bg-gradient-to-br ${card?.color} rounded-xl flex items-center justify-center mb-6 group-hover:gaming-glow transition-all duration-300`}>
+                      <Icon name={card?.icon} size={28} className="text-white" />
+                    </div>
+                    
+                    <h3 className="font-heading text-xl font-bold mb-4">
+                      {card?.title}
+                    </h3>
+                    
+                    <p className="text-gray-300 leading-relaxed mb-6">
+                      {card?.description}
+                    </p>
+                    
+                    <div className="flex items-center space-x-2 text-electric-blue font-semibold group-hover:text-golden-cta transition-colors duration-300">
+                      <span>{card?.action}</span>
+                      <Icon name="ArrowRight" size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              )}
             </motion.div>
           ))}
         </div>

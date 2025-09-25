@@ -143,6 +143,7 @@ const FeaturesSection = () => {
                 className="font-semibold"
                 iconName="MessageCircle"
                 iconPosition="left"
+                onClick={() => window.open('https://discord.com/invite/qTTYxTnK3s', '_blank')}
               >
                 Join Discord
               </Button>

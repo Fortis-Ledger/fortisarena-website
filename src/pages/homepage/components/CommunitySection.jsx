@@ -12,7 +12,7 @@ const CommunitySection = () => {
       members: '45,000+',
       description: 'Active community members',
       color: 'from-indigo-500 to-purple-500',
-      link: '#'
+      link: 'https://discord.com/invite/qTTYxTnK3s'
     },
     {
       platform: 'Twitter',
@@ -20,7 +20,7 @@ const CommunitySection = () => {
       members: '28,000+',
       description: 'Followers and supporters',
       color: 'from-blue-400 to-cyan-400',
-      link: '#'
+      link: 'https://x.com/fortisarena'
     },
     {
       platform: 'Telegram',
@@ -28,7 +28,7 @@ const CommunitySection = () => {
       members: '15,000+',
       description: 'Community discussions',
       color: 'from-blue-500 to-blue-600',
-      link: '#'
+      link: 'https://t.me/fortisarena'
     },
     {
       platform: 'YouTube',
@@ -36,7 +36,7 @@ const CommunitySection = () => {
       members: '12,000+',
       description: 'Subscribers and viewers',
       color: 'from-red-500 to-red-600',
-      link: '#'
+      link: 'https://youtube.com/@fortisarena'
     }
   ];
 
@@ -99,6 +99,7 @@ const CommunitySection = () => {
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
               className="group cursor-pointer"
+              onClick={() => window.open(stat?.link, '_blank')}
             >
               <div className="glassmorphism p-6 rounded-2xl border border-white/10 hover:border-white/20 card-hover text-center gaming-glow">
                 <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${stat?.color} flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 icon-float`}>
@@ -195,6 +196,7 @@ const CommunitySection = () => {
                 className="font-semibold"
                 iconName="MessageCircle"
                 iconPosition="left"
+                onClick={() => window.open('https://discord.com/invite/qTTYxTnK3s', '_blank')}
               >
                 Join Discord
               </Button>
@@ -204,6 +206,7 @@ const CommunitySection = () => {
                 className="font-semibold"
                 iconName="Bell"
                 iconPosition="left"
+                onClick={() => window.open('https://substack.com/@fortisarena', '_blank')}
               >
                 Get Updates
               </Button>

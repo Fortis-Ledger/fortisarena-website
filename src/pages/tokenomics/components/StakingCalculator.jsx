@@ -68,7 +68,7 @@ const StakingCalculator = () => {
       style: 'currency',
       currency: 'USD',
       minimumFractionDigits: 2
-    })?.format(num * 0.50); // Assuming $0.50 per FRT
+    })?.format(num * 0.30); // Assuming $0.30 per FRT (updated price range)
   };
 
   return (

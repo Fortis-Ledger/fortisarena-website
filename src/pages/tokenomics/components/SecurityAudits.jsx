@@ -3,240 +3,194 @@ import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 
 const SecurityAudits = () => {
-  const audits = [
+  const upcomingAudits = [
     {
       id: 1,
       company: 'CertiK',
       type: 'Smart Contract Audit',
-      status: 'Completed',
-      score: '96/100',
-      date: '2024-08-15',
-      reportUrl: '#',
-      findings: {
-        critical: 0,
-        major: 0,
-        minor: 2,
-        informational: 5
-      },
-      logo: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=64&h=64&fit=crop&crop=center'
+      status: 'Scheduled',
+      description: 'Comprehensive smart contract security assessment',
+      icon: 'Shield'
     },
     {
       id: 2,
       company: 'Quantstamp',
       type: 'Protocol Security Review',
-      status: 'Completed',
-      score: '94/100',
-      date: '2024-07-22',
-      reportUrl: '#',
-      findings: {
-        critical: 0,
-        major: 1,
-        minor: 3,
-        informational: 7
-      },
-      logo: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=64&h=64&fit=crop&crop=center'
+      status: 'Scheduled',
+      description: 'Full protocol security and economic model analysis',
+      icon: 'Lock'
     },
     {
       id: 3,
       company: 'Trail of Bits',
       type: 'Economic Model Analysis',
-      status: 'In Progress',
-      score: 'Pending',
-      date: '2024-09-01',
-      reportUrl: '#',
-      findings: {
-        critical: 0,
-        major: 0,
-        minor: 0,
-        informational: 0
-      },
-      logo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=center'
+      status: 'Scheduled',
+      description: 'Advanced economic model and tokenomics validation',
+      icon: 'TrendingUp'
     }
   ];
 
-  const certifications = [
+  const securityFeatures = [
     {
       id: 1,
-      name: 'ISO 27001',
-      description: 'Information Security Management',
-      status: 'Certified',
-      validUntil: '2025-12-31',
-      icon: 'Shield'
+      name: 'Multi-Signature Wallets',
+      description: 'Enhanced security with multi-signature wallet implementation',
+      icon: 'Key',
+      status: 'Implemented'
     },
     {
       id: 2,
-      name: 'SOC 2 Type II',
-      description: 'Security & Availability Controls',
-      status: 'Certified',
-      validUntil: '2025-06-30',
-      icon: 'Lock'
+      name: 'Time-Locked Contracts',
+      description: 'Smart contracts with time-lock mechanisms for additional security',
+      icon: 'Clock',
+      status: 'Implemented'
     },
     {
       id: 3,
-      name: 'GDPR Compliance',
-      description: 'Data Protection Regulation',
-      status: 'Compliant',
-      validUntil: 'Ongoing',
-      icon: 'UserCheck'
+      name: 'Emergency Pause Function',
+      description: 'Emergency pause functionality to protect user funds',
+      icon: 'AlertTriangle',
+      status: 'Implemented'
+    },
+    {
+      id: 4,
+      name: 'Upgradeable Contracts',
+      description: 'Proxy pattern implementation for secure contract upgrades',
+      icon: 'RefreshCw',
+      status: 'Implemented'
     }
   ];
 
   const getStatusColor = (status) => {
     switch (status?.toLowerCase()) {
-      case 'completed':
-      case 'certified': case'compliant':
+      case 'implemented':
         return 'text-success bg-success/10 border-success/20';
-      case 'in progress':
-        return 'text-warning bg-warning/10 border-warning/20';
+      case 'scheduled':
+        return 'text-accent bg-accent/10 border-accent/20';
       default:
         return 'text-muted-foreground bg-muted/10 border-border';
     }
   };
 
-  const getFindingColor = (type, count) => {
-    if (count === 0) return 'text-success';
-    switch (type) {
-      case 'critical':
-        return 'text-destructive';
-      case 'major':
-        return 'text-warning';
-      case 'minor':
-        return 'text-warning';
-      default:
-        return 'text-muted-foreground';
-    }
-  };
-
   return (
     <div className="space-y-8">
-      {/* Security Audits */}
-      <div className="bg-card border border-border rounded-xl p-6">
-        <div className="mb-6">
-          <h3 className="text-xl font-bold text-foreground mb-2">Security Audits</h3>
-          <p className="text-muted-foreground">
-            Independent security assessments by leading blockchain audit firms
-          </p>
+      {/* Security & Audit Commitment */}
+      <div className="bg-gradient-to-r from-accent/10 to-purple-500/10 border border-accent/20 rounded-xl p-8">
+        <div className="text-center mb-8">
+          <div className="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Icon name="Shield" size={40} className="text-accent" />
+          </div>
+          <h3 className="text-2xl font-bold text-foreground mb-4">Security & Audit Commitment</h3>
         </div>
-
-        <div className="space-y-6">
-          {audits?.map((audit) => (
-            <div
-              key={audit?.id}
-              className="border border-border rounded-lg p-6 hover:shadow-gaming transition-all duration-300"
-            >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 rounded-lg overflow-hidden bg-muted">
-                    <img
-                      src={audit?.logo}
-                      alt={audit?.company}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-foreground">{audit?.company}</h4>
-                    <p className="text-sm text-muted-foreground">{audit?.type}</p>
-                  </div>
-                </div>
-                
-                <div className="text-right">
-                  <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(audit?.status)}`}>
-                    {audit?.status}
-                  </div>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    {new Date(audit.date)?.toLocaleDateString()}
-                  </p>
-                </div>
+        
+        <div className="max-w-4xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+            FortisArena takes security, transparency, and user protection very seriously. While our tokens and smart contracts are currently under development, we are committed to conducting comprehensive third-party audits before any launch or deployment.
+          </p>
+          
+          <p className="text-base text-muted-foreground mb-6 leading-relaxed">
+            All smart contracts, platform features, and token mechanisms will undergo industry-standard security reviews to ensure:
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Icon name="DollarSign" size={24} className="text-success" />
               </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <div className="flex items-center space-x-2 mb-3">
-                    <Icon name="Award" size={16} className="text-accent" />
-                    <span className="text-sm font-medium text-foreground">Security Score</span>
-                  </div>
-                  <p className="text-2xl font-bold text-accent">{audit?.score}</p>
-                </div>
-
-                <div>
-                  <div className="flex items-center space-x-2 mb-3">
-                    <Icon name="AlertTriangle" size={16} className="text-muted-foreground" />
-                    <span className="text-sm font-medium text-foreground">Findings</span>
-                  </div>
-                  <div className="grid grid-cols-2 gap-2 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Critical:</span>
-                      <span className={getFindingColor('critical', audit?.findings?.critical)}>
-                        {audit?.findings?.critical}
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Major:</span>
-                      <span className={getFindingColor('major', audit?.findings?.major)}>
-                        {audit?.findings?.major}
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Minor:</span>
-                      <span className={getFindingColor('minor', audit?.findings?.minor)}>
-                        {audit?.findings?.minor}
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Info:</span>
-                      <span className={getFindingColor('informational', audit?.findings?.informational)}>
-                        {audit?.findings?.informational}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {audit?.status === 'Completed' && (
-                <div className="mt-4 pt-4 border-t border-border">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    iconName="ExternalLink"
-                    iconPosition="right"
-                  >
-                    View Full Report
-                  </Button>
-                </div>
-              )}
+              <h4 className="font-semibold text-foreground mb-2">Safe handling of user funds</h4>
+              <p className="text-sm text-muted-foreground">Protecting user investments and deposits</p>
             </div>
-          ))}
+            
+            <div className="text-center">
+              <div className="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Icon name="TrendingUp" size={24} className="text-success" />
+              </div>
+              <h4 className="font-semibold text-foreground mb-2">Accurate tokenomics and reward distributions</h4>
+              <p className="text-sm text-muted-foreground">Ensuring fair and transparent token mechanics</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Icon name="Shield" size={24} className="text-success" />
+              </div>
+              <h4 className="font-semibold text-foreground mb-2">Resistance to exploits and vulnerabilities</h4>
+              <p className="text-sm text-muted-foreground">Protecting against potential security threats</p>
+            </div>
+          </div>
+          
+          <div className="bg-background/50 border border-border rounded-lg p-6 mb-6">
+            <p className="text-base text-foreground leading-relaxed">
+              Our goal is to deliver a fully audited, secure, and trustable ecosystem for all users and investors. Updates regarding the audit process and results will be published on this page prior to any launch.
+            </p>
+          </div>
+          
+          <div className="text-center">
+            <div className="inline-flex items-center space-x-2 text-accent bg-accent/10 px-4 py-2 rounded-full">
+              <Icon name="Clock" size={20} />
+              <span className="font-medium">Stay tuned for audit reports and updates as FortisArena progresses towards a fully secure launch.</span>
+            </div>
+          </div>
         </div>
       </div>
-      {/* Certifications */}
+
+      {/* Upcoming Audits */}
       <div className="bg-card border border-border rounded-xl p-6">
         <div className="mb-6">
-          <h3 className="text-xl font-bold text-foreground mb-2">Security Certifications</h3>
+          <h3 className="text-xl font-bold text-foreground mb-2">Planned Security Audits</h3>
           <p className="text-muted-foreground">
-            Industry-standard compliance and security certifications
+            Security assessments scheduled with top-tier blockchain audit firms
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {certifications?.map((cert) => (
+          {upcomingAudits?.map((audit) => (
             <div
-              key={cert?.id}
+              key={audit?.id}
               className="border border-border rounded-lg p-6 text-center hover:shadow-gaming transition-all duration-300"
             >
               <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Icon name={cert?.icon} size={32} className="text-accent" />
+                <Icon name={audit?.icon} size={32} className="text-accent" />
               </div>
               
-              <h4 className="font-bold text-foreground mb-2">{cert?.name}</h4>
-              <p className="text-sm text-muted-foreground mb-4">{cert?.description}</p>
+              <h4 className="font-bold text-foreground mb-2">{audit?.company}</h4>
+              <p className="text-sm text-muted-foreground mb-4">{audit?.type}</p>
+              <p className="text-xs text-muted-foreground mb-4">{audit?.description}</p>
               
-              <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border mb-2 ${getStatusColor(cert?.status)}`}>
-                {cert?.status}
+              <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(audit?.status)}`}>
+                {audit?.status}
               </div>
-              
-              <p className="text-xs text-muted-foreground">
-                Valid until: {cert?.validUntil}
-              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Security Features */}
+      <div className="bg-card border border-border rounded-xl p-6">
+        <div className="mb-6">
+          <h3 className="text-xl font-bold text-foreground mb-2">Security Features</h3>
+          <p className="text-muted-foreground">
+            Advanced security measures already implemented in our smart contracts
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {securityFeatures?.map((feature) => (
+            <div
+              key={feature?.id}
+              className="border border-border rounded-lg p-6 hover:shadow-gaming transition-all duration-300"
+            >
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-success/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Icon name={feature?.icon} size={24} className="text-success" />
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-bold text-foreground mb-2">{feature?.name}</h4>
+                  <p className="text-sm text-muted-foreground mb-3">{feature?.description}</p>
+                  <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(feature?.status)}`}>
+                    {feature?.status}
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
         </div>

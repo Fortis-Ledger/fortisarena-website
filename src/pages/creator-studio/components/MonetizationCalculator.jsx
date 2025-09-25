@@ -7,10 +7,9 @@ import Button from '../../../components/ui/Button';
 const MonetizationCalculator = () => {
   const [formData, setFormData] = useState({
     followers: '',
-    avgViewers: '',
-    tournamentsPerMonth: '',
-    contentType: '',
-    engagementRate: ''
+    videosPerMonth: '',
+    avgViewsPerVideo: '',
+    contentType: ''
   });
 
   const [results, setResults] = useState(null);
@@ -18,67 +17,67 @@ const MonetizationCalculator = () => {
   const contentTypeOptions = [
     { value: 'streaming', label: 'Live Streaming' },
     { value: 'tournaments', label: 'Tournament Organization' },
-    { value: 'content', label: 'Content Creation' },
-    { value: 'coaching', label: 'Coaching & Education' },
-    { value: 'mixed', label: 'Mixed Content' }
+    { value: 'educational', label: 'Educational Content' },
+    { value: 'coaching', label: 'Coaching & Services' }
   ];
 
-  const engagementOptions = [
-    { value: 'low', label: 'Low (1-3%)' },
-    { value: 'medium', label: 'Medium (3-6%)' },
-    { value: 'high', label: 'High (6-10%)' },
-    { value: 'very-high', label: 'Very High (10%+)' }
-  ];
+  // Removed engagement options as not needed in new calculation
 
   const calculateEarnings = () => {
-    const followers = parseInt(formData?.followers) || 0;
-    const avgViewers = parseInt(formData?.avgViewers) || 0;
-    const tournaments = parseInt(formData?.tournamentsPerMonth) || 0;
+    const videosPerMonth = parseInt(formData?.videosPerMonth) || 0;
+    const avgViewsPerVideo = parseInt(formData?.avgViewsPerVideo) || 0;
     
-    let baseMultiplier = 1;
+    // Calculate total monthly views
+    const totalMonthlyViews = videosPerMonth * avgViewsPerVideo;
+    
+    // Fixed CPM of $2
+    const CPM = 2;
+    
+    // Calculate gross revenue (before platform deduction)
+    const grossRevenue = (totalMonthlyViews / 1000) * CPM;
+    
+    // Get platform deduction percentage based on content type
+    let platformDeductionPercent = 0;
     switch (formData?.contentType) {
-      case 'streaming': baseMultiplier = 0.8; break;
-      case 'tournaments': baseMultiplier = 1.5; break;
-      case 'content': baseMultiplier = 1.0; break;
-      case 'coaching': baseMultiplier = 1.2; break;
-      case 'mixed': baseMultiplier = 1.1; break;
-      default: baseMultiplier = 1.0;
+      case 'streaming': platformDeductionPercent = 25; break;
+      case 'tournaments': platformDeductionPercent = 23; break;
+      case 'educational': platformDeductionPercent = 20; break;
+      case 'coaching': platformDeductionPercent = 21.5; break;
+      default: platformDeductionPercent = 0;
     }
-
-    let engagementMultiplier = 1;
-    switch (formData?.engagementRate) {
-      case 'low': engagementMultiplier = 0.8; break;
-      case 'medium': engagementMultiplier = 1.0; break;
-      case 'high': engagementMultiplier = 1.3; break;
-      case 'very-high': engagementMultiplier = 1.6; break;
-      default: engagementMultiplier = 1.0;
-    }
-
-    // Revenue calculations
-    const subscriptionRevenue = Math.floor((followers * 0.05) * 9.99 * baseMultiplier * engagementMultiplier);
-    const tournamentRevenue = tournaments * 250 * baseMultiplier;
-    const nftRevenue = Math.floor((avgViewers * 0.1) * 25 * engagementMultiplier);
-    const sponsorshipRevenue = Math.floor((followers / 1000) * 50 * baseMultiplier);
-    const tokenRewards = Math.floor((avgViewers * tournaments) * 0.5);
-
-    const totalMonthly = subscriptionRevenue + tournamentRevenue + nftRevenue + sponsorshipRevenue + tokenRewards;
-    const totalYearly = totalMonthly * 12;
+    
+    // Calculate platform cut and creator net revenue
+    const platformCut = grossRevenue * (platformDeductionPercent / 100);
+    const creatorNetRevenue = grossRevenue - platformCut;
+    
+    // Calculate effective RPM (creator earnings per 1,000 views)
+    const effectiveRPM = creatorNetRevenue / (totalMonthlyViews / 1000);
+    
+    // Calculate annual projections
+    const annualGrossRevenue = grossRevenue * 12;
+    const annualCreatorRevenue = creatorNetRevenue * 12;
 
     setResults({
       monthly: {
-        subscription: subscriptionRevenue,
-        tournament: tournamentRevenue,
-        nft: nftRevenue,
-        sponsorship: sponsorshipRevenue,
-        tokens: tokenRewards,
-        total: totalMonthly
+        totalViews: totalMonthlyViews,
+        grossRevenue: Math.round(grossRevenue * 100) / 100,
+        platformCut: Math.round(platformCut * 100) / 100,
+        creatorNetRevenue: Math.round(creatorNetRevenue * 100) / 100,
+        effectiveRPM: Math.round(effectiveRPM * 100) / 100
       },
-      yearly: totalYearly
+      annual: {
+        grossRevenue: Math.round(annualGrossRevenue * 100) / 100,
+        creatorNetRevenue: Math.round(annualCreatorRevenue * 100) / 100
+      }
     });
   };
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const isFormValid = () => {
+    return formData?.videosPerMonth && formData?.avgViewsPerVideo && formData?.contentType;
   };
 
   return (
@@ -106,7 +105,7 @@ const MonetizationCalculator = () => {
 
             <div className="space-y-6">
               <Input
-                label="Total Followers"
+                label="Total Followers "
                 type="number"
                 placeholder="e.g., 10000"
                 value={formData?.followers}
@@ -115,20 +114,20 @@ const MonetizationCalculator = () => {
               />
 
               <Input
-                label="Average Live Viewers"
+                label="Number of Videos per Month"
                 type="number"
-                placeholder="e.g., 500"
-                value={formData?.avgViewers}
-                onChange={(e) => handleInputChange('avgViewers', e?.target?.value)}
+                placeholder="e.g., 12"
+                value={formData?.videosPerMonth}
+                onChange={(e) => handleInputChange('videosPerMonth', e?.target?.value)}
                 className="bg-white/5 border-white/20 text-white"
               />
 
               <Input
-                label="Tournaments Per Month"
+                label="Average Views per Video"
                 type="number"
-                placeholder="e.g., 4"
-                value={formData?.tournamentsPerMonth}
-                onChange={(e) => handleInputChange('tournamentsPerMonth', e?.target?.value)}
+                placeholder="e.g., 5000"
+                value={formData?.avgViewsPerVideo}
+                onChange={(e) => handleInputChange('avgViewsPerVideo', e?.target?.value)}
                 className="bg-white/5 border-white/20 text-white"
               />
 
@@ -140,23 +139,15 @@ const MonetizationCalculator = () => {
                 placeholder="Select content type"
               />
 
-              <Select
-                label="Engagement Rate"
-                options={engagementOptions}
-                value={formData?.engagementRate}
-                onChange={(value) => handleInputChange('engagementRate', value)}
-                placeholder="Select engagement level"
-              />
-
               <Button
                 variant="default"
                 fullWidth
                 onClick={calculateEarnings}
                 className="bg-golden-cta hover:bg-golden-cta/90 text-gaming-dark font-semibold"
-                disabled={!formData?.followers || !formData?.contentType}
+                disabled={!formData?.videosPerMonth || !formData?.avgViewsPerVideo || !formData?.contentType}
               >
                 <Icon name="TrendingUp" size={16} />
-                Calculate Earnings
+                Calculate Revenue
               </Button>
             </div>
           </div>
@@ -165,74 +156,77 @@ const MonetizationCalculator = () => {
           <div className="space-y-6">
             {results ? (
               <>
-                {/* Monthly Breakdown */}
+                {/* Monthly Revenue */}
                 <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8">
                   <h3 className="font-heading text-2xl font-bold text-white mb-6 flex items-center">
                     <Icon name="DollarSign" size={24} className="text-green-400 mr-3" />
-                    Monthly Revenue Breakdown
+                    Monthly Revenue Estimate
                   </h3>
 
                   <div className="space-y-4">
                     <div className="flex justify-between items-center p-3 bg-white/5 rounded-lg">
-                      <span className="text-gray-300">Subscriptions</span>
-                      <span className="text-green-400 font-semibold">${results?.monthly?.subscription?.toLocaleString()}</span>
+                      <span className="text-gray-300">Total Monthly Views</span>
+                      <span className="text-blue-400 font-semibold">{results?.monthly?.totalViews?.toLocaleString()} views</span>
                     </div>
-                    <div className="flex justify-between items-center p-3 bg-white/5 rounded-lg">
-                      <span className="text-gray-300">Tournament Revenue</span>
-                      <span className="text-blue-400 font-semibold">${results?.monthly?.tournament?.toLocaleString()}</span>
+                    
+                    <div className="flex justify-between items-center p-4 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-lg border border-green-500/30">
+                      <span className="text-white font-semibold">Gross Revenue</span>
+                      <span className="text-green-400 font-bold text-xl">${results?.monthly?.grossRevenue?.toLocaleString()}</span>
                     </div>
-                    <div className="flex justify-between items-center p-3 bg-white/5 rounded-lg">
-                      <span className="text-gray-300">NFT Sales</span>
-                      <span className="text-purple-400 font-semibold">${results?.monthly?.nft?.toLocaleString()}</span>
-                    </div>
-                    <div className="flex justify-between items-center p-3 bg-white/5 rounded-lg">
-                      <span className="text-gray-300">Sponsorships</span>
-                      <span className="text-orange-400 font-semibold">${results?.monthly?.sponsorship?.toLocaleString()}</span>
-                    </div>
-                    <div className="flex justify-between items-center p-3 bg-white/5 rounded-lg">
-                      <span className="text-gray-300">Token Rewards</span>
-                      <span className="text-cyan-400 font-semibold">${results?.monthly?.tokens?.toLocaleString()}</span>
-                    </div>
+                    
                     <div className="flex justify-between items-center p-4 bg-gradient-to-r from-golden-cta/20 to-orange-500/20 rounded-lg border border-golden-cta/30">
-                      <span className="text-white font-semibold">Total Monthly</span>
-                      <span className="text-golden-cta font-bold text-xl">${results?.monthly?.total?.toLocaleString()}</span>
+                      <span className="text-white font-semibold">Creator Net Revenue</span>
+                      <span className="text-golden-cta font-bold text-xl">${results?.monthly?.creatorNetRevenue?.toLocaleString()}</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Yearly Projection */}
+                {/* Annual Revenue */}
                 <div className="bg-gradient-to-br from-electric-blue/20 to-neon-purple/20 border border-electric-blue/30 rounded-2xl p-8 text-center">
                   <h3 className="font-heading text-2xl font-bold text-white mb-4">
                     Annual Revenue Projection
                   </h3>
-                  <div className="text-4xl font-bold text-transparent bg-gradient-to-r from-electric-blue to-neon-purple bg-clip-text mb-4">
-                    ${results?.yearly?.toLocaleString()}
+                  <div className="space-y-4">
+                    <div className="text-3xl font-bold text-transparent bg-gradient-to-r from-electric-blue to-neon-purple bg-clip-text">
+                      ${results?.annual?.grossRevenue?.toLocaleString()}
+                    </div>
+                    <div className="text-xl text-golden-cta font-semibold">
+                      Your Annual Net Revenue: ${results?.annual?.creatorNetRevenue?.toLocaleString()}
+                    </div>
+                    <p className="text-gray-300 text-sm">
+                      Based on consistent monthly performance
+                    </p>
                   </div>
-                  <p className="text-gray-300">
-                    Based on consistent growth and platform optimization
-                  </p>
                 </div>
 
-                {/* Growth Tips */}
+                {/* Calculation Info */}
                 <div className="bg-white/5 border border-white/20 rounded-2xl p-6">
                   <h4 className="font-semibold text-white mb-4 flex items-center">
-                    <Icon name="Lightbulb" size={20} className="text-yellow-400 mr-2" />
-                    Growth Recommendations
+                    <Icon name="Info" size={20} className="text-blue-400 mr-2" />
+                    Calculation Details
                   </h4>
-                  <ul className="space-y-2 text-sm text-gray-300">
-                    <li className="flex items-start space-x-2">
-                      <Icon name="ArrowRight" size={14} className="text-electric-blue mt-0.5 flex-shrink-0" />
-                      <span>Host regular tournaments to increase tournament revenue</span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <Icon name="ArrowRight" size={14} className="text-electric-blue mt-0.5 flex-shrink-0" />
-                      <span>Create exclusive NFT collections for your community</span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <Icon name="ArrowRight" size={14} className="text-electric-blue mt-0.5 flex-shrink-0" />
-                      <span>Engage with your audience to boost engagement rates</span>
-                    </li>
-                  </ul>
+                  <div className="space-y-2 text-sm text-gray-300">
+                    <div className="flex justify-between">
+                      <span>Content Type:</span>
+                      <span className="text-white">{formData?.contentType?.charAt(0)?.toUpperCase() + formData?.contentType?.slice(1)}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Followers (Optional):</span>
+                      <span className="text-white">{formData?.followers ? formData?.followers?.toLocaleString() : 'Not provided'}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Videos per Month:</span>
+                      <span className="text-white">{formData?.videosPerMonth}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Average Views per Video:</span>
+                      <span className="text-white">{formData?.avgViewsPerVideo?.toLocaleString()}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Total Monthly Views:</span>
+                      <span className="text-white">{results?.monthly?.totalViews?.toLocaleString()}</span>
+                    </div>
+                  </div>
                 </div>
               </>
             ) : (

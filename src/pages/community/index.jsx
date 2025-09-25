@@ -102,6 +102,7 @@ const CommunityPage = () => {
                   className="font-semibold w-full sm:w-auto"
                   iconName="MessageCircle"
                   iconPosition="left"
+                  onClick={() => window.open('https://discord.com/invite/qTTYxTnK3s', '_blank')}
                 >
                   Join Discord Community
                 </Button>

@@ -12,6 +12,7 @@ const CreatorProgram = () => {
       fullName: '',
       email: '',
       username: '',
+      phoneNumber: '',
       country: ''
     },
     creatorInfo: {
@@ -71,8 +72,8 @@ const CreatorProgram = () => {
     {
       icon: "DollarSign",
       title: "Revenue Sharing",
-      description: "Earn up to 70% revenue share on all monetization activities",
-      highlight: "Up to 70%"
+      description: "Earn up to 80% revenue share on all monetization activities",
+      highlight: "Up to 80%"
     },
     {
       icon: "Zap",
@@ -128,6 +129,73 @@ const CreatorProgram = () => {
     }
   };
 
+  const submitForm = async () => {
+    try {
+      console.log('Submitting form data:', formData);
+      
+      const response = await fetch('https://script.google.com/macros/s/AKfycbwOnS-v5cZKf-PZqfYeCXG-Fv48lh5POMaIxAu9QNXYLw05Ap_nlPzEeYKRR67OC-TFMQ/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName: formData.personalInfo.fullName,
+          email: formData.personalInfo.email,
+          username: formData.personalInfo.username,
+          phoneNumber: formData.personalInfo.phoneNumber,
+          country: formData.personalInfo.country,
+          primaryContentType: formData.creatorInfo.contentType,
+          experienceLevel: formData.creatorInfo.experience,
+          currentPlatforms: formData.creatorInfo.platforms,
+          currentAudienceSize: formData.creatorInfo.audience,
+          gamingSpecialization: formData.creatorInfo.specialization,
+          primaryGoal: formData.goals.primaryGoal,
+          monthlyRevenueGoal: formData.goals.monthlyGoal,
+          areasOfInterest: formData.goals.interests,
+          timeCommitment: formData.goals.commitment,
+          timestamp: new Date().toISOString(),
+          date: new Date().toLocaleDateString('en-US'),
+          time: new Date().toLocaleTimeString('en-US')
+        })
+      });
+      
+      console.log('Form submitted successfully');
+      
+      // Show success message
+      alert('Application submitted successfully! We will review it within 48 hours.');
+      
+      // Reset form
+      setFormData({
+        personalInfo: {
+          fullName: '',
+          email: '',
+          username: '',
+          phoneNumber: '',
+          country: ''
+        },
+        creatorInfo: {
+          contentType: '',
+          experience: '',
+          platforms: [],
+          audience: '',
+          specialization: ''
+        },
+        goals: {
+          primaryGoal: '',
+          monthlyGoal: '',
+          interests: [],
+          commitment: ''
+        }
+      });
+      setCurrentStep(1);
+      
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('There was an error submitting your application. Please try again.');
+    }
+  };
+
   const renderStep = () => {
     switch (currentStep) {
       case 1:
@@ -164,6 +232,14 @@ const CreatorProgram = () => {
                 placeholder="Your gaming handle"
                 value={formData?.personalInfo?.username}
                 onChange={(e) => handleInputChange('personalInfo', 'username', e?.target?.value)}
+                required
+              />
+              <Input
+                label="Phone Number"
+                type="tel"
+                placeholder="+1 (555) 123-4567"
+                value={formData?.personalInfo?.phoneNumber}
+                onChange={(e) => handleInputChange('personalInfo', 'phoneNumber', e?.target?.value)}
                 required
               />
               <Select
@@ -319,6 +395,7 @@ const CreatorProgram = () => {
                   <p className="text-sm text-muted-foreground">Name: {formData?.personalInfo?.fullName}</p>
                   <p className="text-sm text-muted-foreground">Email: {formData?.personalInfo?.email}</p>
                   <p className="text-sm text-muted-foreground">Username: {formData?.personalInfo?.username}</p>
+                  <p className="text-sm text-muted-foreground">Phone: {formData?.personalInfo?.phoneNumber}</p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-2">Creator Profile</h4>
@@ -422,6 +499,7 @@ const CreatorProgram = () => {
                 <Button
                   variant="default"
                   className="bg-golden-cta hover:bg-golden-cta/90 text-gaming-dark font-semibold"
+                  onClick={submitForm}
                 >
                   <Icon name="Send" size={16} />
                   Submit Application

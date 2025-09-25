@@ -14,7 +14,8 @@ const SocialIntegration = () => {
       bgColor: 'bg-indigo-500/10',
       members: '47,832',
       status: 'online',
-      description: 'Join our main community hub for real-time chat and events'
+      description: 'Join our main community hub for real-time chat and events',
+      url: 'https://discord.com/invite/qTTYxTnK3s'
     },
     {
       id: 'twitter',
@@ -24,7 +25,8 @@ const SocialIntegration = () => {
       bgColor: 'bg-blue-500/10',
       members: '23,456',
       status: 'active',
-      description: 'Follow for updates, announcements, and community highlights'
+      description: 'Follow for updates, announcements, and community highlights',
+      url: 'https://x.com/fortisarena'
     },
     {
       id: 'youtube',
@@ -34,7 +36,8 @@ const SocialIntegration = () => {
       bgColor: 'bg-red-500/10',
       members: '18,920',
       status: 'active',
-      description: 'Watch tutorials, highlights, and community content'
+      description: 'Watch tutorials, highlights, and community content',
+      url: 'https://youtube.com/@fortisarena'
     },
     {
       id: 'twitch',
@@ -44,7 +47,8 @@ const SocialIntegration = () => {
       bgColor: 'bg-purple-500/10',
       members: '12,340',
       status: 'live',
-      description: 'Watch live tournaments and community streams'
+      description: 'Watch live tournaments and community streams',
+      url: '#'
     },
     {
       id: 'reddit',
@@ -54,7 +58,8 @@ const SocialIntegration = () => {
       bgColor: 'bg-orange-500/10',
       members: '8,765',
       status: 'active',
-      description: 'Discuss strategies, share content, and get community support'
+      description: 'Discuss strategies, share content, and get community support',
+      url: '#'
     },
     {
       id: 'telegram',
@@ -64,7 +69,8 @@ const SocialIntegration = () => {
       bgColor: 'bg-blue-400/10',
       members: '15,678',
       status: 'active',
-      description: 'Get instant updates and participate in community discussions'
+      description: 'Get instant updates and participate in community discussions',
+      url: 'https://t.me/fortisarena'
     }
   ];
 
@@ -151,11 +157,12 @@ const SocialIntegration = () => {
             return (
               <div
                 key={platform?.id}
-                className={`relative p-4 rounded-lg border transition-all hover:shadow-gaming ${
+                className={`relative p-4 rounded-lg border transition-all hover:shadow-gaming cursor-pointer ${
                   isConnected 
                     ? `${platform?.bgColor} border-current ${platform?.color}` 
                     : 'bg-muted border-border hover:border-accent'
                 }`}
+                onClick={() => platform?.url && window.open(platform?.url, '_blank')}
               >
                 {/* Status Indicator */}
                 <div className="absolute top-3 right-3 flex items-center space-x-1">
