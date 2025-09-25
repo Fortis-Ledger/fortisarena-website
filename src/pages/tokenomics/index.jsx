@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Header from '../../components/ui/Header';
+import Footer from '../../components/ui/Footer';
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
 import { RainbowButton } from '../../components/ui/RainbowButton';
@@ -77,8 +78,8 @@ const TokenomicsPage = () => {
     },
     {
       label: 'Blockchain',
-      value: 'Polygon',
-      description: 'Layer 2 Ethereum scaling solution'
+      value: 'Polygon, BSC and Ethereum',
+      description: 'L2 Cross chain Bridge Scaling Solution'
     },
     {
       label: 'Token Standard',
@@ -92,12 +93,12 @@ const TokenomicsPage = () => {
     },
     {
       label: 'Current Price',
-      value: '$0.50',
+      value: 'Coming Soon',
       description: 'Real-time market price'
     },
     {
       label: 'All-Time High',
-      value: '$0.75',
+      value: 'Coming Soon',
       description: 'Peak price achieved'
     }
   ];
@@ -328,7 +329,7 @@ const TokenomicsPage = () => {
           
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 px-4 sm:px-0">
             <RainbowButton className="font-semibold w-full sm:w-auto">
-              Buy FRT Tokens
+              FRT Soon Available
             </RainbowButton>
             <RainbowButton className="font-semibold w-full sm:w-auto">
               Join Community
@@ -336,25 +337,9 @@ const TokenomicsPage = () => {
           </div>
         </div>
       </section>
+      
       {/* Footer */}
-      <footer className="bg-gaming-dark text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="flex items-center justify-center space-x-3 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-electric-blue to-neon-purple rounded-lg flex items-center justify-center">
-                <Icon name="Gamepad2" size={20} className="text-white" />
-              </div>
-              <span className="text-xl font-bold">FortisArena</span>
-            </div>
-            <p className="text-gray-400 mb-4">
-              Revolutionizing gaming through blockchain technology
-            </p>
-            <p className="text-sm text-gray-500">
-              © {new Date()?.getFullYear()} FortisArena. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

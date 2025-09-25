@@ -9,6 +9,7 @@ import RoadmapPage from './pages/roadmap';
 import CreatorStudio from './pages/creator-studio';
 import About from './pages/about';
 import Homepage from './pages/homepage';
+import Waitlist from './pages/waitlist';
 
 const Routes = () => {
   return (
@@ -18,12 +19,12 @@ const Routes = () => {
       <RouterRoutes>
         {/* Define your route here */}
         <Route path="/" element={<Homepage />} />
+        <Route path="/waitlist" element={<Waitlist />} />
         <Route path="/community" element={<CommunityPage />} />
         <Route path="/tokenomics" element={<TokenomicsPage />} />
         <Route path="/roadmap" element={<RoadmapPage />} />
         <Route path="/creator-studio" element={<CreatorStudio />} />
         <Route path="/about" element={<About />} />
-        <Route path="/homepage" element={<Homepage />} />
         <Route path="*" element={<NotFound />} />
       </RouterRoutes>
       </ErrorBoundary>

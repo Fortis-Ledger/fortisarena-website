@@ -12,7 +12,7 @@ const StakingCalculator = () => {
     monthlyRewards: 0,
     totalRewards: 0,
     finalAmount: 0,
-    apy: 18.5
+    apy: 5.0
   });
 
   const periodOptions = [
@@ -25,13 +25,13 @@ const StakingCalculator = () => {
 
   const getAPYForPeriod = (months) => {
     const apyRates = {
-      '1': 12.0,
-      '3': 15.0,
-      '6': 16.5,
-      '12': 18.5,
-      '24': 22.0
+      '1': 5.0,
+      '3': 7.0,
+      '6': 9.0,
+      '12': 13.0,
+      '24': 20.0,
     };
-    return apyRates?.[months] || 18.5;
+    return apyRates?.[months] || 5.0;
   };
 
   useEffect(() => {
@@ -108,7 +108,7 @@ const StakingCalculator = () => {
               <Icon name="Info" size={16} className="text-accent" />
               <span className="text-sm font-medium text-accent">Current APY</span>
             </div>
-            <p className="text-2xl font-bold text-accent">{results?.apy}%</p>
+            <p className="text-2xl font-bold text-accent">5% - 20%</p>
             <p className="text-xs text-muted-foreground mt-1">
               Rate varies based on staking period and network conditions
             </p>

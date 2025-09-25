@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import Header from '../../components/ui/Header';
+import Footer from '../../components/ui/Footer';
 import HeroSection from './components/HeroSection';
 import VisionSection from './components/VisionSection';
 import ProblemSolutionSection from './components/ProblemSolutionSection';
@@ -39,6 +40,9 @@ const About = () => {
           <TestimonialsSection />
           <CallToActionSection />
         </main>
+        
+        {/* Footer */}
+        <Footer />
       </div>
     </>
   );

@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import Header from '../../components/ui/Header';
+import Footer from '../../components/ui/Footer';
+import Button from '../../components/ui/Button';
 import CommunityStats from './components/CommunityStats';
 import DAOGovernance from './components/DAOGovernance';
 import CommunityLeaderboard from './components/CommunityLeaderboard';
@@ -9,10 +11,8 @@ import CommunityMap from './components/CommunityMap';
 import UserTestimonials from './components/UserTestimonials';
 import CommunityContent from './components/CommunityContent';
 import SocialIntegration from './components/SocialIntegration';
-import { RainbowButton } from '../../components/ui/RainbowButton';
 import { AnimatedShinyText } from '../../components/ui/AnimatedShinyText';
 import Icon from '../../components/AppIcon';
-import Button from '../../components/ui/Button';
 
 const CommunityPage = () => {
   return (
@@ -96,13 +96,25 @@ const CommunityPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                <RainbowButton className="font-semibold w-full sm:w-auto">
+                <Button
+                  variant="glow"
+                  size="glow-lg"
+                  className="font-semibold w-full sm:w-auto"
+                  iconName="MessageCircle"
+                  iconPosition="left"
+                >
                   Join Discord Community
-                </RainbowButton>
+                </Button>
                 
-                <RainbowButton className="font-semibold w-full sm:w-auto">
+                <Button
+                  variant="glow-accent"
+                  size="glow-lg"
+                  className="font-semibold w-full sm:w-auto"
+                  iconName="Vote"
+                  iconPosition="left"
+                >
                   Participate in DAO
-                </RainbowButton>
+                </Button>
               </motion.div>
             </motion.div>
 
@@ -219,54 +231,9 @@ const CommunityPage = () => {
           </div>
         </section>
       </main>
+      
       {/* Footer */}
-      <footer className="bg-gaming-dark text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="col-span-1 md:col-span-2">
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-electric-blue to-neon-purple rounded-lg flex items-center justify-center">
-                  <Icon name="Star" size={20} className="text-white" />
-                </div>
-                <span className="text-xl font-bold">FortisArena</span>
-              </div>
-              <p className="text-gray-400 mb-4 max-w-md">
-                The future of eSports is decentralized. Join the revolution and own your gaming destiny.
-              </p>
-              <div className="flex space-x-4">
-                <Icon name="Twitter" size={20} className="text-gray-400 hover:text-electric-blue cursor-pointer transition-colors" />
-                <Icon name="MessageSquare" size={20} className="text-gray-400 hover:text-electric-blue cursor-pointer transition-colors" />
-                <Icon name="Youtube" size={20} className="text-gray-400 hover:text-electric-blue cursor-pointer transition-colors" />
-                <Icon name="Github" size={20} className="text-gray-400 hover:text-electric-blue cursor-pointer transition-colors" />
-              </div>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold mb-4">Community</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Discord</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Telegram</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Reddit</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Forums</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold mb-4">Resources</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Whitepaper</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Documentation</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">API</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Support</a></li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; {new Date()?.getFullYear()} FortisArena. All rights reserved. Gaming Liberation Starts Here.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

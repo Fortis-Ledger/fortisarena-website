@@ -14,47 +14,47 @@ const TokenMetrics = () => {
     },
     {
       id: 2,
-      label: "Circulating Supply",
+      label: "Initial Supply",
       value: "250,000,000",
       symbol: "FRT",
-      change: "+2.5%",
-      changeType: "positive",
+      change: "+0.0%",
+      changeType: "neutral",
       icon: "TrendingUp"
     },
     {
       id: 3,
       label: "Market Cap",
-      value: "$125,000,000",
+      value: "Coming Soon",
       symbol: "USD",
-      change: "+15.8%",
-      changeType: "positive",
+      change: "+0.0%",
+      changeType: "neutral",
       icon: "DollarSign"
     },
     {
       id: 4,
       label: "Token Price",
-      value: "$0.50",
+      value: "Coming Soon",
       symbol: "USD",
-      change: "+12.3%",
-      changeType: "positive",
+      change: "+0.0%",
+      changeType: "neutral",
       icon: "BarChart3"
     },
     {
       id: 5,
       label: "Staking APY",
-      value: "18.5%",
+      value: "5% - 20%",
       symbol: "APY",
-      change: "+1.2%",
-      changeType: "positive",
+      change: "+0.0%",
+      changeType: "neutral",
       icon: "Percent"
     },
     {
       id: 6,
       label: "Total Staked",
-      value: "180,000,000",
+      value: "Coming Soon",
       symbol: "FRT",
-      change: "+5.7%",
-      changeType: "positive",
+      change: "+0.0%",
+      changeType: "neutral",
       icon: "Lock"
     }
   ];

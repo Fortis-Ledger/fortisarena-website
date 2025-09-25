@@ -56,21 +56,12 @@ const FooterSection = () => {
   const Logo = () => (
     <div className="flex items-center space-x-3">
       <div className="relative">
-        <div className="w-12 h-12 bg-gradient-to-br from-electric-blue to-neon-purple rounded-xl flex items-center justify-center gaming-glow">
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="text-white"
-          >
-            <path
-              d="M12 2L15.09 8.26L22 9L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9L8.91 8.26L12 2Z"
-              fill="currentColor"
-            />
-            <circle cx="12" cy="12" r="3" fill="rgba(0,0,0,0.3)" />
-          </svg>
+        <div className="w-12 h-12 rounded-xl flex items-center justify-center gaming-glow">
+          <img
+            src="/favicon64.ico"
+            alt="FortisArena Logo"
+            className="w-12 h-12 object-contain"
+          />
         </div>
         <div className="absolute -top-1 -right-1 w-3 h-3 bg-golden-cta rounded-full animate-pulse"></div>
       </div>

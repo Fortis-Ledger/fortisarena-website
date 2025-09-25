@@ -18,7 +18,7 @@ const Header = () => {
   }, []);
 
   const navigationItems = [
-    { name: 'Home', path: '/homepage', icon: 'Home' },
+    { name: 'Home', path: '/', icon: 'Home' },
     { name: 'About', path: '/about', icon: 'Info' },
     { name: 'Tokenomics', path: '/tokenomics', icon: 'Coins' },
     { name: 'Community', path: '/community', icon: 'Users' },
@@ -33,25 +33,17 @@ const Header = () => {
   const Logo = () => (
     <div className="flex items-center space-x-3">
       <div className="relative">
-        <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center glassmorphism-card">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="text-primary-foreground"
-          >
-            <path
-              d="M12 2L15.09 8.26L22 9L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9L8.91 8.26L12 2Z"
-              fill="currentColor"
-            />
-            <circle cx="12" cy="12" r="3" fill="rgba(255,255,255,0.1)" />
-          </svg>
+        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center gaming-glow">
+          <img
+            src="/favicon64.ico"
+            alt="FortisArena Logo"
+            className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
+          />
         </div>
+        <div className="absolute -top-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 bg-golden-cta rounded-full animate-pulse"></div>
       </div>
       <div className="flex flex-col">
-        <span className="font-bold text-xl text-foreground font-heading">
+        <span className="font-bold text-lg sm:text-xl lg:text-2xl text-foreground font-heading">
           FortisArena
         </span>
         <span className="text-xs text-muted-foreground -mt-1 font-body">
@@ -72,25 +64,17 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
-          <Link to="/homepage" className="flex-shrink-0">
+          <Link to="/" className="flex-shrink-0">
             <div className="flex items-center space-x-2 sm:space-x-3">
               <div className="relative">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center glassmorphism-card">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="text-primary-foreground sm:w-6 sm:h-6"
-                  >
-                    <path
-                      d="M12 2L15.09 8.26L22 9L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9L8.91 8.26L12 2Z"
-                      fill="currentColor"
-                    />
-                    <circle cx="12" cy="12" r="3" fill="rgba(255,255,255,0.1)" />
-                  </svg>
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center gaming-glow">
+                  <img
+                    src="/favicon64.ico"
+                    alt="FortisArena Logo"
+                    className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+                  />
                 </div>
+                <div className="absolute -top-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 bg-golden-cta rounded-full animate-pulse"></div>
               </div>
               <div className="flex flex-col">
                 <span className="font-bold text-lg sm:text-xl text-foreground font-heading">

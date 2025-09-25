@@ -1,5 +1,6 @@
 import React, { memo, lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../../components/ui/Button';
 import useLazyLoad from '../../../hooks/useLazyLoad';
 
@@ -8,6 +9,7 @@ const LazyWeb3Stats = lazy(() => import('../../../components/Web3Stats'));
 
 const HeroSection = () => {
   const [ref, isLoaded] = useLazyLoad();
+  const navigate = useNavigate();
 
   return (
     <div className="overflow-x-hidden bg-black">
@@ -61,8 +63,9 @@ const HeroSection = () => {
                 className="font-semibold w-full sm:w-auto"
                 iconName="ArrowRight"
                 iconPosition="right"
+                onClick={() => navigate('/waitlist')}
               >
-                Enter the Arena
+                Join Arena
               </Button>
 
               <Button
@@ -73,7 +76,7 @@ const HeroSection = () => {
                 iconPosition="left"
                 onClick={() => window.open('https://tournaments.fortisarena.io', '_blank')}
               >
-                Watch Live Tournaments
+                Live Tournaments
               </Button>
             </div>
 

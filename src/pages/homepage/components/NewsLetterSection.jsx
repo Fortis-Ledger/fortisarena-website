@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
+import { RainbowButton } from '../../../components/ui/RainbowButton';
 import Input from '../../../components/ui/Input';
 
 const NewsletterSection = () => {
@@ -67,18 +68,18 @@ const NewsletterSection = () => {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
-                variant="default"
-                size="lg"
-                className="bg-electric-blue hover:bg-electric-blue/90 text-white font-semibold"
+                variant="glow"
+                size="glow-lg"
+                className="font-semibold"
                 iconName="MessageCircle"
                 iconPosition="left"
               >
                 Join Discord
               </Button>
               <Button
-                variant="outline"
-                size="lg"
-                className="border-golden-cta text-golden-cta hover:bg-golden-cta/10 font-semibold"
+                variant="glow-accent"
+                size="glow-lg"
+                className="font-semibold"
                 iconName="FileText"
                 iconPosition="left"
               >
@@ -178,19 +179,17 @@ const NewsletterSection = () => {
                   className="bg-white/5 border-white/20 text-white placeholder-gray-400"
                 />
 
-                <Button
+                <RainbowButton
                   type="submit"
-                  variant="default"
-                  size="lg"
                   fullWidth
                   loading={isLoading}
                   disabled={!email}
-                  className="bg-gradient-to-r from-electric-blue to-neon-purple hover:from-electric-blue/90 hover:to-neon-purple/90 text-white font-semibold electric-pulse"
+                  className="font-semibold"
                   iconName="Send"
                   iconPosition="right"
                 >
                   {isLoading ? 'Subscribing...' : 'Subscribe Now'}
-                </Button>
+                </RainbowButton>
               </form>
 
               <div className="mt-6 text-center">

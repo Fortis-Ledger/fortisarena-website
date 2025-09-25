@@ -6,7 +6,7 @@ import StatsSection from './components/StatsSection';
 import FeaturesSection from './components/FeaturesSection';
 import CommunitySection from './components/CommunitySection';
 import NewsletterSection from './components/NewsletterSection';
-import FooterSection from './components/FooterSection';
+import Footer from '../../components/ui/Footer';
 
 const Homepage = () => {
   useEffect(() => {
@@ -83,7 +83,7 @@ const Homepage = () => {
         </main>
 
         {/* Footer */}
-        <FooterSection />
+        <Footer />
       </div>
     </>
   );

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import Header from '../../components/ui/Header';
+import Footer from '../../components/ui/Footer';
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
 import { RainbowButton } from '../../components/ui/RainbowButton';
@@ -499,54 +500,9 @@ const RoadmapPage = () => {
           <VisionSection />
         </div>
       </main>
+      
       {/* Footer */}
-      <footer className="bg-gaming-dark text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="md:col-span-2">
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-electric-blue to-neon-purple rounded-lg flex items-center justify-center">
-                  <Icon name="Star" size={24} className="text-white" />
-                </div>
-                <span className="font-heading font-bold text-xl">FortisArena</span>
-              </div>
-              <p className="text-gray-300 mb-4 max-w-md">
-                Building the future of decentralized gaming where players own their destiny 
-                and community drives innovation.
-              </p>
-              <div className="flex space-x-4">
-                <Button variant="ghost" size="sm" iconName="Twitter" className="text-gray-300 hover:text-white" />
-                <Button variant="ghost" size="sm" iconName="MessageCircle" className="text-gray-300 hover:text-white" />
-                <Button variant="ghost" size="sm" iconName="Github" className="text-gray-300 hover:text-white" />
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">Platform</h4>
-              <ul className="space-y-2 text-gray-300">
-                <li><a href="/tournaments" className="hover:text-white transition-colors">Tournaments</a></li>
-                <li><a href="/rewards" className="hover:text-white transition-colors">Rewards</a></li>
-                <li><a href="/governance" className="hover:text-white transition-colors">Governance</a></li>
-                <li><a href="/marketplace" className="hover:text-white transition-colors">Marketplace</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">Resources</h4>
-              <ul className="space-y-2 text-gray-300">
-                <li><a href="/docs" className="hover:text-white transition-colors">Documentation</a></li>
-                <li><a href="/whitepaper" className="hover:text-white transition-colors">Whitepaper</a></li>
-                <li><a href="/security" className="hover:text-white transition-colors">Security</a></li>
-                <li><a href="/support" className="hover:text-white transition-colors">Support</a></li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; {new Date()?.getFullYear()} FortisArena. All rights reserved. Built for the gaming revolution.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

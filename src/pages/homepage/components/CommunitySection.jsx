@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
+import { RainbowButton } from '../../../components/ui/RainbowButton';
 
 const CommunitySection = () => {
   const communityStats = [
@@ -189,18 +190,18 @@ const CommunitySection = () => {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
-                variant="default"
-                size="lg"
-                className="bg-electric-blue hover:bg-electric-blue/90 text-white font-semibold px-8 button-gaming gaming-hover"
+                variant="glow"
+                size="glow-lg"
+                className="font-semibold"
                 iconName="MessageCircle"
                 iconPosition="left"
               >
                 Join Discord
               </Button>
               <Button
-                variant="outline"
-                size="lg"
-                className="border-neon-purple text-neon-purple hover:bg-neon-purple/10 font-semibold px-8 button-gaming gaming-hover"
+                variant="glow-accent"
+                size="glow-lg"
+                className="font-semibold"
                 iconName="Bell"
                 iconPosition="left"
               >
