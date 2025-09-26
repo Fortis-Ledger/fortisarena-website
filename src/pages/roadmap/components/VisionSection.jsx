@@ -29,7 +29,7 @@ const VisionSection = () => {
 
   return (
     <motion.div 
-      className="bg-gradient-to-br from-gaming-dark via-gaming-secondary to-gaming-dark rounded-2xl p-8 lg:p-12 text-white mb-12 neural-network"
+      className="bg-gradient-to-br from-gaming-dark via-gaming-secondary to-gaming-dark rounded-2xl p-8 lg:p-12 text-white mb-12"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
