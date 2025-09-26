@@ -22,281 +22,398 @@ const RoadmapPage = () => {
     {
       id: 1,
       phase: 'foundation',
-      title: "Platform Foundation & Core Infrastructure",
-      description: "Establishing the fundamental blockchain infrastructure and smart contract architecture for the FortisArena ecosystem.",
-      timeline: "Q1 2024",
-      category: "Infrastructure",
-      status: "completed",
-      progress: 100,
+      title: "Community Building & Manual Tournaments",
+      description: "Building a strong community foundation through manual tournaments and community engagement activities.",
+      timeline: "Q1 2025",
+      category: "Community",
+      status: "in-progress",
+      progress: 60,
       features: [
-        "Smart Contract Development",
-        "Blockchain Integration",
-        "Security Audits",
-        "Core API Development"
+        "Community Discord Server",
+        "Manual Tournament Organization",
+        "Community Events",
+        "Social Media Engagement"
       ],
       metrics: [
-        { label: "Smart Contracts", value: "12" },
-        { label: "Security Score", value: "A+" },
-        { label: "API Endpoints", value: "45" }
+        { label: "Discord Members", value: "500+" },
+        { label: "Manual Tournaments", value: "12" },
+        { label: "Community Events", value: "8" }
       ],
       technicalSpecs: [
-        "Polygon blockchain integration for low-cost transactions",
-        "ERC-20 token standard implementation for $FRT",
-        "Multi-signature wallet security protocols",
-        "Decentralized storage integration with IPFS"
+        "Discord bot integration for community management",
+        "Manual tournament bracket creation tools",
+        "Community engagement tracking system",
+        "Social media automation for announcements"
       ],
       partnerships: [
-        "Polygon Network",
-        "Chainlink Oracles",
-        "OpenZeppelin Security"
+        "Discord",
+        "Twitter",
+        "YouTube"
       ],
-      communityImpact: "Established the technical foundation that enables all future platform features, ensuring scalability and security for millions of users."
+      communityImpact: "Building a strong foundation of engaged community members who will be the first users of our platform."
     },
     {
       id: 2,
       phase: 'foundation',
-      title: "User Authentication & Wallet Integration",
-      description: "Seamless Web3 wallet integration with traditional gaming account systems for enhanced user experience.",
-      timeline: "Q1 2024",
-      category: "User Experience",
-      status: "completed",
-      progress: 100,
+      title: "MVP Beta Development & Testing",
+      description: "Developing and testing the minimum viable product with limited users to gather feedback and improve the platform.",
+      timeline: "Q2 2025",
+      category: "Development",
+      status: "in-progress",
+      progress: 70,
       features: [
-        "MetaMask Integration",
-        "WalletConnect Support",
-        "Social Login Options",
-        "Account Recovery System"
+        "Basic Tournament System",
+        "User Registration",
+        "Wallet Integration",
+        "Feedback Collection"
       ],
       metrics: [
-        { label: "Wallet Types", value: "8" },
-        { label: "Login Success", value: "99.2%" },
-        { label: "Recovery Rate", value: "95%" }
+        { label: "Beta Testers", value: "50" },
+        { label: "Features Tested", value: "15" },
+        { label: "Bug Reports", value: "23" }
       ],
       technicalSpecs: [
-        "Multi-wallet compatibility (MetaMask, Trust Wallet, Coinbase)",
-        "Social authentication via Discord, Twitter, and Steam",
-        "Biometric authentication for mobile devices",
-        "Hardware wallet support for enhanced security"
+        "React-based frontend with modern UI components",
+        "Node.js backend with Express framework",
+        "PostgreSQL database for user data",
+        "Web3 integration for wallet connectivity"
       ],
       partnerships: [
-        "MetaMask",
-        "WalletConnect",
-        "Auth0"
+        "Beta Testing Community",
+        "Development Team",
+        "Early Adopters"
       ],
-      communityImpact: "Simplified onboarding process resulted in 40% higher user retention and reduced barriers for traditional gamers entering Web3."
+      communityImpact: "Creating a solid foundation for the platform through rigorous testing and community feedback."
     },
     {
       id: 3,
       phase: 'foundation',
-      title: "Tournament Management System",
-      description: "Comprehensive tournament creation, management, and automated prize distribution system powered by smart contracts.",
-      timeline: "Q2 2024",
-      category: "Gaming Features",
-      status: "completed",
-      progress: 100,
+      title: "Platform Beta Launch",
+      description: "Launching the beta version of the platform with enhanced features and improved user experience.",
+      timeline: "Q3 2025",
+      category: "Platform",
+      status: "upcoming",
+      progress: 0,
       features: [
-        "Tournament Creation Tools",
-        "Automated Bracket Generation",
-        "Real-time Score Tracking",
-        "Smart Contract Payouts"
+        "Enhanced Tournament System",
+        "User Dashboard",
+        "Basic Rewards System",
+        "Community Features"
       ],
       metrics: [
-        { label: "Tournaments", value: "342" },
-        { label: "Prize Pool", value: "$2.4M" },
-        { label: "Participants", value: "15.4K" }
+        { label: "Expected Users", value: "200+" },
+        { label: "Tournaments", value: "25+" },
+        { label: "Active Features", value: "20+" }
       ],
       technicalSpecs: [
-        "Dynamic bracket generation for various tournament formats",
-        "Integration with popular gaming APIs for score verification",
-        "Automated escrow system for prize pool management",
-        "Real-time leaderboard updates with WebSocket connections"
+        "Scalable cloud infrastructure with AWS",
+        "Real-time tournament management system",
+        "User authentication and authorization",
+        "Basic reward distribution system"
       ],
       partnerships: [
-        "Steam API",
-        "Discord Bot Integration",
-        "Twitch Streaming"
+        "Cloud Infrastructure Providers",
+        "Payment Processors",
+        "Gaming Communities"
       ],
-      communityImpact: "Enabled fair and transparent competitive gaming with instant payouts, attracting professional esports teams and content creators."
+      communityImpact: "Providing early access to the platform for community members to test and provide feedback."
     },
     {
       id: 4,
-      phase: 'growth',
-      title: "AI-Powered Matchmaking Engine",
-      description: "Advanced machine learning algorithms for fair player matching based on skill level, latency, and gaming preferences.",
-      timeline: "Q2 2024",
-      category: "AI & Analytics",
-      status: "in-progress",
-      progress: 75,
+      phase: 'foundation',
+      title: "Advanced Beta Features",
+      description: "Adding advanced features to the beta platform including improved tournament management and user experience.",
+      timeline: "Q4 2025",
+      category: "Platform",
+      status: "upcoming",
+      progress: 0,
       features: [
-        "Skill-Based Matching",
-        "Latency Optimization",
-        "Anti-Cheat Integration",
-        "Performance Analytics"
+        "Advanced Tournament Modes",
+        "User Profiles",
+        "Statistics Tracking",
+        "Community Leaderboards"
       ],
       metrics: [
-        { label: "Match Quality", value: "94%" },
-        { label: "Avg Latency", value: "23ms" },
-        { label: "Fair Matches", value: "91%" }
+        { label: "Expected Users", value: "500+" },
+        { label: "Tournament Types", value: "5+" },
+        { label: "User Profiles", value: "300+" }
       ],
       technicalSpecs: [
-        "TensorFlow-based machine learning models for skill assessment",
-        "Geographic server routing for optimal latency",
-        "Behavioral analysis for cheat detection",
-        "Real-time performance monitoring and adjustment"
+        "Advanced tournament bracket algorithms",
+        "User profile management system",
+        "Statistics and analytics dashboard",
+        "Real-time leaderboard updates"
       ],
       partnerships: [
-        "Google Cloud AI",
-        "NVIDIA GeForce",
-        "BattlEye Anti-Cheat"
+        "Analytics Providers",
+        "Community Partners",
+        "Gaming Influencers"
       ],
-      communityImpact: "Dramatically improved match quality and player satisfaction, reducing queue times by 60% while maintaining competitive balance."
+      communityImpact: "Enhancing the platform with advanced features to provide a comprehensive gaming experience."
     },
     {
       id: 5,
       phase: 'growth',
-      title: "NFT Rewards & Achievement System",
-      description: "Dynamic NFT generation for achievements, rare items, and tournament victories with marketplace integration.",
-      timeline: "Q3 2024",
-      category: "NFT & Rewards",
-      status: "in-progress",
-      progress: 60,
+      title: "FRT Token Launch",
+      description: "Launching the FortisArena (FRT) token to enable in-platform transactions and rewards.",
+      timeline: "Q1 2026",
+      category: "Tokenomics",
+      status: "upcoming",
+      progress: 0,
       features: [
-        "Dynamic NFT Generation",
-        "Achievement Badges",
-        "Marketplace Integration",
-        "Rarity System"
+        "Token Distribution",
+        "Staking System",
+        "Reward Mechanisms",
+        "Token Utility"
       ],
       metrics: [
-        { label: "NFTs Minted", value: "8.2K" },
-        { label: "Marketplace Vol", value: "$450K" },
-        { label: "Unique Holders", value: "3.1K" }
+        { label: "Token Supply", value: "100M" },
+        { label: "Initial Price", value: "TBD" },
+        { label: "Staking Rewards", value: "10% APY" }
       ],
       technicalSpecs: [
-        "ERC-721 standard for unique achievement NFTs",
-        "Procedural generation algorithms for rare items",
-        "IPFS metadata storage for decentralized ownership",
-        "Cross-game compatibility for NFT utilities"
+        "ERC-20 token standard on Ethereum",
+        "Smart contract-based staking system",
+        "Automated reward distribution",
+        "Token burn mechanisms for deflation"
       ],
       partnerships: [
-        "OpenSea Marketplace",
-        "Rarible Integration",
-        "Polygon Studios"
+        "Ethereum Network",
+        "DEX Platforms",
+        "Staking Providers"
       ],
-      communityImpact: "Created new revenue streams for players while establishing true digital ownership of gaming achievements and rare items."
+      communityImpact: "Introducing the native token to enable economic incentives and platform governance."
     },
     {
       id: 6,
       phase: 'growth',
-      title: "Mobile Application Launch",
-      description: "Native mobile applications for iOS and Android with full tournament participation and wallet management.",
-      timeline: "Q3 2024",
-      category: "Mobile Development",
-      status: "in-progress",
-      progress: 45,
+      title: "Web3 Platform Launch",
+      description: "Launching the full Web3 platform with live tournaments and comprehensive gaming features.",
+      timeline: "Q2 2026",
+      category: "Platform",
+      status: "upcoming",
+      progress: 0,
       features: [
-        "Native iOS/Android Apps",
-        "Mobile Tournament Play",
-        "Push Notifications",
-        "Offline Mode Support"
+        "Live Tournament System",
+        "Real-time Gaming",
+        "Smart Contract Integration",
+        "Decentralized Features"
       ],
       metrics: [
-        { label: "Beta Users", value: "2.5K" },
-        { label: "App Rating", value: "4.7★" },
-        { label: "Daily Active", value: "1.8K" }
+        { label: "Expected Users", value: "1K+" },
+        { label: "Live Tournaments", value: "50+" },
+        { label: "Smart Contracts", value: "10+" }
       ],
       technicalSpecs: [
-        "React Native framework for cross-platform development",
-        "Biometric authentication for secure wallet access",
-        "Optimized UI for mobile gaming interfaces",
-        "Background sync for tournament updates"
+        "Web3 integration with MetaMask",
+        "Smart contract-based tournament management",
+        "Real-time gaming infrastructure",
+        "Decentralized storage for user data"
       ],
       partnerships: [
-        "Apple App Store",
-        "Google Play Store",
-        "Firebase Analytics"
+        "Web3 Infrastructure",
+        "Gaming Studios",
+        "Blockchain Networks"
       ],
-      communityImpact: "Expanding platform accessibility to mobile-first users, particularly in emerging markets where mobile gaming dominates."
+      communityImpact: "Launching the full decentralized gaming platform for public use."
     },
     {
       id: 7,
-      phase: 'expansion',
-      title: "DAO Governance Implementation",
-      description: "Decentralized autonomous organization structure allowing community voting on platform decisions and treasury management.",
-      timeline: "Q4 2024",
-      category: "Governance",
+      phase: 'growth',
+      title: "Game Partnerships",
+      description: "Establishing partnerships with gaming studios to integrate popular games into the platform.",
+      timeline: "Q3 2026",
+      category: "Partnerships",
       status: "upcoming",
+      progress: 0,
       features: [
-        "Proposal System",
-        "Community Voting",
-        "Treasury Management",
-        "Delegation Features"
+        "Game Integration",
+        "API Development",
+        "Cross-Game Tournaments",
+        "Developer Tools"
+      ],
+      metrics: [
+        { label: "Partner Games", value: "5+" },
+        { label: "API Endpoints", value: "20+" },
+        { label: "Cross-Game Events", value: "10+" }
       ],
       technicalSpecs: [
-        "Governance token distribution mechanisms",
-        "Quadratic voting implementation for fair representation",
-        "Multi-signature treasury management",
-        "Proposal execution automation through smart contracts"
+        "RESTful API for game integration",
+        "WebSocket connections for real-time data",
+        "Cross-game tournament system",
+        "Developer SDK and documentation"
       ],
       partnerships: [
-        "Snapshot Governance",
-        "Gnosis Safe",
-        "Aragon DAO Tools"
+        "Gaming Studios",
+        "Indie Developers",
+        "Esports Organizations"
       ],
-      communityImpact: "Transitioning to community ownership and governance, ensuring platform decisions reflect user interests and long-term sustainability."
+      communityImpact: "Expanding the platform's gaming library through strategic partnerships."
     },
     {
       id: 8,
-      phase: 'expansion',
-      title: "Cross-Chain Integration",
-      description: "Multi-blockchain support enabling users from different networks to participate in tournaments and trade assets.",
-      timeline: "Q1 2025",
-      category: "Blockchain",
+      phase: 'growth',
+      title: "Middle East Regional Tournaments",
+      description: "Launching region-specific tournaments and events focused on the Middle East gaming community.",
+      timeline: "Q4 2026",
+      category: "Regional",
       status: "upcoming",
+      progress: 0,
       features: [
-        "Multi-Chain Support",
-        "Cross-Chain Bridges",
-        "Universal Wallet",
-        "Asset Portability"
+        "Regional Tournament Series",
+        "Local Language Support",
+        "Cultural Events",
+        "Regional Leaderboards"
+      ],
+      metrics: [
+        { label: "Regional Users", value: "2K+" },
+        { label: "Tournament Series", value: "3+" },
+        { label: "Local Events", value: "15+" }
       ],
       technicalSpecs: [
-        "Integration with Ethereum, Binance Smart Chain, and Solana",
-        "Automated market makers for cross-chain token swaps",
-        "Universal asset standards for NFT portability",
-        "Layer 2 scaling solutions for reduced transaction costs"
+        "Multi-language support system",
+        "Regional server infrastructure",
+        "Cultural event management tools",
+        "Localized payment methods"
       ],
       partnerships: [
-        "Chainlink CCIP",
-        "LayerZero Protocol",
-        "Multichain Bridge"
+        "Middle East Gaming Communities",
+        "Local Esports Organizations",
+        "Regional Payment Providers"
       ],
-      communityImpact: "Breaking down blockchain silos to create a truly inclusive gaming ecosystem accessible to users regardless of their preferred network."
+      communityImpact: "Building a strong presence in the Middle East gaming market."
     },
     {
       id: 9,
-      phase: 'evolution',
-      title: "Virtual Reality Integration",
-      description: "Immersive VR tournament experiences with spatial audio and haptic feedback for next-generation competitive gaming.",
-      timeline: "Q2 2025",
-      category: "VR/AR",
+      phase: 'expansion',
+      title: "Multi-Game Support",
+      description: "Expanding platform support to include multiple gaming genres and tournament formats.",
+      timeline: "Q1 2027",
+      category: "Platform",
       status: "upcoming",
+      progress: 0,
       features: [
-        "VR Tournament Modes",
-        "Spatial Audio",
-        "Haptic Feedback",
-        "Virtual Arenas"
+        "Multiple Game Genres",
+        "Custom Tournament Formats",
+        "Game-Specific Features",
+        "Cross-Genre Events"
+      ],
+      metrics: [
+        { label: "Supported Games", value: "15+" },
+        { label: "Tournament Formats", value: "8+" },
+        { label: "Active Users", value: "5K+" }
       ],
       technicalSpecs: [
-        "Unity 3D engine integration for VR development",
-        "Oculus and SteamVR compatibility",
-        "Real-time motion tracking and gesture recognition",
-        "Cloud rendering for high-fidelity graphics"
+        "Modular game integration system",
+        "Flexible tournament format engine",
+        "Game-specific feature modules",
+        "Cross-genre tournament management"
       ],
       partnerships: [
-        "Meta (Oculus)",
-        "Valve (SteamVR)",
-        "Unity Technologies"
+        "Multiple Gaming Studios",
+        "Esports Organizations",
+        "Gaming Communities"
       ],
-      communityImpact: "Pioneering the future of competitive gaming by creating immersive experiences that blur the line between virtual and reality."
+      communityImpact: "Providing comprehensive support for diverse gaming communities."
+    },
+    {
+      id: 10,
+      phase: 'expansion',
+      title: "FPT Token Launch",
+      description: "Launching the FortisArena Platform Token (FPT) for advanced platform features and governance.",
+      timeline: "Q2 2027",
+      category: "Tokenomics",
+      status: "upcoming",
+      progress: 0,
+      features: [
+        "Platform Governance",
+        "Premium Features",
+        "Creator Rewards",
+        "Advanced Staking"
+      ],
+      metrics: [
+        { label: "Token Supply", value: "50M" },
+        { label: "Governance Power", value: "1:1 FRT" },
+        { label: "Staking Rewards", value: "15% APY" }
+      ],
+      technicalSpecs: [
+        "ERC-20 token with governance features",
+        "Voting power calculation system",
+        "Premium feature access control",
+        "Creator reward distribution"
+      ],
+      partnerships: [
+        "Governance Platforms",
+        "Creator Communities",
+        "Staking Providers"
+      ],
+      communityImpact: "Enabling advanced platform features and community governance."
+    },
+    {
+      id: 11,
+      phase: 'expansion',
+      title: "Fortis Live (Creator Studio)",
+      description: "Launching the creator studio platform for content creators to stream, create, and monetize content.",
+      timeline: "Q3 2027",
+      category: "Creator Tools",
+      status: "upcoming",
+      progress: 0,
+      features: [
+        "Live Streaming Platform",
+        "Content Creation Tools",
+        "Monetization Features",
+        "Creator Analytics"
+      ],
+      metrics: [
+        { label: "Creator Tools", value: "20+" },
+        { label: "Streaming Quality", value: "4K" },
+        { label: "Monetization Options", value: "5+" }
+      ],
+      technicalSpecs: [
+        "WebRTC-based streaming infrastructure",
+        "Content creation and editing tools",
+        "Multi-platform monetization system",
+        "Advanced analytics dashboard"
+      ],
+      partnerships: [
+        "Streaming Platforms",
+        "Content Creators",
+        "Monetization Providers"
+      ],
+      communityImpact: "Empowering content creators with professional tools and monetization opportunities."
+    },
+    {
+      id: 12,
+      phase: 'evolution',
+      title: "DAO Governance Launch",
+      description: "Launching the decentralized autonomous organization for community-driven platform governance.",
+      timeline: "Q1 2028",
+      category: "Governance",
+      status: "upcoming",
+      progress: 0,
+      features: [
+        "Community Voting",
+        "Proposal System",
+        "Treasury Management",
+        "Governance Tokens"
+      ],
+      metrics: [
+        { label: "Governance Tokens", value: "10M" },
+        { label: "Voting Power", value: "FPT + FRT" },
+        { label: "Proposal System", value: "Active" }
+      ],
+      technicalSpecs: [
+        "Smart contract-based voting system",
+        "Proposal creation and management",
+        "Multi-signature treasury management",
+        "Governance token distribution"
+      ],
+      partnerships: [
+        "Governance Platforms",
+        "DAO Tools",
+        "Community Organizations"
+      ],
+      communityImpact: "Transitioning to full community ownership and governance of the platform."
     }
   ];
 
@@ -371,7 +488,7 @@ const RoadmapPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Follow our journey as we build the most advanced Web3 gaming ecosystem. 
+              Follow our journey from community building (2025) to full DAO governance (2028). 
               Track milestones, participate in governance, and shape the future together.
             </motion.p>
 
@@ -459,25 +576,21 @@ const RoadmapPage = () => {
                 <div className="space-y-3 sm:space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="text-xs sm:text-sm text-muted-foreground">Code Commits (30d)</span>
-                    <span className="font-semibold text-foreground text-sm sm:text-base">247</span>
+                    <span className="font-semibold text-foreground text-sm sm:text-base">156</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-xs sm:text-sm text-muted-foreground">Pull Requests</span>
-                    <span className="font-semibold text-foreground text-sm sm:text-base">42</span>
+                    <span className="font-semibold text-foreground text-sm sm:text-base">23</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-xs sm:text-sm text-muted-foreground">Issues Resolved</span>
-                    <span className="font-semibold text-foreground text-sm sm:text-base">89</span>
+                    <span className="font-semibold text-foreground text-sm sm:text-base">45</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-xs sm:text-sm text-muted-foreground">Test Coverage</span>
-                    <span className="font-semibold text-success text-sm sm:text-base">94.2%</span>
+                    <span className="font-semibold text-success text-sm sm:text-base">78.5%</span>
                   </div>
                 </div>
-                
-                <RainbowButton className="mt-3 sm:mt-4 w-full text-sm sm:text-base">
-                  View Repository
-                </RainbowButton>
               </div>
 
               {/* Newsletter Signup */}

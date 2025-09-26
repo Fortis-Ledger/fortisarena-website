@@ -4,10 +4,10 @@ import Button from '../../../components/ui/Button';
 const PhaseFilter = ({ activePhase, onPhaseChange }) => {
   const phases = [
     { id: 'all', label: 'All Phases', icon: 'Grid' },
-    { id: 'foundation', label: 'Foundation', icon: 'Building' },
-    { id: 'growth', label: 'Growth', icon: 'TrendingUp' },
-    { id: 'expansion', label: 'Expansion', icon: 'Rocket' },
-    { id: 'evolution', label: 'Evolution', icon: 'Sparkles' }
+    { id: 'foundation', label: 'Foundation (2025)', icon: 'Building' },
+    { id: 'growth', label: 'Growth (2026)', icon: 'TrendingUp' },
+    { id: 'expansion', label: 'Expansion (2027)', icon: 'Rocket' },
+    { id: 'evolution', label: 'Evolution (2028)', icon: 'Sparkles' }
   ];
 
   return (

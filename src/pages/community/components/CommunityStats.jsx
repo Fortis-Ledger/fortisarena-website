@@ -6,8 +6,8 @@ const CommunityStats = () => {
     {
       id: 1,
       label: "Discord Members",
-      value: "47,832",
-      change: "+2,341",
+      value: "1000+",
+      change: "+341",
       changeType: "increase",
       icon: "Users",
       color: "text-electric-blue"
@@ -15,8 +15,8 @@ const CommunityStats = () => {
     {
       id: 2,
       label: "Active Players",
-      value: "12,456",
-      change: "+892",
+      value: "456+",
+      change: "+92",
       changeType: "increase",
       icon: "Gamepad2",
       color: "text-neon-purple"
@@ -24,8 +24,8 @@ const CommunityStats = () => {
     {
       id: 3,
       label: "Tournaments Hosted",
-      value: "1,234",
-      change: "+67",
+      value: "123+",
+      change: "+14",
       changeType: "increase",
       icon: "Trophy",
       color: "text-golden-cta"
@@ -33,8 +33,8 @@ const CommunityStats = () => {
     {
       id: 4,
       label: "Total Rewards Distributed",
-      value: "$2.4M",
-      change: "+$156K",
+      value: "$1000+",
+      change: "+$421",
       changeType: "increase",
       icon: "DollarSign",
       color: "text-success"

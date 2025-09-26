@@ -5,28 +5,28 @@ const RoadmapStats = () => {
   const stats = [
     {
       icon: "CheckCircle",
-      value: "12",
+      value: "0",
       label: "Milestones Completed",
       color: "text-success",
       bgColor: "bg-success/10"
     },
     {
       icon: "Clock",
-      value: "5",
+      value: "2",
       label: "In Development",
       color: "text-accent",
       bgColor: "bg-accent/10"
     },
     {
       icon: "Target",
-      value: "8",
+      value: "10",
       label: "Upcoming Features",
       color: "text-warning",
       bgColor: "bg-warning/10"
     },
     {
       icon: "TrendingUp",
-      value: "73%",
+      value: "15%",
       label: "Overall Progress",
       color: "text-accent",
       bgColor: "bg-accent/10"

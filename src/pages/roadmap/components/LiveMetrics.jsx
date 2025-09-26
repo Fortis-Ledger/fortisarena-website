@@ -1,55 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Icon from '../../../components/AppIcon';
 
 const LiveMetrics = () => {
-  const [metrics, setMetrics] = useState({
-    activeUsers: 15420,
-    tournaments: 342,
-    totalRewards: 2.4,
-    codeCommits: 1247
-  });
-
-  // Simulate real-time updates
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setMetrics(prev => ({
-        activeUsers: prev?.activeUsers + Math.floor(Math.random() * 10),
-        tournaments: prev?.tournaments + (Math.random() > 0.8 ? 1 : 0),
-        totalRewards: prev?.totalRewards + (Math.random() * 0.1),
-        codeCommits: prev?.codeCommits + (Math.random() > 0.7 ? 1 : 0)
-      }));
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
-
+  // Static data - no real-time updates
+  const metrics = {
+    activeUsers: 0,
+    tournaments: 0,
+    totalRewards: 0,
+    codeCommits: 156
+  };
   const metricsData = [
     {
       icon: "Users",
-      value: metrics?.activeUsers?.toLocaleString(),
+      value: "0",
       label: "Active Users",
-      change: "+12%",
-      color: "text-success"
+      change: "0%",
+      color: "text-muted-foreground"
     },
     {
       icon: "Trophy",
-      value: metrics?.tournaments?.toLocaleString(),
+      value: "0",
       label: "Tournaments",
-      change: "+8%",
-      color: "text-accent"
+      change: "0%",
+      color: "text-muted-foreground"
     },
     {
       icon: "DollarSign",
-      value: `$${metrics?.totalRewards?.toFixed(1)}M`,
+      value: "$0",
       label: "Total Rewards",
-      change: "+15%",
-      color: "text-warning"
+      change: "0%",
+      color: "text-muted-foreground"
     },
     {
       icon: "GitCommit",
       value: metrics?.codeCommits?.toLocaleString(),
       label: "Code Commits",
-      change: "+23%",
+      change: "+5%",
       color: "text-accent"
     }
   ];
@@ -57,10 +43,10 @@ const LiveMetrics = () => {
   return (
     <div className="bg-card rounded-xl p-6 border border-border mb-8">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-lg font-heading font-bold text-foreground">Live Platform Metrics</h3>
-        <div className="flex items-center space-x-2 text-sm text-success">
-          <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
-          <span>Live</span>
+        <h3 className="text-lg font-heading font-bold text-foreground">Platform Metrics</h3>
+        <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+          <div className="w-2 h-2 bg-muted rounded-full"></div>
+          <span>Coming Soon</span>
         </div>
       </div>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">

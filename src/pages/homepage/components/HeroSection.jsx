@@ -15,7 +15,7 @@ const HeroSection = () => {
     <div className="overflow-x-hidden bg-black">
       <section 
         ref={ref}
-        className="pt-32 pb-20 bg-black sm:pt-40 sm:pb-24 will-change-transform relative overflow-hidden"
+        className="pt-48 pb-20 bg-black sm:pt-56 md:pt-60 lg:pt-64 sm:pb-24 will-change-transform relative overflow-hidden"
       >
         {/* Animated Background Elements */}
         <div className="absolute inset-0 neural-network opacity-30"></div>
@@ -45,10 +45,14 @@ const HeroSection = () => {
         <div className="relative z-10 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             {/* Main Heading */}
-            <h1 className="px-4 sm:px-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white font-heading mb-6 sm:mb-8">
-              FortisArena: The Future<br />
-              <span className="text-primary">of Competitive Gaming</span>
-            </h1>
+            <div className="px-4 sm:px-6 mb-6 sm:mb-8">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight text-white font-heading mb-2">
+                FortisArena
+              </h1>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-primary font-heading">
+                The Future of Competitive Gaming
+              </h2>
+            </div>
             
             {/* Tagline */}
             <p className="px-4 sm:px-6 text-lg sm:text-xl md:text-2xl text-white font-medium mb-12 sm:mb-16">
@@ -60,23 +64,23 @@ const HeroSection = () => {
               <Button
                 variant="glow"
                 size="glow-lg"
-                className="font-semibold w-full sm:w-auto"
-                iconName="ArrowRight"
-                iconPosition="right"
-                onClick={() => navigate('/waitlist')}
-              >
-                Join Arena
-              </Button>
-
-              <Button
-                variant="glow-accent"
-                size="glow-lg"
-                className="font-semibold w-full sm:w-auto"
+                className="font-semibold w-full sm:w-auto sm:min-w-48"
                 iconName="Play"
                 iconPosition="left"
                 onClick={() => window.open('https://tournaments.fortisarena.io', '_blank')}
               >
                 Live Tournaments
+              </Button>
+
+              <Button
+                variant="glow-accent"
+                size="glow-lg"
+                className="font-semibold w-full sm:w-auto sm:min-w-48"
+                iconName="ArrowRight"
+                iconPosition="right"
+                onClick={() => navigate('/waitlist')}
+              >
+                Join Arena
               </Button>
             </div>
 

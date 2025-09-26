@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, CheckCircle, User, Mail, MapPin, Gamepad2, Users } from 'lucide-react';
 import Button from '../../components/ui/Button';
 
 const Waitlist = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Get the previous page from location state, default to home
+  const previousPage = location.state?.from || '/';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -181,14 +185,14 @@ const Waitlist = () => {
         <div className="w-full max-w-md">
           {/* Back Button */}
           <motion.button
-            onClick={() => navigate('/')}
+            onClick={() => navigate(previousPage)}
             className="mb-8 flex items-center text-primary hover:text-primary/80 transition-colors duration-200 group"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
           >
             <ArrowLeft className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform duration-200" />
-            Back to Home
+            {previousPage === '/community' ? 'Back to Community' : 'Back to Home'}
           </motion.button>
 
           <motion.div

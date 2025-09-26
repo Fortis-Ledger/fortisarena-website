@@ -1,47 +1,40 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 
 const CommunityVoting = () => {
-  const [selectedProposal, setSelectedProposal] = useState(null);
-
-  const proposals = [
+  const upcomingFeatures = [
     {
       id: 1,
-      title: "Mobile App Development Priority",
-      description: "Should we prioritize iOS or Android development for the mobile app launch?",
-      options: [
-        { id: 'ios', label: 'iOS First', votes: 1247, percentage: 62 },
-        { id: 'android', label: 'Android First', votes: 763, percentage: 38 }
-      ],
-      totalVotes: 2010,
-      timeLeft: "5 days",
-      status: "active"
+      title: "Proposal System",
+      description: "Community members can submit and vote on platform improvements",
+      icon: "FileText",
+      status: "planned",
+      timeline: "Q1 2028"
     },
     {
       id: 2,
-      title: "Tournament Format Enhancement",
-      description: "Which tournament format should we implement next?",
-      options: [
-        { id: 'battle-royale', label: 'Battle Royale', votes: 892, percentage: 45 },
-        { id: 'team-based', label: 'Team-based Leagues', votes: 678, percentage: 34 },
-        { id: 'solo-ranked', label: 'Solo Ranked', votes: 420, percentage: 21 }
-      ],
-      totalVotes: 1990,
-      timeLeft: "12 days",
-      status: "active"
+      title: "Voting Power",
+      description: "Token-based voting system where FRT and FPT holders have governance rights",
+      icon: "Vote",
+      status: "planned",
+      timeline: "Q1 2028"
     },
     {
       id: 3,
-      title: "Reward Token Distribution",
-      description: "How should we distribute bonus rewards for early adopters?",
-      options: [
-        { id: 'performance', label: 'Performance Based', votes: 1456, percentage: 73 },
-        { id: 'participation', label: 'Participation Based', votes: 544, percentage: 27 }
-      ],
-      totalVotes: 2000,
-      timeLeft: "Ended",
-      status: "completed"
+      title: "Treasury Management",
+      description: "Community-controlled treasury for platform development and rewards",
+      icon: "DollarSign",
+      status: "planned",
+      timeline: "Q2 2028"
+    },
+    {
+      id: 4,
+      title: "Delegation System",
+      description: "Delegate voting power to trusted community members",
+      icon: "Users",
+      status: "planned",
+      timeline: "Q2 2028"
     }
   ];
 
@@ -49,71 +42,70 @@ const CommunityVoting = () => {
     <div className="bg-card rounded-xl p-6 border border-border mb-8">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h3 className="text-lg font-heading font-bold text-foreground mb-1">Community Governance</h3>
-          <p className="text-sm text-muted-foreground">Vote on roadmap priorities and shape the future</p>
+          <h3 className="text-lg font-heading font-bold text-foreground mb-1">DAO Governance</h3>
+          <p className="text-sm text-muted-foreground">Coming Soon - Community-driven decision making</p>
         </div>
-        <Button variant="outline" size="sm" iconName="Vote" iconPosition="left">
-          View All Proposals
-        </Button>
+        <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+          <div className="w-2 h-2 bg-muted rounded-full"></div>
+          <span>Q1 2028</span>
+        </div>
       </div>
-      <div className="space-y-6">
-        {proposals?.map((proposal) => (
-          <div key={proposal?.id} className="border border-border rounded-lg p-4 hover:shadow-gaming transition-all duration-300">
-            <div className="flex items-start justify-between mb-3">
-              <div className="flex-1">
-                <h4 className="font-semibold text-foreground mb-1">{proposal?.title}</h4>
-                <p className="text-sm text-muted-foreground mb-2">{proposal?.description}</p>
-                <div className="flex items-center space-x-4 text-xs text-muted-foreground">
-                  <span className="flex items-center space-x-1">
-                    <Icon name="Users" size={12} />
-                    <span>{proposal?.totalVotes?.toLocaleString()} votes</span>
+
+      {/* Coming Soon Content */}
+      <div className="text-center py-8">
+        <div className="mb-6">
+          <Icon name="Vote" size={48} className="text-muted-foreground mx-auto mb-4" />
+          <h4 className="text-xl font-bold text-foreground mb-2">Community Governance Coming Soon</h4>
+          <p className="text-sm text-muted-foreground px-4">
+            We're building a decentralized governance system where community members will have voting power
+          </p>
+        </div>
+
+        {/* Feature Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          {upcomingFeatures?.map((feature) => (
+            <div
+              key={feature?.id}
+              className="p-4 rounded-lg border border-border bg-muted/30 hover:bg-muted/50 transition-all"
+            >
+              <div className="text-center">
+                <div className="flex justify-center mb-3">
+                  <Icon name={feature?.icon} size={32} className="text-accent" />
+                </div>
+                <h5 className="font-semibold text-foreground text-sm mb-2">
+                  {feature?.title}
+                </h5>
+                <p className="text-xs text-muted-foreground mb-3">
+                  {feature?.description}
+                </p>
+                <div className="flex items-center justify-center space-x-2">
+                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent">
+                    {feature?.timeline}
                   </span>
-                  <span className="flex items-center space-x-1">
-                    <Icon name="Clock" size={12} />
-                    <span>{proposal?.timeLeft}</span>
-                  </span>
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                    proposal?.status === 'active' ?'bg-success/10 text-success' :'bg-muted text-muted-foreground'
-                  }`}>
-                    {proposal?.status?.toUpperCase()}
+                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-muted text-muted-foreground">
+                    {feature?.status}
                   </span>
                 </div>
               </div>
             </div>
+          ))}
+        </div>
 
-            <div className="space-y-2">
-              {proposal?.options?.map((option) => (
-                <div key={option?.id} className="flex items-center justify-between p-2 rounded bg-muted/50">
-                  <div className="flex items-center space-x-3">
-                    <div className="text-sm font-medium text-foreground">{option?.label}</div>
-                    <div className="text-xs text-muted-foreground">
-                      {option?.votes?.toLocaleString()} votes
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-16 bg-background rounded-full h-2">
-                      <div 
-                        className="bg-accent h-2 rounded-full transition-all duration-500"
-                        style={{ width: `${option?.percentage}%` }}
-                      ></div>
-                    </div>
-                    <span className="text-sm font-medium text-accent w-10 text-right">
-                      {option?.percentage}%
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {proposal?.status === 'active' && (
-              <div className="mt-3 pt-3 border-t border-border">
-                <Button variant="outline" size="sm" fullWidth>
-                  Cast Your Vote
-                </Button>
-              </div>
-            )}
+        {/* Call to Action */}
+        <div className="bg-gradient-to-r from-accent/10 to-transparent border border-accent/20 rounded-lg p-6">
+          <h5 className="font-semibold text-foreground mb-2">Prepare for Governance</h5>
+          <p className="text-sm text-muted-foreground mb-4">
+            Join our community now to be ready when governance launches. Early members will have special privileges.
+          </p>
+          <div className="flex items-center justify-center space-x-4 text-xs text-muted-foreground">
+            <span className="inline-flex items-center px-2 py-1 rounded-full bg-accent/10 text-accent">
+              Q1 2028 Launch
+            </span>
+            <span className="inline-flex items-center px-2 py-1 rounded-full bg-muted text-muted-foreground">
+              In Development
+            </span>
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );

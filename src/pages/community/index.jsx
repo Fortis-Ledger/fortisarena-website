@@ -64,7 +64,7 @@ const CommunityPage = () => {
               >
                 <AnimatedShinyText className="inline-flex items-center justify-center px-3 py-1.5 transition ease-out hover:text-neutral-300 hover:duration-300">
                   <Icon name="Users" size={14} className="text-accent mr-2" />
-                  <span>47,832+ Active Members</span>
+                  <span>500+ Active Members</span>
                 </AnimatedShinyText>
               </motion.div>
               
@@ -119,10 +119,10 @@ const CommunityPage = () => {
               </motion.div>
             </motion.div>
 
-            {/* Community Stats Overview */}
-            <CommunityStats />
-          </div>
-        </section>
+        {/* Community Stats Overview */}
+        <CommunityStats />
+      </div>
+    </section>
 
         {/* DAO Governance Section */}
         <section className="py-16 bg-muted/30">

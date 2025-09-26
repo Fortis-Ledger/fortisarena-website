@@ -14,84 +14,40 @@ const CommunityContent = () => {
     { id: 'tutorials', label: 'Tutorials', icon: 'BookOpen' }
   ];
 
-  const contentItems = [
+  const contentItems = [];
+
+  const upcomingFeatures = [
     {
-      id: 1,
-      type: 'highlight',
-      title: "Epic 1v5 Clutch in Championship Finals",
-      author: "ShadowStrike_99",
-      authorAvatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=40&h=40&fit=crop&crop=face",
-      thumbnail: "https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?w=300&h=200&fit=crop",
-      views: "45.2K",
-      likes: "3.8K",
-      comments: "892",
-      timeAgo: "2 hours ago",
-      tags: ["Championship", "Clutch", "Pro Play"]
+      id: 'highlights',
+      title: 'Gaming Highlights',
+      description: 'Share your best gaming moments, epic clutches, and tournament plays',
+      icon: 'Play',
+      status: 'planned',
+      timeline: 'Q2 2026'
     },
     {
-      id: 2,
-      type: 'artwork',
-      title: "FortisArena Cyberpunk Arena Concept",
-      author: "DigitalArtist_Maya",
-      authorAvatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face",
-      thumbnail: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?w=300&h=200&fit=crop",
-      views: "28.7K",
-      likes: "5.2K",
-      comments: "456",
-      timeAgo: "5 hours ago",
-      tags: ["Concept Art", "Cyberpunk", "Arena Design"]
+      id: 'artwork',
+      title: 'Community Artwork',
+      description: 'Showcase your creative designs, character concepts, and fan art',
+      icon: 'Image',
+      status: 'planned',
+      timeline: 'Q3 2026'
     },
     {
-      id: 3,
-      type: 'achievement',
-      title: "First Player to Reach Level 100!",
-      author: "QuantumGamer",
-      authorAvatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face",
-      thumbnail: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?w=300&h=200&fit=crop",
-      views: "67.1K",
-      likes: "8.9K",
-      comments: "1.2K",
-      timeAgo: "1 day ago",
-      tags: ["Milestone", "Level 100", "First"]
+      id: 'achievements',
+      title: 'Achievement Showcase',
+      description: 'Celebrate milestones, level-ups, and in-game accomplishments',
+      icon: 'Award',
+      status: 'planned',
+      timeline: 'Q2 2026'
     },
     {
-      id: 4,
-      type: 'tutorial',
-      title: "Advanced Movement Techniques Guide",
-      author: "ProCoach_Alex",
-      authorAvatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face",
-      thumbnail: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?w=300&h=200&fit=crop",
-      views: "34.5K",
-      likes: "4.1K",
-      comments: "678",
-      timeAgo: "3 days ago",
-      tags: ["Tutorial", "Movement", "Pro Tips"]
-    },
-    {
-      id: 5,
-      type: 'highlight',
-      title: "Community Tournament Highlights Reel",
-      author: "EventHighlights",
-      authorAvatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=face",
-      thumbnail: "https://images.pexels.com/photos/3945313/pexels-photo-3945313.jpeg?w=300&h=200&fit=crop",
-      views: "89.3K",
-      likes: "12.4K",
-      comments: "2.1K",
-      timeAgo: "1 week ago",
-      tags: ["Tournament", "Highlights", "Community"]
-    },
-    {
-      id: 6,
-      type: 'artwork',
-      title: "Character Skin Design Contest Winner",
-      author: "CreativeDesigner_Sam",
-      authorAvatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=40&h=40&fit=crop&crop=face",
-      thumbnail: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?w=300&h=200&fit=crop",
-      views: "52.8K",
-      likes: "7.3K",
-      comments: "934",
-      timeAgo: "1 week ago",
-      tags: ["Contest Winner", "Character Design", "Skin"]
+      id: 'tutorials',
+      title: 'Tutorials & Guides',
+      description: 'Share knowledge, tips, and strategies with the community',
+      icon: 'BookOpen',
+      status: 'planned',
+      timeline: 'Q3 2026'
     }
   ];
 
@@ -126,9 +82,9 @@ const CommunityContent = () => {
           <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-2">Community Showcase</h2>
           <p className="text-sm sm:text-base text-muted-foreground">Amazing content created by our community</p>
         </div>
-        <Button variant="default" className="bg-golden-cta hover:bg-golden-cta/90 text-gaming-dark w-full sm:w-auto text-sm sm:text-base">
-          <Icon name="Upload" size={14} className="sm:w-4 sm:h-4" />
-          Share Content
+        <Button variant="default" className="bg-golden-cta hover:bg-golden-cta/90 text-gaming-dark w-full sm:w-auto text-sm sm:text-base" disabled>
+          <Icon name="Clock" size={14} className="sm:w-4 sm:h-4" />
+          Coming Soon
         </Button>
       </div>
       {/* Filter Tabs */}
@@ -149,121 +105,97 @@ const CommunityContent = () => {
           </button>
         ))}
       </div>
-      {/* Content Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-        {filteredContent?.map((item) => (
-          <div
-            key={item?.id}
-            className="group bg-muted rounded-xl overflow-hidden hover:shadow-gaming transition-all duration-300 cursor-pointer"
+      {/* Coming Soon Content */}
+      <div className="text-center py-8 sm:py-12">
+        <div className="mb-6">
+          <Icon name="Image" size={48} className="text-muted-foreground mx-auto mb-4 sm:w-16 sm:h-16" />
+          <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2">Community Showcase Coming Soon</h3>
+          <p className="text-sm sm:text-base text-muted-foreground px-4 sm:px-0">
+            We're building an amazing platform for community content sharing
+          </p>
+        </div>
+
+        {/* Feature Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
+          {upcomingFeatures?.map((feature) => (
+            <div
+              key={feature?.id}
+              className={`p-4 sm:p-6 rounded-lg border transition-all ${
+                activeFilter === feature?.id
+                  ? 'bg-accent/10 border-accent/30 shadow-gaming'
+                  : 'bg-muted/30 border-border hover:bg-muted/50'
+              }`}
+            >
+              <div className="text-center">
+                <div className="flex justify-center mb-3">
+                  <Icon name={feature?.icon} size={32} className="text-accent sm:w-8 sm:h-8" />
+                </div>
+                <h4 className="font-semibold text-foreground text-sm sm:text-base mb-2">
+                  {feature?.title}
+                </h4>
+                <p className="text-xs sm:text-sm text-muted-foreground mb-3">
+                  {feature?.description}
+                </p>
+                <div className="flex items-center justify-center space-x-2">
+                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent">
+                    {feature?.timeline}
+                  </span>
+                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-muted text-muted-foreground">
+                    {feature?.status}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Call to Action */}
+        <div className="bg-gradient-to-r from-accent/10 to-transparent border border-accent/20 rounded-lg p-4 sm:p-6">
+          <h4 className="font-semibold text-foreground text-sm sm:text-base mb-2">
+            Be the First to Share
+          </h4>
+          <p className="text-xs sm:text-sm text-muted-foreground mb-4">
+            Join our community to get early access to content sharing features
+          </p>
+          <Button 
+            variant="glow"
+            size="glow-lg"
+            className="font-semibold"
           >
-            {/* Thumbnail */}
-            <div className="relative aspect-video overflow-hidden">
-              <Image
-                src={item?.thumbnail}
-                alt={item?.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              
-              {/* Type Badge */}
-              <div className={`absolute top-3 left-3 inline-flex items-center space-x-1 px-2 py-1 rounded-full text-xs font-medium ${getTypeColor(item?.type)}`}>
-                <Icon name={getTypeIcon(item?.type)} size={12} />
-                <span className="capitalize">{item?.type}</span>
-              </div>
-
-              {/* Play Button for Videos */}
-              {item?.type === 'highlight' && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center">
-                    <Icon name="Play" size={20} className="text-gaming-dark ml-1" />
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Content */}
-            <div className="p-3 sm:p-4">
-              <h3 className="font-semibold text-foreground mb-2 line-clamp-2 group-hover:text-accent transition-colors text-sm sm:text-base">
-                {item?.title}
-              </h3>
-
-              {/* Author */}
-              <div className="flex items-center space-x-2 mb-3">
-                <Image
-                  src={item?.authorAvatar}
-                  alt={item?.author}
-                  className="w-5 h-5 sm:w-6 sm:h-6 rounded-full object-cover"
-                />
-                <span className="text-xs sm:text-sm text-muted-foreground truncate">{item?.author}</span>
-                <span className="text-xs text-muted-foreground">•</span>
-                <span className="text-xs text-muted-foreground">{item?.timeAgo}</span>
-              </div>
-
-              {/* Stats */}
-              <div className="flex items-center space-x-3 sm:space-x-4 text-xs sm:text-sm text-muted-foreground mb-3">
-                <div className="flex items-center space-x-1">
-                  <Icon name="Eye" size={12} className="sm:w-3.5 sm:h-3.5" />
-                  <span>{item?.views}</span>
-                </div>
-                <div className="flex items-center space-x-1">
-                  <Icon name="Heart" size={12} className="sm:w-3.5 sm:h-3.5" />
-                  <span>{item?.likes}</span>
-                </div>
-                <div className="flex items-center space-x-1">
-                  <Icon name="MessageCircle" size={12} className="sm:w-3.5 sm:h-3.5" />
-                  <span>{item?.comments}</span>
-                </div>
-              </div>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-1">
-                {item?.tags?.slice(0, 2)?.map((tag, index) => (
-                  <span
-                    key={index}
-                    className="px-2 py-1 bg-background rounded text-xs text-muted-foreground"
-                  >
-                    #{tag}
-                  </span>
-                ))}
-                {item?.tags?.length > 2 && (
-                  <span className="px-2 py-1 bg-background rounded text-xs text-muted-foreground">
-                    +{item?.tags?.length - 2}
-                  </span>
-                )}
-              </div>
-            </div>
-          </div>
-        ))}
+            Join Waitlist
+          </Button>
+        </div>
       </div>
-      {/* Load More */}
+      {/* Learn More */}
       <div className="mt-8 text-center">
         <Button variant="outline">
-          <Icon name="MoreHorizontal" size={16} />
-          Load More Content
+          <Icon name="Info" size={16} />
+          Learn More About Features
         </Button>
       </div>
       {/* Community Stats */}
       <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="text-center p-4 bg-muted rounded-lg">
           <Icon name="Image" size={24} className="text-neon-purple mx-auto mb-2" />
-          <div className="text-lg font-semibold text-foreground">1,247</div>
+          <div className="text-lg font-semibold text-foreground">0</div>
           <div className="text-sm text-muted-foreground">Artworks</div>
         </div>
         
         <div className="text-center p-4 bg-muted rounded-lg">
           <Icon name="Play" size={24} className="text-electric-blue mx-auto mb-2" />
-          <div className="text-lg font-semibold text-foreground">3,892</div>
+          <div className="text-lg font-semibold text-foreground">0</div>
           <div className="text-sm text-muted-foreground">Highlights</div>
         </div>
         
         <div className="text-center p-4 bg-muted rounded-lg">
           <Icon name="BookOpen" size={24} className="text-success mx-auto mb-2" />
-          <div className="text-lg font-semibold text-foreground">567</div>
+          <div className="text-lg font-semibold text-foreground">0</div>
           <div className="text-sm text-muted-foreground">Tutorials</div>
         </div>
         
         <div className="text-center p-4 bg-muted rounded-lg">
           <Icon name="Award" size={24} className="text-golden-cta mx-auto mb-2" />
-          <div className="text-lg font-semibold text-foreground">2,134</div>
+          <div className="text-lg font-semibold text-foreground">0</div>
           <div className="text-sm text-muted-foreground">Achievements</div>
         </div>
       </div>

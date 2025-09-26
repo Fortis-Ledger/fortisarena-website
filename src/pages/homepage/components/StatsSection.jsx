@@ -110,6 +110,19 @@ const StatsSection = () => {
           </p>
         </motion.div>
 
+        {/* Our Goals Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h3 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+            Our Goals
+          </h3>
+        </motion.div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {statsData?.map((stat, index) => (
             <motion.div

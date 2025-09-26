@@ -12,7 +12,7 @@ const SocialIntegration = () => {
       icon: 'MessageSquare',
       color: 'text-indigo-500',
       bgColor: 'bg-indigo-500/10',
-      members: '47,832',
+      members: '500+',
       status: 'online',
       description: 'Join our main community hub for real-time chat and events',
       url: 'https://discord.com/invite/qTTYxTnK3s'
@@ -23,7 +23,7 @@ const SocialIntegration = () => {
       icon: 'Twitter',
       color: 'text-blue-500',
       bgColor: 'bg-blue-500/10',
-      members: '23,456',
+      members: '200+',
       status: 'active',
       description: 'Follow for updates, announcements, and community highlights',
       url: 'https://x.com/fortisarena'
@@ -34,32 +34,10 @@ const SocialIntegration = () => {
       icon: 'Youtube',
       color: 'text-red-500',
       bgColor: 'bg-red-500/10',
-      members: '18,920',
+      members: '100+',
       status: 'active',
       description: 'Watch tutorials, highlights, and community content',
       url: 'https://youtube.com/@fortisarena'
-    },
-    {
-      id: 'twitch',
-      name: 'Twitch',
-      icon: 'Tv',
-      color: 'text-purple-500',
-      bgColor: 'bg-purple-500/10',
-      members: '12,340',
-      status: 'live',
-      description: 'Watch live tournaments and community streams',
-      url: '#'
-    },
-    {
-      id: 'reddit',
-      name: 'Reddit',
-      icon: 'MessageCircle',
-      color: 'text-orange-500',
-      bgColor: 'bg-orange-500/10',
-      members: '8,765',
-      status: 'active',
-      description: 'Discuss strategies, share content, and get community support',
-      url: '#'
     },
     {
       id: 'telegram',
@@ -67,51 +45,14 @@ const SocialIntegration = () => {
       icon: 'Send',
       color: 'text-blue-400',
       bgColor: 'bg-blue-400/10',
-      members: '15,678',
+      members: '300+',
       status: 'active',
       description: 'Get instant updates and participate in community discussions',
       url: 'https://t.me/fortisarena'
     }
   ];
 
-  const recentActivity = [
-    {
-      id: 1,
-      platform: 'discord',
-      type: 'message',
-      content: "New tournament announced! Registration opens tomorrow 🎮",
-      author: "GameMaster_Official",
-      timestamp: "2 minutes ago",
-      reactions: 47
-    },
-    {
-      id: 2,
-      platform: 'twitter',
-      type: 'tweet',
-      content: "🚀 FortisArena community just hit 50K members! Thank you all for being part of this incredible journey. The future of gaming is decentralized! #FortisArena #Web3Gaming",
-      author: "@FortisArena",
-      timestamp: "15 minutes ago",
-      reactions: 234
-    },
-    {
-      id: 3,
-      platform: 'twitch',
-      type: 'stream',
-      content: "🔴 LIVE: Championship Finals - ShadowStrike vs QuantumGamer",
-      author: "FortisArena_Official",
-      timestamp: "1 hour ago",
-      reactions: 1205
-    },
-    {
-      id: 4,
-      platform: 'youtube',
-      type: 'video',
-      content: "How to Master Advanced Movement Techniques - Pro Player Guide",
-      author: "ProCoach_Alex",
-      timestamp: "3 hours ago",
-      reactions: 892
-    }
-  ];
+  const recentActivity = [];
 
   const toggleConnection = (platformId) => {
     setConnectedPlatforms(prev => 
@@ -150,7 +91,7 @@ const SocialIntegration = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {socialPlatforms?.map((platform) => {
             const isConnected = connectedPlatforms?.includes(platform?.id);
             
@@ -196,59 +137,31 @@ const SocialIntegration = () => {
           })}
         </div>
       </div>
-      {/* Recent Activity Feed */}
+      {/* Activity Feed Coming Soon */}
       <div className="bg-card border border-border rounded-xl p-6">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h2 className="text-2xl font-bold text-foreground mb-2">Live Activity Feed</h2>
-            <p className="text-muted-foreground">Latest updates from all our social channels</p>
+        <div className="text-center py-8">
+          <Icon name="Activity" size={48} className="text-muted-foreground mx-auto mb-4" />
+          <h2 className="text-2xl font-bold text-foreground mb-2">Live Activity Feed</h2>
+          <p className="text-muted-foreground mb-6">Real-time updates from all our social channels</p>
+          
+          <div className="bg-gradient-to-r from-accent/10 to-transparent border border-accent/20 rounded-lg p-6 mb-6">
+            <h3 className="font-semibold text-foreground mb-2">Coming Soon</h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              We're building a live activity feed that will show real-time updates from Discord, Twitter, YouTube, and Telegram
+            </p>
+            <div className="flex items-center justify-center space-x-4 text-xs text-muted-foreground">
+              <span className="inline-flex items-center px-2 py-1 rounded-full bg-accent/10 text-accent">
+                Q2 2026
+              </span>
+              <span className="inline-flex items-center px-2 py-1 rounded-full bg-muted text-muted-foreground">
+                In Development
+              </span>
+            </div>
           </div>
-          <Button variant="outline" size="sm">
-            <Icon name="RefreshCw" size={16} />
-            Refresh
-          </Button>
-        </div>
 
-        <div className="space-y-4">
-          {recentActivity?.map((activity) => {
-            const platform = socialPlatforms?.find(p => p?.id === activity?.platform);
-            
-            return (
-              <div
-                key={activity?.id}
-                className="flex items-start space-x-4 p-4 bg-muted rounded-lg hover:bg-muted/80 transition-colors"
-              >
-                <div className={`p-2 rounded-lg ${platform?.bgColor || 'bg-muted'}`}>
-                  <Icon name={getPlatformIcon(activity?.platform)} size={16} className={platform?.color || 'text-muted-foreground'} />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center space-x-2 mb-1">
-                    <span className="font-medium text-foreground">{activity?.author}</span>
-                    <span className="text-sm text-muted-foreground">on {platform?.name}</span>
-                    <span className="text-xs text-muted-foreground">•</span>
-                    <span className="text-xs text-muted-foreground">{activity?.timestamp}</span>
-                  </div>
-                  
-                  <p className="text-sm text-foreground mb-2">{activity?.content}</p>
-                  
-                  <div className="flex items-center space-x-4 text-xs text-muted-foreground">
-                    <div className="flex items-center space-x-1">
-                      <Icon name="Heart" size={12} />
-                      <span>{activity?.reactions}</span>
-                    </div>
-                    <button className="hover:text-foreground transition-colors">Reply</button>
-                    <button className="hover:text-foreground transition-colors">Share</button>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="mt-6 text-center">
           <Button variant="outline">
-            <Icon name="MoreHorizontal" size={16} />
-            Load More Activity
+            <Icon name="Bell" size={16} />
+            Get Notified When Live
           </Button>
         </div>
       </div>
@@ -257,24 +170,40 @@ const SocialIntegration = () => {
         <h3 className="text-lg font-semibold text-foreground mb-4">Quick Actions</h3>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <Button variant="outline" className="flex-col h-auto py-4">
+          <Button 
+            variant="outline" 
+            className="flex-col h-auto py-4"
+            onClick={() => window.open('https://discord.com/invite/qTTYxTnK3s', '_blank')}
+          >
             <Icon name="MessageSquare" size={20} className="mb-2" />
             <span className="text-sm">Join Discord</span>
           </Button>
           
-          <Button variant="outline" className="flex-col h-auto py-4">
-            <Icon name="Share" size={20} className="mb-2" />
-            <span className="text-sm">Share Profile</span>
+          <Button 
+            variant="outline" 
+            className="flex-col h-auto py-4"
+            onClick={() => window.open('https://x.com/fortisarena', '_blank')}
+          >
+            <Icon name="Twitter" size={20} className="mb-2" />
+            <span className="text-sm">Follow Twitter</span>
           </Button>
           
-          <Button variant="outline" className="flex-col h-auto py-4">
-            <Icon name="Bell" size={20} className="mb-2" />
-            <span className="text-sm">Notifications</span>
+          <Button 
+            variant="outline" 
+            className="flex-col h-auto py-4"
+            onClick={() => window.open('https://youtube.com/@fortisarena', '_blank')}
+          >
+            <Icon name="Youtube" size={20} className="mb-2" />
+            <span className="text-sm">Subscribe YouTube</span>
           </Button>
           
-          <Button variant="outline" className="flex-col h-auto py-4">
-            <Icon name="Settings" size={20} className="mb-2" />
-            <span className="text-sm">Preferences</span>
+          <Button 
+            variant="outline" 
+            className="flex-col h-auto py-4"
+            onClick={() => window.open('https://t.me/fortisarena', '_blank')}
+          >
+            <Icon name="Send" size={20} className="mb-2" />
+            <span className="text-sm">Join Telegram</span>
           </Button>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 
@@ -27,7 +28,13 @@ const VisionSection = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-br from-gaming-dark via-gaming-secondary to-gaming-dark rounded-2xl p-8 lg:p-12 text-white mb-12 neural-network">
+    <motion.div 
+      className="bg-gradient-to-br from-gaming-dark via-gaming-secondary to-gaming-dark rounded-2xl p-8 lg:p-12 text-white mb-12 neural-network"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+    >
       <div className="text-center mb-12">
         <h2 className="text-3xl lg:text-4xl font-heading font-bold mb-4">
           The Future of Gaming is <span className="text-electric-blue">Decentralized</span>
@@ -61,7 +68,7 @@ const VisionSection = () => {
           Join the Revolution
         </Button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
