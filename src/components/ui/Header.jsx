@@ -107,15 +107,17 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center">
-            <Button 
-              variant="glow-accent" 
-              size="glow-sm"
-              className="font-semibold"
-              iconName="ArrowRight"
-              iconPosition="right"
-            >
-              Join Revolution
-            </Button>
+            <Link to="/waitlist">
+              <Button 
+                variant="glow-accent" 
+                size="glow-sm"
+                className="font-semibold"
+                iconName="ArrowRight"
+                iconPosition="right"
+              >
+                Join Revolution
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -147,16 +149,18 @@ const Header = () => {
             ))}
             
             <div className="pt-3 sm:pt-4 border-t border-border">
-              <Button 
-                variant="glow-accent" 
-                size="glow-sm"
-                fullWidth
-                className="font-semibold text-sm sm:text-base"
-                iconName="ArrowRight"
-                iconPosition="right"
-              >
-                Join Revolution
-              </Button>
+              <Link to="/waitlist" onClick={() => setIsMenuOpen(false)}>
+                <Button 
+                  variant="glow-accent" 
+                  size="glow-sm"
+                  fullWidth
+                  className="font-semibold text-sm sm:text-base"
+                  iconName="ArrowRight"
+                  iconPosition="right"
+                >
+                  Join Revolution
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

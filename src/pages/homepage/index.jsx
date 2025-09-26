@@ -5,7 +5,7 @@ import HeroSection from './components/HeroSection';
 import StatsSection from './components/StatsSection';
 import FeaturesSection from './components/FeaturesSection';
 import CommunitySection from './components/CommunitySection';
-import NewsletterSection from './components/NewsletterSection';
+import NewsletterSection from './components/NewsLetterSection';
 import Footer from '../../components/ui/Footer';
 
 const Homepage = () => {
