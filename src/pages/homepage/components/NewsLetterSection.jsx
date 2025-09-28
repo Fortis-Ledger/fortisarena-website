@@ -67,25 +67,17 @@ const NewsletterSection = () => {
               You're now part of the FortisArena community. Check your email for a special welcome bonus!
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button
-                variant="glow"
-                size="glow-lg"
-                className="font-semibold"
-                iconName="MessageCircle"
-                iconPosition="left"
+              <button
+                className="button"
                 onClick={() => window.open('https://discord.com/invite/qTTYxTnK3s', '_blank')}
               >
-                Join Discord
-              </Button>
-              <Button
-                variant="glow-accent"
-                size="glow-lg"
-                className="font-semibold"
-                iconName="FileText"
-                iconPosition="left"
+                <span>Join Discord</span>
+              </button>
+              <button
+                className="button"
               >
-                Download Whitepaper
-              </Button>
+                <span>Download Whitepaper</span>
+              </button>
             </div>
           </motion.div>
         </div>

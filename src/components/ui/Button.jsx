@@ -24,9 +24,9 @@ const buttonVariants = cva(
                 "advanced-outline": "btn-17 btn-outline",
                 "advanced-gradient": "btn-17 btn-gradient",
                 // Glow Button Variants
-                glow: "btn-glow btn-gradient",
-                "glow-primary": "btn-glow btn-primary",
-                "glow-accent": "btn-glow btn-accent",
+                glow: "btn-glow btn-gradient btn-3d",
+                "glow-primary": "btn-glow btn-primary btn-3d",
+                "glow-accent": "btn-glow btn-accent btn-3d",
             },
             size: {
                 default: "h-10 px-4 py-2",

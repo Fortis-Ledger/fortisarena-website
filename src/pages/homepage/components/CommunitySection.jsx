@@ -190,26 +190,18 @@ const CommunitySection = () => {
               Connect with like-minded gamers and be part of the decentralized gaming movement.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button
-                variant="glow"
-                size="glow-lg"
-                className="font-semibold"
-                iconName="MessageCircle"
-                iconPosition="left"
+              <button
+                className="button"
                 onClick={() => window.open('https://discord.com/invite/qTTYxTnK3s', '_blank')}
               >
-                Join Discord
-              </Button>
-              <Button
-                variant="glow-accent"
-                size="glow-lg"
-                className="font-semibold"
-                iconName="Bell"
-                iconPosition="left"
+                <span>Join Discord</span>
+              </button>
+              <button
+                className="button"
                 onClick={() => window.open('https://substack.com/@fortisarena', '_blank')}
               >
-                Get Updates
-              </Button>
+                <span>Get Updates</span>
+              </button>
             </div>
           </div>
         </motion.div>

@@ -64,25 +64,17 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 px-4 sm:px-0"
         >
-          <Button 
-            variant="glow" 
-            size="glow-lg"
-            className="font-semibold w-full sm:w-auto"
-            iconName="Play"
-            iconPosition="left"
+          <button 
+            className="button w-full sm:w-auto"
           >
-            Experience the Vision
-          </Button>
+            <span>Experience the Vision</span>
+          </button>
           
-          <Button 
-            variant="glow-accent" 
-            size="glow-lg" 
-            className="font-semibold w-full sm:w-auto"
-            iconName="FileText"
-            iconPosition="left"
+          <button 
+            className="button w-full sm:w-auto"
           >
-            Read Manifesto
-          </Button>
+            <span>Read Manifesto</span>
+          </button>
         </motion.div>
 
       </div>

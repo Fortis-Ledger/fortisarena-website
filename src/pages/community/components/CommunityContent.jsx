@@ -157,13 +157,11 @@ const CommunityContent = () => {
           <p className="text-xs sm:text-sm text-muted-foreground mb-4">
             Join our community to get early access to content sharing features
           </p>
-          <Button 
-            variant="glow"
-            size="glow-lg"
-            className="font-semibold"
+          <button 
+            className="button"
           >
-            Join Waitlist
-          </Button>
+            <span>Join Waitlist</span>
+          </button>
         </div>
       </div>
       {/* Learn More */}

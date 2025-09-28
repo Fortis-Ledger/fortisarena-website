@@ -31,7 +31,7 @@ const Footer = () => {
       title: 'Resources',
       links: [
         { name: 'Whitepaper', path: '/docs/FortisArena White Paper.pdf', external: true },
-        { name: 'Documentation', path: '#' },
+        { name: 'Documentation', path: 'https://docs.fortisarena.io' },
         { name: 'API Guide', path: '#' },
         { name: 'Security Audit', path: '#' }
       ]
@@ -39,10 +39,10 @@ const Footer = () => {
     legal: {
       title: 'Legal',
       links: [
-        { name: 'Privacy Policy', path: '#' },
-        { name: 'Terms of Service', path: '#' },
-        { name: 'Cookie Policy', path: '#' },
-        { name: 'Disclaimer', path: '#' }
+        { name: 'Privacy Policy', path: 'https://docs.fortisarena.io/legal/privacy-policy', external: true },
+        { name: 'Terms of Service', path: 'https://docs.fortisarena.io/legal/terms-conditions', external: true },
+        { name: 'Cookie Policy', path: 'https://docs.fortisarena.io/legal/cookie-policy', external: true },
+        { name: 'Disclaimer', path: 'https://docs.fortisarena.io/legal/disclaimer', external: true }
       ]
     }
   };
@@ -59,14 +59,13 @@ const Footer = () => {
   const Logo = () => (
     <div className="flex items-center space-x-3">
       <div className="relative">
-        <div className="w-12 h-12 rounded-xl flex items-center justify-center gaming-glow">
+        <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gray-800">
           <img
             src="/favicon64.ico"
             alt="FortisArena Logo"
             className="w-12 h-12 object-contain"
           />
         </div>
-        <div className="absolute -top-1 -right-1 w-3 h-3 bg-golden-cta rounded-full animate-pulse"></div>
       </div>
       <div className="flex flex-col">
         <span className="font-heading font-bold text-2xl text-white">
@@ -80,10 +79,7 @@ const Footer = () => {
   );
 
   return (
-    <footer className="bg-gradient-to-b from-gaming-dark to-black relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 neural-network opacity-20"></div>
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-electric-blue to-transparent"></div>
+    <footer className="bg-black relative">
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         {/* Top Section - Logo and Newsletter */}
@@ -126,7 +122,7 @@ const Footer = () => {
             viewport={{ once: true }}
           >
             <div className="flex items-center space-x-2 mb-4">
-              <Icon name="Bell" size={20} className="text-golden-cta" />
+              <Icon name="Bell" size={20} className="text-blue-500" />
               <h3 className="font-heading font-semibold text-lg text-white">
                 Stay Updated with FortisArena
               </h3>
@@ -139,11 +135,11 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-electric-blue transition-colors"
+                className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
               />
-              <RainbowButton className="font-semibold">
-                Subscribe Now
-              </RainbowButton>
+              <button className="button">
+                <span>Subscribe Now</span>
+              </button>
             </div>
           </motion.div>
         </div>
@@ -206,7 +202,7 @@ const Footer = () => {
           <div className="flex items-center space-x-6 text-sm">
             <span className="text-gray-400">Powered by</span>
             <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 bg-gradient-to-r from-electric-blue to-neon-purple rounded"></div>
+              <div className="w-4 h-4 bg-blue-500 rounded"></div>
               <span className="text-white font-semibold">Web3 Technology</span>
             </div>
           </div>

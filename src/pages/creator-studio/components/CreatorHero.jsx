@@ -82,12 +82,12 @@ const CreatorHero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <RainbowButton className="font-semibold w-full sm:w-auto">
-                Creator Studio Soon
-              </RainbowButton>
-              <RainbowButton className="font-semibold w-full sm:w-auto">
-                Beta Testing Soon
-              </RainbowButton>
+              <button className="button w-full sm:w-auto">
+                <span>Creator Studio Soon</span>
+              </button>
+              <button className="button w-full sm:w-auto">
+                <span>Beta Testing Soon</span>
+              </button>
             </motion.div>
 
             {/* Stats */}

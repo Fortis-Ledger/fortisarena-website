@@ -498,24 +498,16 @@ const RoadmapPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <Button
-                variant="glow"
-                size="glow-lg"
-                className="font-semibold w-full sm:w-auto"
-                iconName="Vote"
-                iconPosition="left"
+              <button
+                className="button w-full sm:w-auto"
               >
-                Join Governance
-              </Button>
-              <Button
-                variant="glow-accent"
-                size="glow-lg"
-                className="font-semibold w-full sm:w-auto"
-                iconName="Download"
-                iconPosition="left"
+                <span>Join Governance</span>
+              </button>
+              <button
+                className="button w-full sm:w-auto"
               >
-                Download Whitepaper
-              </Button>
+                <span>Download Whitepaper</span>
+              </button>
             </motion.div>
           </div>
         </section>
@@ -601,9 +593,9 @@ const RoadmapPage = () => {
                   <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">
                     Get notified about milestone completions and major announcements.
                   </p>
-                  <RainbowButton className="w-full text-sm sm:text-base">
-                    Subscribe to Updates
-                  </RainbowButton>
+                  <button className="button w-full text-sm sm:text-base">
+                    <span>Subscribe to Updates</span>
+                  </button>
                 </div>
               </div>
             </div>

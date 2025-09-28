@@ -104,14 +104,11 @@ const CallToActionSection = () => {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <Button 
-              variant="default" 
-              size="xl"
-              className="bg-golden-cta hover:bg-golden-cta/90 text-gaming-dark font-bold electric-pulse text-lg px-12 py-6"
+            <button 
+              className="button text-lg px-12 py-6"
             >
-              <Icon name="Crown" size={24} />
-              Claim Your Gaming Throne
-            </Button>
+              <span>Claim Your Gaming Throne</span>
+            </button>
           </motion.div>
         </motion.div>
 

@@ -694,24 +694,16 @@ const TokenomicsPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <Button 
-                variant="glow"
-                size="glow-lg"
-                className="font-semibold w-full sm:w-auto"
-                iconName="Download"
-                iconPosition="left"
+              <button 
+                className="button w-full sm:w-auto"
               >
-                Download Whitepaper
-              </Button>
-              <Button 
-                variant="glow-accent"
-                size="glow-lg"
-                className="font-semibold w-full sm:w-auto"
-                iconName="BarChart3"
-                iconPosition="left"
+                <span>Download Whitepaper</span>
+              </button>
+              <button 
+                className="button w-full sm:w-auto"
               >
-                View Live Metrics
-              </Button>
+                <span>View Live Metrics</span>
+              </button>
             </motion.div>
           </motion.div>
         </div>
@@ -755,12 +747,12 @@ const TokenomicsPage = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 px-4 sm:px-0">
-            <RainbowButton className="font-semibold w-full sm:w-auto">
-              FRT Soon Available
-            </RainbowButton>
-            <RainbowButton className="font-semibold w-full sm:w-auto">
-              Join Community
-            </RainbowButton>
+            <button className="button w-full sm:w-auto">
+              <span>FRT Soon Available</span>
+            </button>
+            <button className="button w-full sm:w-auto">
+              <span>Join Community</span>
+            </button>
           </div>
         </div>
       </section>

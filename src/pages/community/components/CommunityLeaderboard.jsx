@@ -141,9 +141,9 @@ const CommunityLeaderboard = () => {
           </p>
           <button 
             onClick={() => navigate('/waitlist', { state: { from: '/community' } })}
-            className="bg-accent hover:bg-accent/90 text-accent-foreground px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors"
+            className="button text-xs sm:text-sm"
           >
-            Join Waitlist
+            <span>Join Waitlist</span>
           </button>
         </div>
       </div>

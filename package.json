@@ -28,7 +28,10 @@
   },
   "dependencies": {
     "@dhiwise/component-tagger": "^1.0.10",
+    "@gsap/react": "^2.1.2",
     "@radix-ui/react-slot": "^1.2.3",
+    "@react-three/drei": "^9.88.13",
+    "@react-three/fiber": "^8.15.19",
     "@reduxjs/toolkit": "^2.6.1",
     "@tailwindcss/forms": "^0.5.7",
     "@testing-library/jest-dom": "^5.15.1",
@@ -41,6 +44,7 @@
     "date-fns": "^4.1.0",
     "dotenv": "^16.0.1",
     "framer-motion": "^10.16.4",
+    "gsap": "^3.13.0",
     "lucide-react": "^0.484.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -53,7 +57,8 @@
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-elevation": "^2.0.0",
-    "tailwindcss-fluid-type": "^2.0.7"
+    "tailwindcss-fluid-type": "^2.0.7",
+    "three": "^0.180.0"
   },
   "scripts": {
     "start": "vite",

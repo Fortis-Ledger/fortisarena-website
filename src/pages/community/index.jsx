@@ -96,26 +96,18 @@ const CommunityPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                <Button
-                  variant="glow"
-                  size="glow-lg"
-                  className="font-semibold w-full sm:w-auto"
-                  iconName="MessageCircle"
-                  iconPosition="left"
+                <button
+                  className="button w-full sm:w-auto"
                   onClick={() => window.open('https://discord.com/invite/qTTYxTnK3s', '_blank')}
                 >
-                  Join Discord Community
-                </Button>
+                  <span>Join Discord Community</span>
+                </button>
                 
-                <Button
-                  variant="glow-accent"
-                  size="glow-lg"
-                  className="font-semibold w-full sm:w-auto"
-                  iconName="Vote"
-                  iconPosition="left"
+                <button
+                  className="button w-full sm:w-auto"
                 >
-                  Participate in DAO
-                </Button>
+                  <span>Participate in DAO</span>
+                </button>
               </motion.div>
             </motion.div>
 
@@ -209,25 +201,17 @@ const CommunityPage = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 px-4 sm:px-0">
-              <Button 
-                variant="glow" 
-                size="glow-lg"
-                className="font-semibold w-full sm:w-auto"
-                iconName="Rocket"
-                iconPosition="left"
+              <button 
+                className="button w-full sm:w-auto"
               >
-                Start Your Journey
-              </Button>
+                <span>Start Your Journey</span>
+              </button>
               
-              <Button 
-                variant="glow-accent" 
-                size="glow-lg" 
-                className="font-semibold w-full sm:w-auto"
-                iconName="BookOpen"
-                iconPosition="left"
+              <button 
+                className="button w-full sm:w-auto"
               >
-                Learn More
-              </Button>
+                <span>Learn More</span>
+              </button>
             </div>
           </div>
         </section>

@@ -138,14 +138,12 @@ const Waitlist = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 }}
             >
-              <Button
-                variant="glow"
-                size="glow-lg"
-                className="font-semibold"
+              <button
+                className="button"
                 onClick={() => navigate('/')}
               >
-                Go to Home Now
-              </Button>
+                <span>Go to Home Now</span>
+              </button>
             </motion.div>
           </motion.div>
         </div>
@@ -329,16 +327,13 @@ const Waitlist = () => {
                 transition={{ delay: 1.2 }}
                 className="pt-4"
               >
-                <Button 
+                <button 
                   type="submit" 
-                  variant="glow"
-                  size="glow-lg"
-                  className="w-full font-semibold"
-                  loading={isSubmitting}
+                  className="button w-full"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'Joining Arena...' : 'Join Arena'}
-                </Button>
+                  <span>{isSubmitting ? 'Joining Arena...' : 'Join Arena'}</span>
+                </button>
               </motion.div>
             </form>
 
