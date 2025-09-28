@@ -65,7 +65,7 @@ const FeaturesSection = () => {
         >
         <h2 className="font-heading text-4xl md:text-6xl font-bold text-foreground mb-6">
           Revolutionary Gaming
-          <span className="block holographic-text colorful-glow">
+          <span className="block text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text">
             Features
           </span>
         </h2>
@@ -89,7 +89,7 @@ const FeaturesSection = () => {
               <div className="glassmorphism-card p-8 rounded-2xl border border-border hover:border-primary/20 card-3d h-full relative overflow-hidden group-hover:shadow-2xl transition-all duration-300">
                 {/* Icon */}
                 <motion.div 
-                  className="w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center mb-6 gaming-glow floating colorful-glow relative z-10"
+                  className="w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center mb-6 gaming-glow floating relative z-10"
                   whileHover={{ 
                     scale: 1.2, 
                     rotate: 360,
