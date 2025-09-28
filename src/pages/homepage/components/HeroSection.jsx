@@ -66,7 +66,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <div className="min-h-screen relative overflow-x-hidden bg-black pt-2 sm:pt-8">
+    <div className="min-h-screen relative overflow-x-hidden bg-black pt-8 sm:pt-8">
       {/* Neon glow effects - Optimized */}
       <div className="absolute inset-0">
         {/* Neon accent glows */}
@@ -102,7 +102,7 @@ const HeroSection = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-2 pt-4 sm:py-8 sm:pt-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-6 pt-8 sm:py-8 sm:pt-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[80vh]">
           {/* Left Section - Text Content */}
           <motion.div 
