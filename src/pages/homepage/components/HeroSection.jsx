@@ -82,7 +82,7 @@ const HeroSection = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 pt-40 sm:pt-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
           {/* Left Section - Text Content */}
           <motion.div 
@@ -312,36 +312,6 @@ const HeroSection = () => {
           </motion.div>
         </div>
 
-        {/* Partner Logos Section */}
-        <motion.div
-          className="mt-20 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2 }}
-        >
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-60">
-            <div className="flex items-center space-x-2 text-white">
-              <div className="w-6 h-6 bg-white/20 rounded"></div>
-              <span className="font-medium">Dreamure</span>
-            </div>
-            <div className="flex items-center space-x-2 text-white">
-              <div className="w-6 h-6 bg-white/20 rounded"></div>
-              <span className="font-medium">SWITCH.WIN</span>
-            </div>
-            <div className="flex items-center space-x-2 text-white">
-              <div className="w-6 h-6 bg-white/20 rounded"></div>
-              <span className="font-medium">Sphere</span>
-            </div>
-            <div className="flex items-center space-x-2 text-white">
-              <div className="w-6 h-6 bg-white/20 rounded"></div>
-              <span className="font-medium">PinSpace</span>
-            </div>
-            <div className="flex items-center space-x-2 text-white">
-              <div className="w-6 h-6 bg-white/20 rounded"></div>
-              <span className="font-medium">Visionix</span>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ const CommunitySection = () => {
     {
       platform: 'Discord',
       icon: 'MessageSquare',
-      members: '45,000+',
+      members: '500+',
       description: 'Active community members',
       color: 'from-indigo-500 to-purple-500',
       link: 'https://discord.com/invite/qTTYxTnK3s'
@@ -17,7 +17,7 @@ const CommunitySection = () => {
     {
       platform: 'Twitter',
       icon: 'Twitter',
-      members: '28,000+',
+      members: '1000+',
       description: 'Followers and supporters',
       color: 'from-blue-400 to-cyan-400',
       link: 'https://x.com/fortisarena'
@@ -25,7 +25,7 @@ const CommunitySection = () => {
     {
       platform: 'Telegram',
       icon: 'Send',
-      members: '15,000+',
+      members: '500+',
       description: 'Community discussions',
       color: 'from-blue-500 to-blue-600',
       link: 'https://t.me/fortisarena'
@@ -33,34 +33,13 @@ const CommunitySection = () => {
     {
       platform: 'YouTube',
       icon: 'Play',
-      members: '12,000+',
+      members: '1000+',
       description: 'Subscribers and viewers',
       color: 'from-red-500 to-red-600',
       link: 'https://youtube.com/@fortisarena'
     }
   ];
 
-  const testimonials = [
-    {
-      name: 'Alex Chen',
-      role: 'Pro Gamer',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-      content: `FortisArena has completely changed how I approach competitive gaming. The fair matchmaking and transparent rewards system make every tournament feel legitimate and rewarding.`,
-      rating: 5
-    },
-    {
-      name: 'Sarah Rodriguez',
-      role: 'Content Creator',
-      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
-      content: `The creator tools and community engagement features are incredible. I've grown my audience and earnings significantly since joining the FortisArena ecosystem.`,
-      rating: 5
-    },
-    {
-      name: 'Marcus Johnson',role: 'Tournament Organizer',avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
-      content: `Organizing tournaments has never been easier. The blockchain integration ensures complete transparency, and the community response has been phenomenal.`,
-      rating: 5
-    }
-  ];
 
   return (
     <section className="py-20 bg-gradient-to-b from-gaming-dark via-gaming-secondary to-gaming-dark relative overflow-hidden">
@@ -119,60 +98,6 @@ const CommunitySection = () => {
           ))}
         </div>
 
-        {/* Testimonials */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <h3 className="font-heading text-3xl font-bold text-white text-center mb-12">
-            What Our Community Says
-          </h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials?.map((testimonial, index) => (
-              <motion.div
-                key={testimonial?.name}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="glassmorphism p-6 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300"
-              >
-                {/* Rating */}
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial?.rating)]?.map((_, i) => (
-                    <Icon key={i} name="Star" size={16} className="text-golden-cta fill-current" />
-                  ))}
-                </div>
-
-                {/* Content */}
-                <p className="font-body text-gray-300 mb-6 leading-relaxed">
-                  "{testimonial?.content}"
-                </p>
-
-                {/* Author */}
-                <div className="flex items-center space-x-4">
-                  <img
-                    src={testimonial?.avatar}
-                    alt={testimonial?.name}
-                    className="w-12 h-12 rounded-full object-cover border-2 border-electric-blue/30"
-                  />
-                  <div>
-                    <h4 className="font-heading font-semibold text-white">
-                      {testimonial?.name}
-                    </h4>
-                    <p className="font-body text-sm text-gray-400">
-                      {testimonial?.role}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
 
         {/* CTA */}
         <motion.div

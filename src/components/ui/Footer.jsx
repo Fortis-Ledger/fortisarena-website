@@ -31,7 +31,7 @@ const Footer = () => {
       title: 'Resources',
       links: [
         { name: 'Whitepaper', path: '/docs/FortisArena White Paper.pdf', external: true },
-        { name: 'Documentation', path: 'https://docs.fortisarena.io' },
+        { name: 'Documentation', path: 'https://docs.fortisarena.io', external: true },
         { name: 'API Guide', path: '#' },
         { name: 'Security Audit', path: '#' }
       ]
