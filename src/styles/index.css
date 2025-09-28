@@ -43,6 +43,12 @@ body {
   color: var(--color-foreground);
   overflow-x: hidden;
   position: relative;
+  /* Performance optimizations */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 body::before {
@@ -259,34 +265,12 @@ body::before {
     0 0 90px rgba(0, 255, 0, 0.2);
 }
 
-/* Animated Colorful Border */
-.colorful-border {
-  position: relative;
-  background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ff00, #ff0080, #0080ff);
-  background-size: 400% 400%;
-  animation: gradient-shift 3s ease infinite;
-  padding: 2px;
-  border-radius: 12px;
-}
-
-.colorful-border::before {
-  content: '';
-  position: absolute;
-  inset: 2px;
-  background: #000000;
-  border-radius: 10px;
-  z-index: -1;
-}
 
 @keyframes holographic-shift {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
 }
 
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
 
 /* Floating Colorful Particles */
 .floating-particles {

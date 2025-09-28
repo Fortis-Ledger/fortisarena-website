@@ -67,31 +67,33 @@ const HeroSection = () => {
 
   return (
     <div className="min-h-screen relative overflow-x-hidden bg-black">
-      {/* Neon glow effects */}
+      {/* Neon glow effects - Optimized */}
       <div className="absolute inset-0">
         {/* Neon accent glows */}
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-purple-500/5 sm:bg-purple-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-cyan-500/5 sm:bg-cyan-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 sm:w-[600px] sm:h-[600px] bg-blue-500/3 sm:bg-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-purple-500/5 sm:bg-purple-500/10 rounded-full blur-2xl" style={{ willChange: 'auto' }}></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-cyan-500/5 sm:bg-cyan-500/10 rounded-full blur-2xl" style={{ willChange: 'auto' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 sm:w-[600px] sm:h-[600px] bg-blue-500/3 sm:bg-blue-500/5 rounded-full blur-2xl" style={{ willChange: 'auto' }}></div>
       </div>
 
-      {/* Floating particles background */}
+      {/* Floating particles background - Optimized */}
       <div className="absolute inset-0">
-        {Array.from({ length: 30 }).map((_, i) => (
+        {Array.from({ length: 15 }).map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-cyan-400/20 sm:bg-cyan-400/40 rounded-full shadow-lg shadow-cyan-400/10 sm:shadow-cyan-400/20"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
+              willChange: 'transform, opacity',
+              transform: 'translateZ(0)',
             }}
             animate={{
-              y: [-20, 20, -20],
-              opacity: [0.1, 0.6, 0.1],
-              scale: [0.5, 1, 0.5],
+              y: [-10, 10, -10],
+              opacity: [0.1, 0.4, 0.1],
+              scale: [0.8, 1, 0.8],
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: 4 + Math.random() * 2,
               repeat: Infinity,
               ease: "easeInOut"
             }}
@@ -229,28 +231,26 @@ const HeroSection = () => {
 
 
 
-                {/* 3D Crypto Coins with SVG Assets */}
+                {/* 3D Crypto Coins with SVG Assets - Optimized */}
                 {cryptoCoins.map((coin, index) => (
                   <motion.div
                     key={index}
                     className={`absolute w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 ${coin.position}`}
                     style={{
-                      filter: `drop-shadow(0 0 20px ${coin.glowColor}) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3))`,
-                      transform: 'perspective(1000px) rotateX(15deg)',
-                      transformStyle: 'preserve-3d'
+                      filter: `drop-shadow(0 0 15px ${coin.glowColor}) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2))`,
+                      transform: 'perspective(1000px) rotateX(15deg) translateZ(0)',
+                      transformStyle: 'preserve-3d',
+                      willChange: 'transform, opacity'
                     }}
                     initial={{ 
                       scale: 0, 
-                      opacity: 0,
-                      rotateY: 0,
-                      z: 0
+                      opacity: 0
                     }}
                     animate={{ 
                       scale: 1, 
                       opacity: 1,
                       rotateY: [0, 360],
-                      y: [0, -10, 0],
-                      z: [0, 20, 0],
+                      y: [0, -5, 0],
                       rotate: -360
                     }}
                     transition={{ 
@@ -265,57 +265,41 @@ const HeroSection = () => {
                         delay: 1.2 + index * 0.1
                       },
                       rotateY: {
-                        duration: 4 + index * 0.5,
+                        duration: 8 + index * 0.5,
                         repeat: Infinity,
                         ease: "linear"
                       },
                       y: {
-                        duration: 2 + index * 0.3,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      },
-                      z: {
-                        duration: 3 + index * 0.2,
+                        duration: 3 + index * 0.3,
                         repeat: Infinity,
                         ease: "easeInOut"
                       },
                       rotate: {
-                        duration: 120,
+                        duration: 60,
                         repeat: Infinity,
                         ease: "linear"
                       }
                     }}
                     whileHover={{ 
-                      scale: 1.3,
-                      rotateX: 25,
-                      rotateZ: 15,
-                      filter: `drop-shadow(0 0 30px ${coin.glowColor.replace('0.5', '0.8')}) drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4))`,
+                      scale: 1.2,
+                      rotateX: 20,
+                      rotateZ: 10,
+                      filter: `drop-shadow(0 0 25px ${coin.glowColor.replace('0.5', '0.7')}) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3))`,
                       transition: { duration: 0.2 }
                     }}
                     title={coin.name}
                   >
-                    <motion.img
+                    <img
                       src={coin.svgPath}
                       alt={coin.name}
                       className="w-full h-full object-contain"
-                      animate={{
-                        filter: [
-                          'brightness(1) saturate(1)',
-                          'brightness(1.2) saturate(1.3)',
-                          'brightness(1) saturate(1)'
-                        ]
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
+                      style={{ willChange: 'auto' }}
                     />
                   </motion.div>
                 ))}
               </motion.div>
 
-              {/* Center FortisArena Token */}
+              {/* Center FortisArena Token - Optimized */}
               <motion.div 
                 className="absolute inset-0 flex items-center justify-center"
                 initial={{ scale: 0, opacity: 0 }}
@@ -325,37 +309,38 @@ const HeroSection = () => {
                 <motion.div
                   className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40"
                   style={{
-                    filter: 'drop-shadow(0 0 30px rgba(59, 130, 246, 0.6)) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3))',
-                    transform: 'perspective(1000px) rotateX(15deg)',
-                    transformStyle: 'preserve-3d'
+                    filter: 'drop-shadow(0 0 20px rgba(59, 130, 246, 0.5)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2))',
+                    transform: 'perspective(1000px) rotateX(15deg) translateZ(0)',
+                    transformStyle: 'preserve-3d',
+                    willChange: 'transform'
                   }}
                   animate={{
                     rotateY: [0, 360],
-                    y: [0, -10, 0],
-                    scale: [1, 1.05, 1]
+                    y: [0, -5, 0],
+                    scale: [1, 1.02, 1]
                   }}
                   transition={{
                     rotateY: {
-                      duration: 8,
+                      duration: 12,
                       repeat: Infinity,
                       ease: "linear"
                     },
                     y: {
-                      duration: 3,
+                      duration: 4,
                       repeat: Infinity,
                       ease: "easeInOut"
                     },
                     scale: {
-                      duration: 2,
+                      duration: 3,
                       repeat: Infinity,
                       ease: "easeInOut"
                     }
                   }}
                   whileHover={{
-                    scale: 1.2,
-                    rotateX: 25,
-                    rotateZ: 15,
-                    filter: 'drop-shadow(0 0 40px rgba(59, 130, 246, 0.8)) drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4))',
+                    scale: 1.15,
+                    rotateX: 20,
+                    rotateZ: 10,
+                    filter: 'drop-shadow(0 0 30px rgba(59, 130, 246, 0.7)) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3))',
                     transition: { duration: 0.2 }
                   }}
                 >
@@ -363,6 +348,7 @@ const HeroSection = () => {
                     src="/token/FortisArena_3D.svg"
                     alt="FortisArena Token"
                     className="w-full h-full object-contain"
+                    style={{ willChange: 'auto' }}
                   />
                 </motion.div>
               </motion.div>

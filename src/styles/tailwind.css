@@ -319,22 +319,22 @@
     letter-spacing: -0.025em;
   }
 
-  /* Scrollbar Styling */
+  /* Scrollbar Styling - Hidden */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 0px;
+    background: transparent;
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--color-gaming-dark);
+    background: transparent;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, var(--color-electric-blue), var(--color-neon-purple));
-    border-radius: 4px;
+    background: transparent;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, var(--color-neon-purple), var(--color-neon-pink));
+    background: transparent;
   }
 
   /* Selection Styling */
