@@ -12,64 +12,82 @@ const HeroSection = () => {
     { 
       name: 'Bitcoin', 
       svgPath: '/token/Bitcoin_3D.svg', 
-      position: 'top-20 right-20',
+      position: 'top-8 right-8 sm:top-20 sm:right-20',
       glowColor: 'rgba(249, 115, 22, 0.5)'
     },
     { 
       name: 'Ethereum', 
       svgPath: '/token/Ethereum_3D.svg', 
-      position: 'top-20 left-20',
+      position: 'top-8 left-8 sm:top-20 sm:left-20',
       glowColor: 'rgba(37, 99, 235, 0.5)'
     },
     { 
       name: 'Solana', 
       svgPath: '/token/Solana_3D.svg', 
-      position: 'bottom-20 right-20',
+      position: 'bottom-8 right-8 sm:bottom-20 sm:right-20',
       glowColor: 'rgba(147, 51, 234, 0.5)'
     },
     { 
       name: 'Polygon', 
       svgPath: '/token/Polygon_3D.svg', 
-      position: 'right-32 top-1/3',
+      position: 'right-16 top-1/3 sm:right-32',
       glowColor: 'rgba(168, 85, 247, 0.5)'
     },
     { 
       name: 'Avalanche', 
       svgPath: '/token/Avalanche_3D.svg', 
-      position: 'bottom-20 left-20',
+      position: 'bottom-8 left-8 sm:bottom-20 sm:left-20',
       glowColor: 'rgba(239, 68, 68, 0.5)'
     },
     { 
       name: 'USD Coin', 
       svgPath: '/token/USD Coin_3D.svg', 
-      position: 'left-32 bottom-1/3',
+      position: 'left-16 bottom-1/3 sm:left-32',
       glowColor: 'rgba(59, 130, 246, 0.5)'
+    },
+    { 
+      name: 'DOT', 
+      svgPath: '/token/DOT_3D.svg', 
+      position: 'top-1/3 right-8 sm:top-1/3 sm:right-20',
+      glowColor: 'rgba(230, 0, 122, 0.5)'
+    },
+    { 
+      name: 'USDT', 
+      svgPath: '/token/USDT_3D.svg', 
+      position: 'top-1/3 left-8 sm:top-1/3 sm:left-20',
+      glowColor: 'rgba(26, 188, 156, 0.5)'
+    },
+    { 
+      name: 'EOS', 
+      svgPath: '/token/EOS_3D.svg', 
+      position: 'bottom-1/3 right-8 sm:bottom-1/3 sm:right-20',
+      glowColor: 'rgba(0, 0, 0, 0.6)'
     }
   ];
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-black">
+    <div className="min-h-screen relative overflow-x-hidden bg-black">
       {/* Neon glow effects */}
       <div className="absolute inset-0">
         {/* Neon accent glows */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-purple-500/5 sm:bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-cyan-500/5 sm:bg-cyan-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 sm:w-[600px] sm:h-[600px] bg-blue-500/3 sm:bg-blue-500/5 rounded-full blur-3xl"></div>
       </div>
 
       {/* Floating particles background */}
       <div className="absolute inset-0">
-        {Array.from({ length: 50 }).map((_, i) => (
+        {Array.from({ length: 30 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-cyan-400/40 rounded-full shadow-lg shadow-cyan-400/20"
+            className="absolute w-1 h-1 bg-cyan-400/20 sm:bg-cyan-400/40 rounded-full shadow-lg shadow-cyan-400/10 sm:shadow-cyan-400/20"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
             animate={{
               y: [-20, 20, -20],
-              opacity: [0.2, 1, 0.2],
+              opacity: [0.1, 0.6, 0.1],
               scale: [0.5, 1, 0.5],
             }}
             transition={{
@@ -82,8 +100,8 @@ const HeroSection = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 pt-40 sm:pt-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-20 pt-40 sm:pt-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[80vh]">
           {/* Left Section - Text Content */}
           <motion.div 
             className="space-y-8"
@@ -160,12 +178,12 @@ const HeroSection = () => {
 
           {/* Right Section - Circular Network Visualization */}
           <motion.div 
-            className="relative flex items-center justify-center"
+            className="relative flex items-center justify-center w-full h-full min-h-[350px] sm:min-h-[400px] md:min-h-[500px] py-8"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
           >
-            <div className="relative w-96 h-96 md:w-[500px] md:h-[500px]">
+            <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] mx-auto">
 
 
               {/* Orbital Container */}
@@ -180,31 +198,31 @@ const HeroSection = () => {
               >
               {/* Enhanced Concentric Circles */}
               <motion.div 
-                className="absolute inset-0 border-2 border-cyan-400/30 rounded-full"
+                className="absolute inset-0 border border-cyan-400/20 sm:border-2 sm:border-cyan-400/30 rounded-full"
                 style={{
-                  boxShadow: '0 0 20px rgba(6, 182, 212, 0.2), inset 0 0 20px rgba(6, 182, 212, 0.1)'
+                  boxShadow: '0 0 10px rgba(6, 182, 212, 0.1), inset 0 0 10px rgba(6, 182, 212, 0.05)'
                 }}
                 animate={{ rotate: 360 }}
                 transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
               />
               <motion.div 
-                className="absolute inset-8 border border-purple-400/25 rounded-full"
+                className="absolute inset-8 border border-purple-400/15 sm:border-purple-400/25 rounded-full"
                 style={{
-                  boxShadow: '0 0 15px rgba(168, 85, 247, 0.2)'
+                  boxShadow: '0 0 8px rgba(168, 85, 247, 0.1)'
                 }}
                 animate={{ rotate: -360 }}
                 transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
               />
               <motion.div 
-                className="absolute inset-16 border border-blue-400/20 rounded-full"
+                className="absolute inset-16 border border-blue-400/10 sm:border-blue-400/20 rounded-full"
                 style={{
-                  boxShadow: '0 0 10px rgba(59, 130, 246, 0.15)'
+                  boxShadow: '0 0 5px rgba(59, 130, 246, 0.08)'
                 }}
                 animate={{ rotate: 360 }}
                 transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
               />
               <motion.div 
-                className="absolute inset-24 border border-white/15 rounded-full"
+                className="absolute inset-24 border border-white/10 sm:border-white/15 rounded-full"
                 animate={{ rotate: -360 }}
                 transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
               />
@@ -215,7 +233,7 @@ const HeroSection = () => {
                 {cryptoCoins.map((coin, index) => (
                   <motion.div
                     key={index}
-                    className={`absolute w-12 h-12 md:w-16 md:h-16 ${coin.position}`}
+                    className={`absolute w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 ${coin.position}`}
                     style={{
                       filter: `drop-shadow(0 0 20px ${coin.glowColor}) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3))`,
                       transform: 'perspective(1000px) rotateX(15deg)',
@@ -297,17 +315,56 @@ const HeroSection = () => {
                 ))}
               </motion.div>
 
-              {/* Center Stats */}
+              {/* Center FortisArena Token */}
               <motion.div 
                 className="absolute inset-0 flex items-center justify-center"
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 1.5, type: "spring", stiffness: 200 }}
               >
-                <div className="text-center text-white">
-                  <div className="text-6xl md:text-7xl font-bold mb-2">20k+</div>
-                  <div className="text-lg md:text-xl font-medium">Gamers</div>
-                </div>
+                <motion.div
+                  className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40"
+                  style={{
+                    filter: 'drop-shadow(0 0 30px rgba(59, 130, 246, 0.6)) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3))',
+                    transform: 'perspective(1000px) rotateX(15deg)',
+                    transformStyle: 'preserve-3d'
+                  }}
+                  animate={{
+                    rotateY: [0, 360],
+                    y: [0, -10, 0],
+                    scale: [1, 1.05, 1]
+                  }}
+                  transition={{
+                    rotateY: {
+                      duration: 8,
+                      repeat: Infinity,
+                      ease: "linear"
+                    },
+                    y: {
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    },
+                    scale: {
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }
+                  }}
+                  whileHover={{
+                    scale: 1.2,
+                    rotateX: 25,
+                    rotateZ: 15,
+                    filter: 'drop-shadow(0 0 40px rgba(59, 130, 246, 0.8)) drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4))',
+                    transition: { duration: 0.2 }
+                  }}
+                >
+                  <img
+                    src="/token/FortisArena_3D.svg"
+                    alt="FortisArena Token"
+                    className="w-full h-full object-contain"
+                  />
+                </motion.div>
               </motion.div>
             </div>
           </motion.div>
