@@ -11,11 +11,22 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+      const scrolled = scrollY > 10;
+      console.log('Scroll Y:', scrollY, 'Is Scrolled:', scrolled);
+      setIsScrolled(scrolled);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Initial check
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, []);
 
   const navigationItems = [
@@ -54,16 +65,29 @@ const Header = () => {
     </div>
   );
 
+  console.log('Header render - isScrolled:', isScrolled);
+
   return (
     <motion.header
-      initial={{ y: -100, opacity: 0 }}
+      initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-gaming-dark/90 backdrop-blur-md border-b border-border glow-effect'
-          : 'bg-transparent'
-      }`}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="sticky-header"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 99999,
+        width: '100%',
+        display: 'block',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        background: isScrolled ? 'rgba(0, 0, 0, 0.9)' : 'rgba(0, 0, 0, 0.7)',
+        borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
+        boxShadow: isScrolled ? '0 2px 15px rgba(0, 0, 0, 0.2)' : 'none',
+        transition: 'all 0.3s ease'
+      }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16">

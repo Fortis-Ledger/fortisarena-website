@@ -23,7 +23,7 @@ const CommunityPage = () => {
         <meta name="keywords" content="FortisArena community, DAO governance, gaming community, esports community, Web3 gaming, blockchain gaming community" />
       </Helmet>
       <Header />
-      <main className="pt-16">
+      <main className="pt-14 sm:pt-16">
         {/* Hero Section */}
         <section className="relative py-20 overflow-hidden bg-gaming-dark">
           <div className="absolute inset-0 neural-network opacity-30"></div>

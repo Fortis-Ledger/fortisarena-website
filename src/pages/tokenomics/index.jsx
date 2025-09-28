@@ -623,7 +623,7 @@ const TokenomicsPage = () => {
     <div className="min-h-screen bg-background">
       <Header />
       {/* Hero Section */}
-      <section className="pt-24 pb-12 bg-gaming-dark relative overflow-hidden">
+      <section className="pt-38 sm:pt-40 pb-12 bg-gaming-dark relative overflow-hidden">
         {/* Particle Background */}
         <div className="absolute inset-0 neural-network opacity-30"></div>
         {/* Floating Particles */}

@@ -63,7 +63,7 @@ const Homepage = () => {
         <Header />
 
         {/* Main Content */}
-        <main className="relative">
+        <main className="relative pt-14 sm:pt-16">
           {/* Hero Section */}
           <HeroSection />
 

@@ -28,7 +28,7 @@ const CreatorStudio = () => {
       <div className="min-h-screen bg-background">
         <Header />
         
-        <main>
+        <main className="pt-14 sm:pt-16">
           <CreatorHero />
           <CreatorTools />
           <MonetizationCalculator />

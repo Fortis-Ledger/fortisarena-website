@@ -32,7 +32,7 @@ const About = () => {
       <div className="min-h-screen bg-background">
         <Header />
         
-        <main>
+        <main className="pt-14 sm:pt-16">
           <HeroSection />
           <VisionSection />
           <ProblemSolutionSection />

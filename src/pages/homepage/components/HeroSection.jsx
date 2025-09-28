@@ -66,7 +66,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <div className="min-h-screen relative overflow-x-hidden bg-black">
+    <div className="min-h-screen relative overflow-x-hidden bg-black pt-16 sm:pt-20">
       {/* Neon glow effects - Optimized */}
       <div className="absolute inset-0">
         {/* Neon accent glows */}
