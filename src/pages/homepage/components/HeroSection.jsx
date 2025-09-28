@@ -66,7 +66,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <div className="min-h-screen relative overflow-x-hidden bg-black pt-16 sm:pt-20">
+    <div className="min-h-screen relative overflow-x-hidden bg-black pt-12 sm:pt-20">
       {/* Neon glow effects - Optimized */}
       <div className="absolute inset-0">
         {/* Neon accent glows */}
@@ -102,18 +102,18 @@ const HeroSection = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-20 pt-40 sm:pt-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 pt-16 sm:py-20 sm:pt-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[80vh]">
           {/* Left Section - Text Content */}
           <motion.div 
-            className="space-y-8"
+            className="space-y-6 sm:space-y-8"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <motion.h1 
-                className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-2"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-2"
                 style={{
                   textShadow: '0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.3)'
                 }}
@@ -125,7 +125,7 @@ const HeroSection = () => {
               </motion.h1>
 
               <motion.h2 
-                className="text-2xl md:text-3xl lg:text-4xl font-medium text-gray-200 leading-tight mb-6"
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-gray-200 leading-tight mb-4 sm:mb-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
@@ -134,7 +134,7 @@ const HeroSection = () => {
               </motion.h2>
 
               <motion.p 
-                className="text-lg md:text-xl text-gray-300 leading-relaxed mb-4"
+                className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mb-3 sm:mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -143,7 +143,7 @@ const HeroSection = () => {
               </motion.p>
 
               <motion.p 
-                className="text-base md:text-lg text-gray-400 leading-relaxed"
+                className="text-sm sm:text-base md:text-lg text-gray-400 leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
@@ -153,7 +153,7 @@ const HeroSection = () => {
             </div>
 
             <motion.div 
-              className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-6"
+              className="flex flex-col sm:flex-row items-start space-y-3 sm:space-y-0 sm:space-x-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -180,12 +180,12 @@ const HeroSection = () => {
 
           {/* Right Section - Circular Network Visualization */}
           <motion.div 
-            className="relative flex items-center justify-center w-full h-full min-h-[350px] sm:min-h-[400px] md:min-h-[500px] py-8"
+            className="relative flex items-center justify-center w-full h-full min-h-[300px] sm:min-h-[400px] md:min-h-[500px] py-4 sm:py-8"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
           >
-            <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] mx-auto">
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] mx-auto">
 
 
               {/* Orbital Container */}
@@ -235,7 +235,7 @@ const HeroSection = () => {
                 {cryptoCoins.map((coin, index) => (
                   <motion.div
                     key={index}
-                    className={`absolute w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 ${coin.position}`}
+                    className={`absolute w-6 h-6 sm:w-12 sm:h-12 md:w-16 md:h-16 ${coin.position}`}
                     style={{
                       filter: `drop-shadow(0 0 15px ${coin.glowColor}) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2))`,
                       transform: 'perspective(1000px) rotateX(15deg) translateZ(0)',
@@ -307,7 +307,7 @@ const HeroSection = () => {
                 transition={{ duration: 0.8, delay: 1.5, type: "spring", stiffness: 200 }}
               >
                 <motion.div
-                  className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40"
+                  className="w-20 h-20 sm:w-32 sm:h-32 md:w-40 md:h-40"
                   style={{
                     filter: 'drop-shadow(0 0 20px rgba(59, 130, 246, 0.5)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2))',
                     transform: 'perspective(1000px) rotateX(15deg) translateZ(0)',
