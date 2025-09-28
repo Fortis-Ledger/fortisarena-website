@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 import Input from '../../../components/ui/Input';
@@ -7,6 +8,7 @@ import { Checkbox } from '../../../components/ui/CheckBox';
 
 const CreatorProgram = () => {
   const [currentStep, setCurrentStep] = useState(1);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [formData, setFormData] = useState({
     personalInfo: {
       fullName: '',
@@ -162,8 +164,13 @@ const CreatorProgram = () => {
       
       console.log('Form submitted successfully');
       
-      // Show success message
-      alert('Application submitted successfully! We will review it within 48 hours.');
+      // Show success popup
+      setShowSuccessPopup(true);
+      
+      // Auto hide popup after 3 seconds
+      setTimeout(() => {
+        setShowSuccessPopup(false);
+      }, 3000);
       
       // Reset form
       setFormData({
@@ -409,7 +416,7 @@ const CreatorProgram = () => {
               <Icon name="CheckCircle" size={48} className="text-green-400 mx-auto mb-4" />
               <h4 className="font-semibold text-foreground mb-2">Ready to Submit</h4>
               <p className="text-muted-foreground">
-                Your application will be reviewed within 48 hours. You'll receive an email with next steps.
+                Once our MVP is ready, we'll invite you for beta testing. You'll be among the first to experience the future of Web3 gaming!
               </p>
             </div>
           </div>
@@ -422,6 +429,34 @@ const CreatorProgram = () => {
 
   return (
     <section className="py-20 bg-background">
+      {/* Success Popup */}
+      {showSuccessPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            className="bg-card border border-border rounded-2xl p-8 max-w-md mx-4 text-center shadow-2xl"
+          >
+            <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="CheckCircle" size={32} className="text-green-500" />
+            </div>
+            <h3 className="text-xl font-bold text-foreground mb-2">Application Submitted!</h3>
+            <p className="text-muted-foreground mb-4">
+              Once our MVP is ready, we'll invite you for beta testing. You'll be among the first to experience the future of Web3 gaming!
+            </p>
+            <div className="w-full bg-muted rounded-full h-1">
+              <motion.div
+                className="bg-gradient-to-r from-green-500 to-blue-500 h-1 rounded-full"
+                initial={{ width: "100%" }}
+                animate={{ width: "0%" }}
+                transition={{ duration: 3, ease: "linear" }}
+              />
+            </div>
+          </motion.div>
+        </div>
+      )}
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground mb-6">
@@ -516,9 +551,9 @@ const CreatorProgram = () => {
           </h3>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-card border border-border rounded-lg p-6">
-              <h4 className="font-semibold text-foreground mb-2">How long does approval take?</h4>
+              <h4 className="font-semibold text-foreground mb-2">When will I hear back?</h4>
               <p className="text-sm text-muted-foreground">
-                Most applications are reviewed within 48 hours. You'll receive an email with the decision and next steps.
+                Once our MVP is ready, we'll reach out to invite you for beta testing. You'll be among the first to experience our platform!
               </p>
             </div>
             <div className="bg-card border border-border rounded-lg p-6">
