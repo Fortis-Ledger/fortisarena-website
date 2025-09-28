@@ -30,9 +30,10 @@ const CallToActionSection = () => {
       title: "Read Whitepaper",
       description: "Deep dive into our technical vision and roadmap",
       action: "Download PDF",
-      link: "/roadmap",
+      link: "/docs/FortisArena White Paper.pdf",
       color: "from-success to-emerald-600",
-      delay: 0.2
+      delay: 0.2,
+      external: true
     },
     {
       icon: "Coins",
