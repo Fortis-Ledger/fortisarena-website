@@ -62,7 +62,18 @@ const CreatorSpotlight = () => {
               Start your creator journey today and become the next success story. Our platform provides everything you need to turn your gaming passion into a thriving business.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button className="button">
+              <Button 
+                className="button"
+                onClick={() => {
+                  const formElement = document.getElementById('creator-program-form');
+                  if (formElement) {
+                    formElement.scrollIntoView({ 
+                      behavior: 'smooth',
+                      block: 'start'
+                    });
+                  }
+                }}
+              >
                 <span>Join Creator Program</span>
               </Button>
               <Button variant="outline">

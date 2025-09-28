@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import Header from '../../components/ui/Header';
@@ -15,6 +15,25 @@ import { AnimatedShinyText } from '../../components/ui/AnimatedShinyText';
 import Icon from '../../components/AppIcon';
 
 const CommunityPage = () => {
+  const [showDAOPopup, setShowDAOPopup] = useState(false);
+  const [showMVPPopup, setShowMVPPopup] = useState(false);
+
+  const handleDAOClick = () => {
+    setShowDAOPopup(true);
+    // Auto hide popup after 3 seconds
+    setTimeout(() => {
+      setShowDAOPopup(false);
+    }, 3000);
+  };
+
+  const handleMVPClick = () => {
+    setShowMVPPopup(true);
+    // Auto hide popup after 3 seconds
+    setTimeout(() => {
+      setShowMVPPopup(false);
+    }, 3000);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
@@ -105,6 +124,7 @@ const CommunityPage = () => {
                 
                 <button
                   className="button w-full sm:w-auto"
+                  onClick={handleDAOClick}
                 >
                   <span>Participate in DAO</span>
                 </button>
@@ -203,6 +223,7 @@ const CommunityPage = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 px-4 sm:px-0">
               <button 
                 className="button w-full sm:w-auto"
+                onClick={handleMVPClick}
               >
                 <span>Start Your Journey</span>
               </button>
@@ -219,6 +240,62 @@ const CommunityPage = () => {
       
       {/* Footer */}
       <Footer />
+
+      {/* DAO Popup */}
+      {showDAOPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            className="bg-card border border-border rounded-2xl p-8 max-w-md mx-4 text-center shadow-2xl"
+          >
+            <div className="w-16 h-16 bg-gradient-to-br from-electric-blue to-neon-purple rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="Vote" size={32} className="text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-foreground mb-2">DAO Governance Coming Soon</h3>
+            <p className="text-muted-foreground mb-4">
+              We're building a decentralized autonomous organization where community members can vote on platform decisions, propose new features, and shape the future of FortisArena together.
+            </p>
+            <div className="w-full bg-muted rounded-full h-1">
+              <motion.div
+                className="bg-gradient-to-r from-electric-blue to-neon-purple h-1 rounded-full"
+                initial={{ width: "100%" }}
+                animate={{ width: "0%" }}
+                transition={{ duration: 3, ease: "linear" }}
+              />
+            </div>
+          </motion.div>
+        </div>
+      )}
+
+      {/* MVP Popup */}
+      {showMVPPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            className="bg-card border border-border rounded-2xl p-8 max-w-md mx-4 text-center shadow-2xl"
+          >
+            <div className="w-16 h-16 bg-gradient-to-br from-golden-cta to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="Rocket" size={32} className="text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-foreground mb-2">MVP Launching Soon</h3>
+            <p className="text-muted-foreground mb-4">
+              We're working hard to bring you the most innovative Web3 gaming platform. Our MVP will feature tournaments, NFT rewards, and community governance. Stay tuned for the launch!
+            </p>
+            <div className="w-full bg-muted rounded-full h-1">
+              <motion.div
+                className="bg-gradient-to-r from-golden-cta to-orange-500 h-1 rounded-full"
+                initial={{ width: "100%" }}
+                animate={{ width: "0%" }}
+                transition={{ duration: 3, ease: "linear" }}
+              />
+            </div>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 };

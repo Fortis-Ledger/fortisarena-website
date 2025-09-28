@@ -159,6 +159,7 @@ const CommunityContent = () => {
           </p>
           <button 
             className="button"
+            onClick={() => window.location.href = '/waitlist'}
           >
             <span>Join Waitlist</span>
           </button>

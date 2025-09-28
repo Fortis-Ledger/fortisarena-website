@@ -636,7 +636,7 @@ const CreatorProgram = () => {
         </div>
 
         {/* Application Form */}
-        <div className="max-w-4xl mx-auto">
+        <div id="creator-program-form" className="max-w-4xl mx-auto">
           <div className="bg-card border border-border rounded-2xl p-8">
             {/* Progress Bar */}
             <div className="mb-8">
