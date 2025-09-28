@@ -9,6 +9,7 @@ import { Checkbox } from '../../../components/ui/CheckBox';
 const CreatorProgram = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [showValidation, setShowValidation] = useState(false);
   const [formData, setFormData] = useState({
     personalInfo: {
       fullName: '',
@@ -119,9 +120,38 @@ const CreatorProgram = () => {
     }));
   };
 
+  const validateStep = (step) => {
+    switch (step) {
+      case 1:
+        return formData.personalInfo.fullName && 
+               formData.personalInfo.email && 
+               formData.personalInfo.username && 
+               formData.personalInfo.phoneNumber && 
+               formData.personalInfo.country;
+      case 2:
+        return formData.creatorInfo.contentType && 
+               formData.creatorInfo.experience && 
+               formData.creatorInfo.audience && 
+               formData.creatorInfo.specialization;
+      case 3:
+        return formData.goals.primaryGoal && 
+               formData.goals.monthlyGoal && 
+               formData.goals.commitment;
+      case 4:
+        return true; // Review step, no additional validation needed
+      default:
+        return false;
+    }
+  };
+
   const nextStep = () => {
     if (currentStep < totalSteps) {
-      setCurrentStep(currentStep + 1);
+      if (validateStep(currentStep)) {
+        setCurrentStep(currentStep + 1);
+        setShowValidation(false);
+      } else {
+        setShowValidation(true);
+      }
     }
   };
 
@@ -132,6 +162,13 @@ const CreatorProgram = () => {
   };
 
   const submitForm = async () => {
+    // Validate all steps before submitting
+    if (!validateStep(1) || !validateStep(2) || !validateStep(3)) {
+      setShowValidation(true);
+      alert('Please fill in all required fields before submitting.');
+      return;
+    }
+
     try {
       console.log('Submitting form data:', formData);
       
@@ -218,44 +255,49 @@ const CreatorProgram = () => {
             </div>
             <div className="grid md:grid-cols-2 gap-6">
               <Input
-                label="Full Name"
+                label="Full Name *"
                 type="text"
                 placeholder="Enter your full name"
                 value={formData?.personalInfo?.fullName}
                 onChange={(e) => handleInputChange('personalInfo', 'fullName', e?.target?.value)}
                 required
+                className={showValidation && !formData?.personalInfo?.fullName ? 'border-red-500/50' : ''}
               />
               <Input
-                label="Email Address"
+                label="Email Address *"
                 type="email"
                 placeholder="your.email@example.com"
                 value={formData?.personalInfo?.email}
                 onChange={(e) => handleInputChange('personalInfo', 'email', e?.target?.value)}
                 required
+                className={showValidation && !formData?.personalInfo?.email ? 'border-red-500/50' : ''}
               />
               <Input
-                label="Username"
+                label="Username *"
                 type="text"
                 placeholder="Your gaming handle"
                 value={formData?.personalInfo?.username}
                 onChange={(e) => handleInputChange('personalInfo', 'username', e?.target?.value)}
                 required
+                className={showValidation && !formData?.personalInfo?.username ? 'border-red-500/50' : ''}
               />
               <Input
-                label="Phone Number"
+                label="Phone Number *"
                 type="tel"
                 placeholder="+1 (555) 123-4567"
                 value={formData?.personalInfo?.phoneNumber}
                 onChange={(e) => handleInputChange('personalInfo', 'phoneNumber', e?.target?.value)}
                 required
+                className={showValidation && !formData?.personalInfo?.phoneNumber ? 'border-red-500/50' : ''}
               />
               <Select
-                label="Country"
+                label="Country *"
                 options={countryOptions}
                 value={formData?.personalInfo?.country}
                 onChange={(value) => handleInputChange('personalInfo', 'country', value)}
                 placeholder="Select your country"
                 required
+                className={showValidation && !formData?.personalInfo?.country ? 'border-red-500/50' : ''}
               />
             </div>
           </div>
@@ -275,20 +317,22 @@ const CreatorProgram = () => {
             <div className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <Select
-                  label="Primary Content Type"
+                  label="Primary Content Type *"
                   options={contentTypeOptions}
                   value={formData?.creatorInfo?.contentType}
                   onChange={(value) => handleInputChange('creatorInfo', 'contentType', value)}
                   placeholder="Select content type"
                   required
+                  className={showValidation && !formData?.creatorInfo?.contentType ? 'border-red-500/50' : ''}
                 />
                 <Select
-                  label="Experience Level"
+                  label="Experience Level *"
                   options={experienceOptions}
                   value={formData?.creatorInfo?.experience}
                   onChange={(value) => handleInputChange('creatorInfo', 'experience', value)}
                   placeholder="Select experience level"
                   required
+                  className={showValidation && !formData?.creatorInfo?.experience ? 'border-red-500/50' : ''}
                 />
               </div>
 
@@ -310,18 +354,22 @@ const CreatorProgram = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <Input
-                  label="Current Audience Size"
+                  label="Current Audience Size *"
                   type="number"
                   placeholder="e.g., 5000"
                   value={formData?.creatorInfo?.audience}
                   onChange={(e) => handleInputChange('creatorInfo', 'audience', e?.target?.value)}
+                  required
+                  className={showValidation && !formData?.creatorInfo?.audience ? 'border-red-500/50' : ''}
                 />
                 <Input
-                  label="Gaming Specialization"
+                  label="Gaming Specialization *"
                   type="text"
                   placeholder="e.g., FPS, Strategy, Fighting"
                   value={formData?.creatorInfo?.specialization}
                   onChange={(e) => handleInputChange('creatorInfo', 'specialization', e?.target?.value)}
+                  required
+                  className={showValidation && !formData?.creatorInfo?.specialization ? 'border-red-500/50' : ''}
                 />
               </div>
             </div>
@@ -342,18 +390,22 @@ const CreatorProgram = () => {
             <div className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <Input
-                  label="Primary Goal"
+                  label="Primary Goal *"
                   type="text"
                   placeholder="e.g., Build a gaming community"
                   value={formData?.goals?.primaryGoal}
                   onChange={(e) => handleInputChange('goals', 'primaryGoal', e?.target?.value)}
+                  required
+                  className={showValidation && !formData?.goals?.primaryGoal ? 'border-red-500/50' : ''}
                 />
                 <Input
-                  label="Monthly Revenue Goal"
+                  label="Monthly Revenue Goal *"
                   type="number"
                   placeholder="e.g., 2000"
                   value={formData?.goals?.monthlyGoal}
                   onChange={(e) => handleInputChange('goals', 'monthlyGoal', e?.target?.value)}
+                  required
+                  className={showValidation && !formData?.goals?.monthlyGoal ? 'border-red-500/50' : ''}
                 />
               </div>
 
@@ -374,11 +426,13 @@ const CreatorProgram = () => {
               </div>
 
               <Input
-                label="Time Commitment (hours per week)"
+                label="Time Commitment (hours per week) *"
                 type="number"
                 placeholder="e.g., 20"
                 value={formData?.goals?.commitment}
                 onChange={(e) => handleInputChange('goals', 'commitment', e?.target?.value)}
+                required
+                className={showValidation && !formData?.goals?.commitment ? 'border-red-500/50' : ''}
               />
             </div>
           </div>
@@ -525,7 +579,12 @@ const CreatorProgram = () => {
                 <Button
                   variant="default"
                   onClick={nextStep}
-                  className="bg-electric-blue hover:bg-electric-blue/90"
+                  disabled={!validateStep(currentStep)}
+                  className={`${
+                    validateStep(currentStep) 
+                      ? 'bg-electric-blue hover:bg-electric-blue/90' 
+                      : 'bg-muted text-muted-foreground cursor-not-allowed'
+                  }`}
                 >
                   Next
                   <Icon name="ArrowRight" size={16} />
@@ -533,7 +592,12 @@ const CreatorProgram = () => {
               ) : (
                 <Button
                   variant="default"
-                  className="bg-golden-cta hover:bg-golden-cta/90 text-gaming-dark font-semibold"
+                  disabled={!validateStep(1) || !validateStep(2) || !validateStep(3)}
+                  className={`${
+                    validateStep(1) && validateStep(2) && validateStep(3)
+                      ? 'bg-golden-cta hover:bg-golden-cta/90 text-gaming-dark font-semibold'
+                      : 'bg-muted text-muted-foreground cursor-not-allowed'
+                  }`}
                   onClick={submitForm}
                 >
                   <Icon name="Send" size={16} />
