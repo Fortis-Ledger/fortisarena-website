@@ -1,363 +1,236 @@
-import React, { memo, useRef, useEffect } from 'react';
+import React, { memo, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { AnimatedTitle, AnimatedWords, GradientText } from '../../../components/AnimatedText';
+import PremiumOrb from '../../../components/PremiumOrb';
+import ParticleField, { GradientMesh, GridBackground } from '../../../components/ParticleField';
+import { StatsBar } from '../../../components/AnimatedCounter';
+import { GlowButton, AnimatedBorderButton } from '../../../components/MagneticButton';
 
 const HeroSection = () => {
   const navigate = useNavigate();
 
+  // Stats data
+  const stats = useMemo(() => [
+    { value: 125, suffix: 'K+', label: 'Active Players' },
+    { value: 3, suffix: 'K+', label: 'Tournaments' },
+    { value: 15, prefix: '$', suffix: 'M+', label: 'Total Rewards' },
+    { value: 850, suffix: '+', label: 'Communities' },
+  ], []);
 
-
-  // Crypto coins data with 3D SVG assets
-  const cryptoCoins = [
-    { 
-      name: 'Bitcoin', 
-      svgPath: '/token/Bitcoin_3D.svg', 
-      position: 'top-8 right-8 sm:top-20 sm:right-20',
-      glowColor: 'rgba(249, 115, 22, 0.5)'
-    },
-    { 
-      name: 'Ethereum', 
-      svgPath: '/token/Ethereum_3D.svg', 
-      position: 'top-8 left-8 sm:top-20 sm:left-20',
-      glowColor: 'rgba(37, 99, 235, 0.5)'
-    },
-    { 
-      name: 'Solana', 
-      svgPath: '/token/Solana_3D.svg', 
-      position: 'bottom-8 right-8 sm:bottom-20 sm:right-20',
-      glowColor: 'rgba(147, 51, 234, 0.5)'
-    },
-    { 
-      name: 'Polygon', 
-      svgPath: '/token/Polygon_3D.svg', 
-      position: 'right-16 top-1/3 sm:right-32',
-      glowColor: 'rgba(168, 85, 247, 0.5)'
-    },
-    { 
-      name: 'Avalanche', 
-      svgPath: '/token/Avalanche_3D.svg', 
-      position: 'bottom-8 left-8 sm:bottom-20 sm:left-20',
-      glowColor: 'rgba(239, 68, 68, 0.5)'
-    },
-    { 
-      name: 'USD Coin', 
-      svgPath: '/token/USD Coin_3D.svg', 
-      position: 'left-16 bottom-1/3 sm:left-32',
-      glowColor: 'rgba(59, 130, 246, 0.5)'
-    },
-    { 
-      name: 'DOT', 
-      svgPath: '/token/DOT_3D.svg', 
-      position: 'top-1/3 right-8 sm:top-1/3 sm:right-20',
-      glowColor: 'rgba(230, 0, 122, 0.5)'
-    },
-    { 
-      name: 'USDT', 
-      svgPath: '/token/USDT_3D.svg', 
-      position: 'top-1/3 left-8 sm:top-1/3 sm:left-20',
-      glowColor: 'rgba(26, 188, 156, 0.5)'
-    },
-    { 
-      name: 'EOS', 
-      svgPath: '/token/EOS_3D.svg', 
-      position: 'bottom-1/3 right-8 sm:bottom-1/3 sm:right-20',
-      glowColor: 'rgba(0, 0, 0, 0.6)'
-    }
-  ];
+  // Floating crypto coins
+  const cryptoCoins = useMemo(() => [
+    { name: 'Bitcoin', svgPath: '/token/Bitcoin_3D.svg', x: 85, y: 15, size: 50, delay: 0 },
+    { name: 'Ethereum', svgPath: '/token/Ethereum_3D.svg', x: 10, y: 20, size: 45, delay: 0.2 },
+    { name: 'Solana', svgPath: '/token/Solana_3D.svg', x: 90, y: 70, size: 40, delay: 0.4 },
+    { name: 'Polygon', svgPath: '/token/Polygon_3D.svg', x: 5, y: 65, size: 35, delay: 0.6 },
+    { name: 'Avalanche', svgPath: '/token/Avalanche_3D.svg', x: 15, y: 85, size: 30, delay: 0.8 },
+    { name: 'USDT', svgPath: '/token/USDT_3D.svg', x: 80, y: 85, size: 35, delay: 1 },
+  ], []);
 
   return (
-    <div className="min-h-screen relative overflow-x-hidden bg-black pt-8 sm:pt-8">
-      {/* Neon glow effects - Optimized */}
+    <section className="relative min-h-screen overflow-hidden bg-black">
+      {/* Background layers */}
       <div className="absolute inset-0">
-        {/* Neon accent glows */}
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-purple-500/5 sm:bg-purple-500/10 rounded-full blur-2xl" style={{ willChange: 'auto' }}></div>
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-cyan-500/5 sm:bg-cyan-500/10 rounded-full blur-2xl" style={{ willChange: 'auto' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 sm:w-[600px] sm:h-[600px] bg-blue-500/3 sm:bg-blue-500/5 rounded-full blur-2xl" style={{ willChange: 'auto' }}></div>
+        <GridBackground />
+        <GradientMesh />
+        <ParticleField count={40} colors={['cyan', 'purple', 'pink']} />
       </div>
 
-      {/* Floating particles background - Optimized */}
-      <div className="absolute inset-0">
-        {Array.from({ length: 15 }).map((_, i) => (
+      {/* Floating crypto coins */}
+      <div className="absolute inset-0 pointer-events-none hidden lg:block">
+        {cryptoCoins.map((coin, index) => (
           <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-cyan-400/20 sm:bg-cyan-400/40 rounded-full shadow-lg shadow-cyan-400/10 sm:shadow-cyan-400/20"
+            key={coin.name}
+            className="absolute"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              willChange: 'transform, opacity',
-              transform: 'translateZ(0)',
+              left: `${coin.x}%`,
+              top: `${coin.y}%`,
+              width: coin.size,
+              height: coin.size,
             }}
-            animate={{
-              y: [-10, 10, -10],
-              opacity: [0.1, 0.4, 0.1],
-              scale: [0.8, 1, 0.8],
+            initial={{ opacity: 0, scale: 0, y: 50 }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1, 
+              y: 0,
             }}
             transition={{
-              duration: 4 + Math.random() * 2,
-              repeat: Infinity,
-              ease: "easeInOut"
+              duration: 0.8,
+              delay: 1 + coin.delay,
+              type: 'spring',
+              stiffness: 100,
             }}
-          />
+          >
+            <motion.img
+              src={coin.svgPath}
+              alt={coin.name}
+              className="w-full h-full object-contain"
+              style={{
+                filter: 'drop-shadow(0 0 20px rgba(139, 92, 246, 0.5))',
+              }}
+              animate={{
+                y: [-10, 10, -10],
+                rotateY: [0, 360],
+              }}
+              transition={{
+                y: {
+                  duration: 3 + index * 0.5,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                },
+                rotateY: {
+                  duration: 10 + index * 2,
+                  repeat: Infinity,
+                  ease: 'linear',
+                },
+              }}
+            />
+          </motion.div>
         ))}
       </div>
 
-      {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-6 pt-8 sm:py-8 sm:pt-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[80vh]">
-          {/* Left Section - Text Content */}
-          <motion.div 
-            className="space-y-6 sm:space-y-8"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="space-y-4 sm:space-y-6">
-              <motion.h1 
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-2"
-                style={{
-                  textShadow: '0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.3)'
-                }}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <span className="text-white">FortisArena</span>
-              </motion.h1>
-
-              <motion.h2 
-                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-gray-200 leading-tight mb-4 sm:mb-6"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-              >
-                The Next-Gen Web3 eSports Arena
-              </motion.h2>
-
-              <motion.p 
-                className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mb-3 sm:mb-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                Compete, Earn, and Govern in the future of decentralized gaming.
-              </motion.p>
-
-              <motion.p 
-                className="text-sm sm:text-base md:text-lg text-gray-400 leading-relaxed"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-              >
-                Skill-based tournaments, rewards, and a thriving community.
-              </motion.p>
-            </div>
-
-            <motion.div 
-              className="flex flex-col sm:flex-row items-start space-y-3 sm:space-y-0 sm:space-x-6"
+      {/* Main content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-[70vh]">
+          
+          {/* Left side - Text content */}
+          <div className="space-y-8 text-center lg:text-left">
+            {/* Badge */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-sm"
             >
-              <motion.button
-                className="button"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => navigate('/waitlist')}
-              >
-                <span>Waitlist</span>
-              </motion.button>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              <span className="text-sm text-gray-300">Now Live • Join the Revolution</span>
+            </motion.div>
 
-              <motion.button
-                className="button"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+            {/* Main title */}
+            <div className="space-y-4">
+              <AnimatedTitle 
+                text="FortisArena"
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight"
+                delay={0.2}
+              />
+              
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="text-xl sm:text-2xl md:text-3xl font-medium"
+              >
+                <span className="text-gray-300">The Next-Gen </span>
+                <GradientText className="font-bold">Web3 eSports Arena</GradientText>
+              </motion.h2>
+            </div>
+
+            {/* Description */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              className="space-y-3"
+            >
+              <p className="text-lg sm:text-xl text-gray-300 max-w-xl mx-auto lg:mx-0">
+                Compete, Earn, and Govern in the future of decentralized gaming.
+              </p>
+              <p className="text-base text-gray-400 max-w-lg mx-auto lg:mx-0">
+                Skill-based tournaments, blockchain rewards, and a thriving community of gamers.
+              </p>
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+            >
+              <GlowButton
+                variant="primary"
+                size="lg"
+                onClick={() => navigate('/waitlist')}
+                className="w-full sm:w-auto"
+              >
+                <span>Join Waitlist</span>
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </GlowButton>
+
+              <AnimatedBorderButton
                 onClick={() => window.open('https://tournaments.fortisarena.io', '_blank')}
+                className="w-full sm:w-auto"
               >
                 <span>Active Tournaments</span>
-              </motion.button>
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </AnimatedBorderButton>
             </motion.div>
-          </motion.div>
 
-          {/* Right Section - Circular Network Visualization */}
-          <motion.div 
-            className="relative flex items-center justify-center w-full h-full min-h-[300px] sm:min-h-[400px] md:min-h-[500px] py-4 sm:py-8"
+            {/* Trust badges */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.4 }}
+              className="flex items-center justify-center lg:justify-start gap-6 pt-4"
+            >
+              <div className="flex items-center gap-2 text-sm text-gray-400">
+                <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span>Blockchain Secured</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-400">
+                <svg className="w-5 h-5 text-cyan-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span>Fair Play Guaranteed</span>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right side - Premium Orb */}
+          <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.4 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="flex items-center justify-center"
           >
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] mx-auto">
-
-
-              {/* Orbital Container */}
-              <motion.div 
-                className="absolute inset-0"
-                animate={{ rotate: 360 }}
-                transition={{
-                  duration: 120,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              >
-              {/* Enhanced Concentric Circles */}
-              <motion.div 
-                className="absolute inset-0 border border-cyan-400/20 sm:border-2 sm:border-cyan-400/30 rounded-full"
-                style={{
-                  boxShadow: '0 0 10px rgba(6, 182, 212, 0.1), inset 0 0 10px rgba(6, 182, 212, 0.05)'
-                }}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-              />
-              <motion.div 
-                className="absolute inset-8 border border-purple-400/15 sm:border-purple-400/25 rounded-full"
-                style={{
-                  boxShadow: '0 0 8px rgba(168, 85, 247, 0.1)'
-                }}
-                animate={{ rotate: -360 }}
-                transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
-              />
-              <motion.div 
-                className="absolute inset-16 border border-blue-400/10 sm:border-blue-400/20 rounded-full"
-                style={{
-                  boxShadow: '0 0 5px rgba(59, 130, 246, 0.08)'
-                }}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
-              />
-              <motion.div 
-                className="absolute inset-24 border border-white/10 sm:border-white/15 rounded-full"
-                animate={{ rotate: -360 }}
-                transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
-              />
-
-
-
-                {/* 3D Crypto Coins with SVG Assets - Optimized */}
-                {cryptoCoins.map((coin, index) => (
-                  <motion.div
-                    key={index}
-                    className={`absolute w-6 h-6 sm:w-12 sm:h-12 md:w-16 md:h-16 ${coin.position}`}
-                    style={{
-                      filter: `drop-shadow(0 0 15px ${coin.glowColor}) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2))`,
-                      transform: 'perspective(1000px) rotateX(15deg) translateZ(0)',
-                      transformStyle: 'preserve-3d',
-                      willChange: 'transform, opacity'
-                    }}
-                    initial={{ 
-                      scale: 0, 
-                      opacity: 0
-                    }}
-                    animate={{ 
-                      scale: 1, 
-                      opacity: 1,
-                      rotateY: [0, 360],
-                      y: [0, -5, 0],
-                      rotate: -360
-                    }}
-                    transition={{ 
-                      scale: {
-                        duration: 0.5, 
-                        delay: 1.2 + index * 0.1,
-                        type: "spring",
-                        stiffness: 200
-                      },
-                      opacity: {
-                        duration: 0.5, 
-                        delay: 1.2 + index * 0.1
-                      },
-                      rotateY: {
-                        duration: 8 + index * 0.5,
-                        repeat: Infinity,
-                        ease: "linear"
-                      },
-                      y: {
-                        duration: 3 + index * 0.3,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      },
-                      rotate: {
-                        duration: 60,
-                        repeat: Infinity,
-                        ease: "linear"
-                      }
-                    }}
-                    whileHover={{ 
-                      scale: 1.2,
-                      rotateX: 20,
-                      rotateZ: 10,
-                      filter: `drop-shadow(0 0 25px ${coin.glowColor.replace('0.5', '0.7')}) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3))`,
-                      transition: { duration: 0.2 }
-                    }}
-                    title={coin.name}
-                  >
-                    <img
-                      src={coin.svgPath}
-                      alt={coin.name}
-                      className="w-full h-full object-contain"
-                      style={{ willChange: 'auto' }}
-                    />
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              {/* Center FortisArena Token - Optimized */}
-              <motion.div 
-                className="absolute inset-0 flex items-center justify-center"
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 1.5, type: "spring", stiffness: 200 }}
-              >
-                <motion.div
-                  className="w-20 h-20 sm:w-32 sm:h-32 md:w-40 md:h-40"
-                  style={{
-                    filter: 'drop-shadow(0 0 20px rgba(59, 130, 246, 0.5)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2))',
-                    transform: 'perspective(1000px) rotateX(15deg) translateZ(0)',
-                    transformStyle: 'preserve-3d',
-                    willChange: 'transform'
-                  }}
-                  animate={{
-                    rotateY: [0, 360],
-                    y: [0, -5, 0],
-                    scale: [1, 1.02, 1]
-                  }}
-                  transition={{
-                    rotateY: {
-                      duration: 12,
-                      repeat: Infinity,
-                      ease: "linear"
-                    },
-                    y: {
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    },
-                    scale: {
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }
-                  }}
-                  whileHover={{
-                    scale: 1.15,
-                    rotateX: 20,
-                    rotateZ: 10,
-                    filter: 'drop-shadow(0 0 30px rgba(59, 130, 246, 0.7)) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3))',
-                    transition: { duration: 0.2 }
-                  }}
-                >
-                  <img
-                    src="/token/FortisArena_3D.svg"
-                    alt="FortisArena Token"
-                    className="w-full h-full object-contain"
-                    style={{ willChange: 'auto' }}
-                  />
-                </motion.div>
-              </motion.div>
-            </div>
+            <PremiumOrb size={400} className="hidden sm:block" />
+            <PremiumOrb size={280} className="sm:hidden" />
           </motion.div>
         </div>
 
+        {/* Stats bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.6 }}
+          className="mt-16 pt-8 border-t border-white/10"
+        >
+          <div className="text-center mb-6">
+            <span className="text-sm text-gray-400 uppercase tracking-wider">Powering the Gaming Revolution</span>
+          </div>
+          <StatsBar stats={stats} />
+          <div className="text-center mt-4">
+            <span className="inline-flex items-center gap-2 text-xs text-gray-500">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+              Live data • Updated every 5 minutes
+            </span>
+          </div>
+        </motion.div>
       </div>
-    </div>
+
+      {/* Bottom gradient fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none" />
+    </section>
   );
 };
 

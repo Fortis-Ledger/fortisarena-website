@@ -1,11 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Icon from '../../../components/AppIcon';
-import Button from '../../../components/ui/Button';
-
-gsap.registerPlugin(ScrollTrigger);
+import GlassCard, { FeatureCard } from '../../../components/GlassCard';
+import { GlowButton } from '../../../components/MagneticButton';
+import { GradientMesh } from '../../../components/ParticleField';
 
 const FeaturesSection = () => {
   const features = [
@@ -13,126 +11,94 @@ const FeaturesSection = () => {
       icon: 'Zap',
       title: 'AI-Powered Matchmaking',
       description: 'Advanced algorithms ensure fair competition by matching players based on skill level, play style, and performance metrics.',
-      benefits: ['Fair Competition', 'Skill-Based Matching', 'Real-time Analysis'],
-      color: 'from-white to-gray-300',
-      delay: 0.1
+      features: ['Fair Competition', 'Skill-Based Matching', 'Real-time Analysis'],
+      color: 'cyan',
     },
     {
       icon: 'Shield',
       title: 'Blockchain Security',
       description: 'Immutable tournament records and transparent reward distribution powered by cutting-edge blockchain technology.',
-      benefits: ['Transparent Results', 'Secure Transactions', 'Immutable Records'],
-      color: 'from-white to-gray-300',
-      delay: 0.2
+      features: ['Transparent Results', 'Secure Transactions', 'Immutable Records'],
+      color: 'purple',
     },
     {
       icon: 'Coins',
       title: 'Play-to-Earn Economy',
       description: 'Earn $FRT tokens through gameplay, tournament victories, and community participation in our sustainable economy.',
-      benefits: ['Token Rewards', 'NFT Prizes', 'Staking Benefits'],
-      color: 'from-white to-gray-300',
-      delay: 0.3
+      features: ['Token Rewards', 'NFT Prizes', 'Staking Benefits'],
+      color: 'green',
     },
     {
       icon: 'Vote',
       title: 'DAO Governance',
       description: 'Community-driven decision making where token holders vote on platform updates, tournament rules, and ecosystem changes.',
-      benefits: ['Community Control', 'Voting Rights', 'Proposal System'],
-      color: 'from-white to-gray-300',
-      delay: 0.4
+      features: ['Community Control', 'Voting Rights', 'Proposal System'],
+      color: 'orange',
     }
   ];
 
   return (
-    <section className="py-20 bg-gaming-dark relative overflow-hidden">
-      {/* 3D Background Elements */}
+    <section className="py-24 bg-black relative overflow-hidden">
+      {/* Background */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl floating"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl floating" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-neon-green/3 rounded-full blur-3xl floating" style={{ animationDelay: '4s' }}></div>
+        <GradientMesh />
+        
+        {/* Grid pattern */}
+        <div 
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(139, 92, 246, 0.5) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(139, 92, 246, 0.5) 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px',
+          }}
+        />
       </div>
-      
-      {/* Cyber Grid Background */}
-      <div className="absolute inset-0 cyber-grid opacity-20"></div>
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
-        <h2 className="font-heading text-4xl md:text-6xl font-bold text-foreground mb-6">
-          Revolutionary Gaming
-          <span className="block text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text">
-            Features
-          </span>
-        </h2>
-          <p className="font-body text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="inline-block px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-sm font-medium mb-6"
+          >
+            Platform Features
+          </motion.span>
+          
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            Revolutionary Gaming
+            <span className="block mt-2 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+              Features
+            </span>
+          </h2>
+          
+          <p className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Experience the next generation of competitive gaming with features designed for fairness, transparency, and player empowerment.
           </p>
         </motion.div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          {features?.map((feature, index) => (
-            <motion.div
-              key={feature?.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: feature?.delay }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
-              className="group relative"
-            >
-              <div className="glassmorphism-card p-8 rounded-2xl border border-border hover:border-primary/20 card-3d h-full relative overflow-hidden group-hover:shadow-2xl transition-all duration-300">
-                {/* Icon */}
-                <motion.div 
-                  className="w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center mb-6 gaming-glow floating relative z-10"
-                  whileHover={{ 
-                    scale: 1.2, 
-                    rotate: 360,
-                    boxShadow: "0 0 30px rgba(0, 255, 255, 0.5), 0 0 60px rgba(255, 0, 255, 0.3)"
-                  }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <Icon name={feature?.icon} size={40} className="text-white" />
-                </motion.div>
-
-                {/* Content */}
-                <div className="space-y-4 relative z-10">
-                  <h3 className="font-heading text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-                    {feature?.title}
-                  </h3>
-                  
-                  <p className="font-body text-muted-foreground leading-relaxed">
-                    {feature?.description}
-                  </p>
-
-                  {/* Benefits */}
-                  <div className="space-y-2">
-                    {feature?.benefits?.map((benefit, idx) => (
-                      <div key={idx} className="flex items-center space-x-3">
-                        <div className="w-2 h-2 rounded-full bg-white"></div>
-                        <span className="font-body text-sm text-muted-foreground">{benefit}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Hover Glow Effect */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none"></div>
-                
-                {/* Animated Border */}
-                <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{ 
-                  background: 'linear-gradient(45deg, #06b6d4, #8b5cf6, #ec4899)',
-                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                  WebkitMaskComposite: 'xor',
-                  maskComposite: 'exclude'
-                }}></div>
-              </div>
-            </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-16">
+          {features.map((feature, index) => (
+            <FeatureCard
+              key={feature.title}
+              icon={(props) => <Icon name={feature.icon} {...props} />}
+              title={feature.title}
+              description={feature.description}
+              features={feature.features}
+              color={feature.color}
+              delay={index * 0.1}
+            />
           ))}
         </div>
 
@@ -140,41 +106,38 @@ const FeaturesSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center"
         >
-          <div className="glassmorphism-card p-8 rounded-2xl border border-border max-w-4xl mx-auto">
-            <h3 className="font-heading text-3xl font-bold text-foreground mb-4">
+          <GlassCard className="p-8 md:p-12 text-center" glowColor="mixed">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
               Ready to Experience the Future?
             </h3>
-            <p className="font-body text-muted-foreground mb-8 text-lg">
+            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
               Join thousands of gamers who are already earning, competing, and governing in the decentralized gaming ecosystem.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <GlowButton
+                variant="primary"
+                size="lg"
+                onClick={() => window.location.href = '/waitlist'}
               >
-                <button
-                  className="button"
-                >
-                  <span>Explore Platform</span>
-                </button>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                <span>Explore Platform</span>
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </GlowButton>
+              
+              <GlowButton
+                variant="secondary"
+                size="lg"
+                onClick={() => window.open('https://discord.com/invite/qTTYxTnK3s', '_blank')}
               >
-                <button
-                  className="button"
-                  onClick={() => window.open('https://discord.com/invite/qTTYxTnK3s', '_blank')}
-                >
-                  <span>Join Discord</span>
-                </button>
-              </motion.div>
+                <Icon name="MessageSquare" className="w-5 h-5" />
+                <span>Join Discord</span>
+              </GlowButton>
             </div>
-          </div>
+          </GlassCard>
         </motion.div>
       </div>
     </section>
