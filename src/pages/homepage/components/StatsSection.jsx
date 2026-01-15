@@ -1,97 +1,67 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import Icon from '../../../components/AppIcon';
+import { StatsCard } from '../../../components/AnimatedCounter';
+import { GradientMesh } from '../../../components/ParticleField';
 
 const StatsSection = () => {
-  const [stats, setStats] = useState({
-    players: 0,
-    tournaments: 0,
-    rewards: 0,
-    communities: 0
-  });
-
-  const finalStats = {
-    players: 125000,
-    tournaments: 2500,
-    rewards: 15000000,
-    communities: 850
-  };
-
-  useEffect(() => {
-    const duration = 2000; // 2 seconds
-    const steps = 60;
-    const stepDuration = duration / steps;
-
-    let currentStep = 0;
-    const timer = setInterval(() => {
-      currentStep++;
-      const progress = currentStep / steps;
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-
-      setStats({
-        players: Math.floor(finalStats?.players * easeOutQuart),
-        tournaments: Math.floor(finalStats?.tournaments * easeOutQuart),
-        rewards: Math.floor(finalStats?.rewards * easeOutQuart),
-        communities: Math.floor(finalStats?.communities * easeOutQuart)
-      });
-
-      if (currentStep >= steps) {
-        clearInterval(timer);
-        setStats(finalStats);
-      }
-    }, stepDuration);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  const formatNumber = (num) => {
-    if (num >= 1000000) {
-      return (num / 1000000)?.toFixed(1) + 'M';
-    }
-    if (num >= 1000) {
-      return (num / 1000)?.toFixed(0) + 'K';
-    }
-    return num?.toLocaleString();
-  };
-
   const statsData = [
     {
       icon: 'Users',
-      value: formatNumber(stats?.players),
+      value: 125,
+      suffix: 'K+',
       label: 'Active Players',
-      description: 'Competitive gamers worldwide',
-      color: 'from-primary to-electric-blue'
+      sublabel: 'Competitive gamers worldwide',
+      color: 'cyan'
     },
     {
       icon: 'Trophy',
-      value: formatNumber(stats?.tournaments),
+      value: 2.5,
+      suffix: 'K+',
       label: 'Tournaments Hosted',
-      description: 'Decentralized competitions',
-      color: 'from-golden-cta to-cyber-orange'
+      sublabel: 'Decentralized competitions',
+      color: 'orange'
     },
     {
       icon: 'DollarSign',
-      value: '$' + formatNumber(stats?.rewards),
+      value: 15,
+      prefix: '$',
+      suffix: 'M+',
       label: 'Total Rewards',
-      description: 'Distributed to players',
-      color: 'from-accent to-neon-purple'
+      sublabel: 'Distributed to players',
+      color: 'purple'
     },
     {
       icon: 'Globe',
-      value: formatNumber(stats?.communities),
+      value: 850,
+      suffix: '+',
       label: 'Gaming Communities',
-      description: 'Connected ecosystems',
-      color: 'from-neon-green to-matrix-green'
+      sublabel: 'Connected ecosystems',
+      color: 'green'
     }
   ];
 
   return (
-    <section className="py-20 bg-gaming-dark relative overflow-hidden">
-      {/* Ultra Minimalistic Background Pattern */}
-      <div className="absolute inset-0 opacity-3">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5"></div>
+    <section className="py-24 bg-black relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0">
+        <GradientMesh />
+        
+        {/* Subtle grid */}
+        <div 
+          className="absolute inset-0 opacity-[0.015]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px)
+            `,
+            backgroundSize: '100px 100px',
+          }}
+        />
       </div>
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -99,68 +69,42 @@ const StatsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="inline-block px-4 py-1.5 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 text-sm font-medium mb-6"
+          >
+            Our Goals
+          </motion.span>
+          
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
             Powering the Gaming
-            <span className="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <span className="block mt-2 bg-gradient-to-r from-green-400 via-cyan-500 to-blue-500 bg-clip-text text-transparent">
               Revolution
             </span>
           </h2>
-          <p className="font-body text-xl text-muted-foreground max-w-3xl mx-auto">
+          
+          <p className="text-lg text-gray-400 max-w-3xl mx-auto">
             Real numbers from a real community building the future of decentralized gaming
           </p>
         </motion.div>
 
-        {/* Our Goals Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h3 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
-            Our Goals
-          </h3>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {statsData?.map((stat, index) => (
-            <motion.div
-              key={stat?.label}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              className="relative group"
-            >
-              <div className="glassmorphism-card p-8 rounded-2xl border border-border hover:border-primary/20 transition-all duration-300">
-                {/* Icon */}
-                <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${stat?.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <Icon name={stat?.icon} size={32} className="text-white" />
-                </div>
-
-                {/* Value */}
-                <div className="mb-4">
-                  <div className={`font-heading text-4xl md:text-5xl font-bold bg-gradient-to-r ${stat?.color} bg-clip-text text-transparent`}>
-                    {stat?.value}
-                  </div>
-                </div>
-
-                {/* Label */}
-                <h3 className="font-heading text-xl font-semibold text-foreground mb-2">
-                  {stat?.label}
-                </h3>
-
-                {/* Description */}
-                <p className="font-body text-muted-foreground text-sm">
-                  {stat?.description}
-                </p>
-
-                {/* Hover Effect */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-              </div>
-            </motion.div>
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {statsData.map((stat, index) => (
+            <StatsCard
+              key={stat.label}
+              icon={(props) => <Icon name={stat.icon} {...props} />}
+              value={stat.value}
+              suffix={stat.suffix}
+              prefix={stat.prefix}
+              label={stat.label}
+              sublabel={stat.sublabel}
+              color={stat.color}
+              delay={index * 0.1}
+            />
           ))}
         </div>
 
@@ -172,11 +116,48 @@ const StatsSection = () => {
           viewport={{ once: true }}
           className="flex items-center justify-center mt-12"
         >
-          <div className="flex items-center space-x-3 glassmorphism-card px-6 py-3 rounded-full border border-border">
-            <div className="w-3 h-3 bg-neon-green rounded-full animate-pulse"></div>
-            <span className="font-body text-muted-foreground text-sm">
+          <div 
+            className="flex items-center gap-3 px-6 py-3 rounded-full border border-white/10"
+            style={{
+              background: 'rgba(255, 255, 255, 0.03)',
+              backdropFilter: 'blur(10px)',
+            }}
+          >
+            <span className="relative flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+            </span>
+            <span className="text-gray-400 text-sm">
               Live data • Updated every 5 minutes
             </span>
+          </div>
+        </motion.div>
+
+        {/* Partners/Backers Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="mt-20 pt-16 border-t border-white/10"
+        >
+          <p className="text-center text-gray-500 text-sm uppercase tracking-wider mb-8">
+            Trusted by Leading Web3 Innovators
+          </p>
+          
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-50 hover:opacity-70 transition-opacity">
+            {['Polygon', 'Ethereum', 'Solana', 'Avalanche', 'BNB Chain'].map((partner, index) => (
+              <motion.div
+                key={partner}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="text-gray-400 font-medium text-lg"
+              >
+                {partner}
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>

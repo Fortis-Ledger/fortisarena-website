@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Icon from '../AppIcon';
-import Button from './Button';
-import { RainbowButton } from './RainbowButton';
+import { GlowButton } from '../MagneticButton';
 
 const Footer = () => {
-  const currentYear = new Date()?.getFullYear();
+  const currentYear = new Date().getFullYear();
+  const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
 
   const footerLinks = {
     platform: {
@@ -32,8 +33,8 @@ const Footer = () => {
       links: [
         { name: 'Whitepaper', path: '/docs/FortisArena White Paper.pdf', external: true },
         { name: 'Documentation', path: 'https://docs.fortisarena.io', external: true },
-        { name: 'API Guide', path: '#' },
-        { name: 'Security Audit', path: '#' }
+        { name: 'Tournaments', path: 'https://tournaments.fortisarena.io', external: true },
+        { name: 'API Guide', path: '#' }
       ]
     },
     legal: {
@@ -48,42 +49,38 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { name: 'Discord', icon: 'MessageSquare', url: 'https://discord.com/invite/qTTYxTnK3s', color: 'hover:text-indigo-400' },
-    { name: 'Twitter', icon: 'Twitter', url: 'https://x.com/fortisarena', color: 'hover:text-blue-400' },
-    { name: 'Telegram', icon: 'Send', url: 'https://t.me/fortisarena', color: 'hover:text-cyan-400' },
-    { name: 'YouTube', icon: 'Youtube', url: 'https://youtube.com/@fortisarena', color: 'hover:text-red-400' },
-    { name: 'GitHub', icon: 'Github', url: 'https://github.com/Fortis-Ledger', color: 'hover:text-gray-400' },
-    { name: 'LinkedIn', icon: 'Linkedin', url: 'https://linkedin.com/company/fortisarena', color: 'hover:text-blue-600' }
+    { name: 'Discord', icon: 'MessageSquare', url: 'https://discord.com/invite/qTTYxTnK3s', color: 'from-indigo-500 to-purple-500' },
+    { name: 'Twitter', icon: 'Twitter', url: 'https://x.com/fortisarena', color: 'from-blue-400 to-cyan-400' },
+    { name: 'Telegram', icon: 'Send', url: 'https://t.me/fortisarena', color: 'from-cyan-400 to-blue-500' },
+    { name: 'YouTube', icon: 'Youtube', url: 'https://youtube.com/@fortisarena', color: 'from-red-500 to-pink-500' },
+    { name: 'GitHub', icon: 'Github', url: 'https://github.com/Fortis-Ledger', color: 'from-gray-400 to-gray-600' },
+    { name: 'LinkedIn', icon: 'Linkedin', url: 'https://linkedin.com/company/fortisarena', color: 'from-blue-500 to-blue-700' }
   ];
 
-  const Logo = () => (
-    <div className="flex items-center space-x-3">
-      <div className="relative">
-        <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gray-800">
-          <img
-            src="/favicon64.ico"
-            alt="FortisArena Logo"
-            className="w-12 h-12 object-contain"
-          />
-        </div>
-      </div>
-      <div className="flex flex-col">
-        <span className="font-heading font-bold text-2xl text-white">
-          FortisArena
-        </span>
-        <span className="font-mono text-xs text-gray-400 -mt-1">
-          Gaming Liberation
-        </span>
-      </div>
-    </div>
-  );
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (email) {
+      setIsSubscribed(true);
+      setEmail('');
+    }
+  };
 
   return (
-    <footer className="bg-black relative">
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+    <footer className="relative bg-black overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0">
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
+        <div 
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] opacity-20"
+          style={{
+            background: 'radial-gradient(ellipse at center bottom, rgba(139, 92, 246, 0.3) 0%, transparent 70%)',
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         {/* Top Section - Logo and Newsletter */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 pb-16 border-b border-white/10">
           {/* Logo and Description */}
           <motion.div 
             className="space-y-6"
@@ -92,90 +89,133 @@ const Footer = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Logo />
+            <Link to="/" className="inline-flex items-center gap-3">
+              <div className="relative w-12 h-12">
+                <div 
+                  className="absolute inset-0 rounded-xl bg-gradient-to-br from-purple-500/20 to-cyan-500/20"
+                  style={{ boxShadow: '0 0 20px rgba(139, 92, 246, 0.3)' }}
+                />
+                <img
+                  src="/favicon64.ico"
+                  alt="FortisArena"
+                  className="relative w-full h-full object-contain p-1"
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-bold text-2xl text-white">FortisArena</span>
+                <span className="text-xs text-gray-400 -mt-0.5">Gaming Liberation</span>
+              </div>
+            </Link>
+            
             <p className="text-gray-400 max-w-md leading-relaxed">
               The future of eSports is decentralized. Join the revolution and own your gaming destiny through skill-based tournaments, NFT rewards, and community governance.
             </p>
             
             {/* Social Links */}
-            <div className="flex space-x-4">
-              {socialLinks?.map((social) => (
+            <div className="flex flex-wrap gap-3">
+              {socialLinks.map((social, index) => (
                 <motion.a
-                  key={social?.name}
-                  href={social?.url}
-                  className={`text-gray-400 ${social?.color} transition-colors duration-300 cursor-pointer`}
-                  whileHover={{ scale: 1.1 }}
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative p-3 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Icon name={social?.icon} size={20} />
+                  <div 
+                    className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{
+                      background: `linear-gradient(135deg, ${social.color.replace('from-', '').replace(' to-', ', ')})`,
+                      opacity: 0.1,
+                    }}
+                  />
+                  <Icon name={social.icon} size={20} className="text-gray-400 group-hover:text-white transition-colors" />
                 </motion.a>
               ))}
             </div>
           </motion.div>
 
-          {/* Newsletter Section */}
-          <motion.div
-            className="space-y-6"
+          {/* Newsletter */}
+          <motion.div 
+            className="lg:pl-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center space-x-2 mb-4">
-              <Icon name="Bell" size={20} className="text-blue-500" />
-              <h3 className="font-heading font-semibold text-lg text-white">
-                Stay Updated with FortisArena
-              </h3>
-            </div>
-            <p className="text-gray-400 text-sm">
-              Get the latest updates on tournaments, new features, and community events.
+            <h3 className="text-xl font-bold text-white mb-2">Stay in the Loop</h3>
+            <p className="text-gray-400 mb-6">
+              Get the latest updates on tournaments, token launches, and exclusive rewards.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
-              />
-              <button className="button">
-                <span>Subscribe Now</span>
-              </button>
-            </div>
+            {isSubscribed ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="p-4 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400 flex items-center gap-3"
+              >
+                <Icon name="CheckCircle" size={24} />
+                <span>Thanks for subscribing! Check your inbox.</span>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
+                <div className="relative flex-1">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all"
+                    required
+                  />
+                </div>
+                <GlowButton variant="primary" size="md" type="submit">
+                  Subscribe
+                </GlowButton>
+              </form>
+            )}
+            
+            <p className="text-xs text-gray-500 mt-3">
+              By subscribing, you agree to our Privacy Policy. No spam, ever.
+            </p>
           </motion.div>
         </div>
 
-        {/* Bottom Section - Footer Links */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {Object?.entries(footerLinks)?.map(([key, section], index) => (
+        {/* Links Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+          {Object.entries(footerLinks).map(([key, section], sectionIndex) => (
             <motion.div
               key={key}
-              className="space-y-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.4, delay: sectionIndex * 0.1 }}
               viewport={{ once: true }}
             >
-              <h3 className="font-heading font-semibold text-lg text-white mb-4">
-                {section?.title}
-              </h3>
+              <h4 className="text-white font-semibold mb-4">{section.title}</h4>
               <ul className="space-y-3">
-                {section?.links?.map((link) => (
-                  <li key={link?.name}>
-                    {link?.external ? (
+                {section.links.map((link, linkIndex) => (
+                  <li key={link.name}>
+                    {link.external ? (
                       <a
-                        href={link?.path}
-                        className="text-gray-400 hover:text-white transition-colors duration-300 text-sm"
+                        href={link.path}
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-1 group"
                       >
-                        {link?.name}
+                        {link.name}
+                        <Icon name="ExternalLink" size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                       </a>
                     ) : (
                       <Link
-                        to={link?.path}
-                        className="text-gray-400 hover:text-white transition-colors duration-300 text-sm"
+                        to={link.path}
+                        className="text-gray-400 hover:text-white transition-colors text-sm"
                       >
-                        {link?.name}
+                        {link.name}
                       </Link>
                     )}
                   </li>
@@ -185,28 +225,37 @@ const Footer = () => {
           ))}
         </div>
 
-        {/* Bottom Bar */}
-        <motion.div
-          className="mt-8 pt-6 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="flex items-center space-x-6 text-sm text-gray-400">
-            <span>© {currentYear} FortisArena. All rights reserved.</span>
-            <span className="hidden sm:inline">•</span>
-            <span className="hidden sm:inline">Gaming Liberation Starts Here</span>
-          </div>
+        {/* Bottom Section */}
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <motion.p 
+            className="text-gray-500 text-sm"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            © {currentYear} FortisArena. All rights reserved.
+          </motion.p>
           
-          <div className="flex items-center space-x-6 text-sm">
-            <span className="text-gray-400">Powered by</span>
-            <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 bg-blue-500 rounded"></div>
-              <span className="text-white font-semibold">Web3 Technology</span>
-            </div>
-          </div>
-        </motion.div>
+          <motion.div 
+            className="flex items-center gap-6"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <span className="flex items-center gap-2 text-sm text-gray-500">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              All systems operational
+            </span>
+            <a 
+              href="mailto:support@fortisarena.io" 
+              className="text-gray-400 hover:text-white text-sm transition-colors"
+            >
+              support@fortisarena.io
+            </a>
+          </motion.div>
+        </div>
       </div>
     </footer>
   );
