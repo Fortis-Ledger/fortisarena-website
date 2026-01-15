@@ -1,24 +1,21 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { motion, useSpring, useMotionValue } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
 
 const CustomCursor = () => {
+  const [position, setPosition] = useState({ x: -100, y: -100 });
   const [isHovering, setIsHovering] = useState(false);
-  const [isClicking, setIsClicking] = useState(false);
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-  
-  const springConfig = { damping: 25, stiffness: 400 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const moveCursor = (e) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
-    };
+    // Check if touch device - don't render cursor
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+      return;
+    }
+    
+    setIsVisible(true);
 
-    const handleMouseDown = () => setIsClicking(true);
-    const handleMouseUp = () => setIsClicking(false);
+    const moveCursor = (e) => {
+      setPosition({ x: e.clientX, y: e.clientY });
+    };
 
     const handleMouseEnter = (e) => {
       if (e.target.closest('a, button, [role="button"], input, textarea, select, .cursor-pointer')) {
@@ -32,98 +29,73 @@ const CustomCursor = () => {
       }
     };
 
-    window.addEventListener('mousemove', moveCursor);
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mouseup', handleMouseUp);
-    document.addEventListener('mouseover', handleMouseEnter);
-    document.addEventListener('mouseout', handleMouseLeave);
+    window.addEventListener('mousemove', moveCursor, { passive: true });
+    document.addEventListener('mouseover', handleMouseEnter, { passive: true });
+    document.addEventListener('mouseout', handleMouseLeave, { passive: true });
 
     return () => {
       window.removeEventListener('mousemove', moveCursor);
-      window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('mouseup', handleMouseUp);
       document.removeEventListener('mouseover', handleMouseEnter);
       document.removeEventListener('mouseout', handleMouseLeave);
     };
-  }, [cursorX, cursorY]);
+  }, []);
 
-  // Hide on mobile/touch devices
-  if (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) {
-    return null;
-  }
+  if (!isVisible) return null;
 
   return (
     <>
+      <style>{`
+        .custom-cursor {
+          position: fixed;
+          pointer-events: none;
+          z-index: 99999;
+          mix-blend-mode: difference;
+          transition: transform 0.15s ease-out;
+        }
+        .cursor-dot {
+          width: 8px;
+          height: 8px;
+          background: white;
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+        }
+        .cursor-ring {
+          position: fixed;
+          pointer-events: none;
+          z-index: 99998;
+          width: 32px;
+          height: 32px;
+          border: 1px solid rgba(6, 182, 212, 0.5);
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+        }
+        .cursor-ring.hovering {
+          transform: translate(-50%, -50%) scale(1.5);
+          opacity: 0.8;
+        }
+      `}</style>
+      
       {/* Main cursor dot */}
-      <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[99999] mix-blend-difference"
+      <div
+        className="custom-cursor"
         style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
+          left: position.x,
+          top: position.y,
+          transform: `translate(-50%, -50%) scale(${isHovering ? 1.5 : 1})`,
         }}
       >
-        <motion.div
-          className="relative -translate-x-1/2 -translate-y-1/2"
-          animate={{
-            scale: isClicking ? 0.8 : isHovering ? 1.5 : 1,
-          }}
-          transition={{ duration: 0.15 }}
-        >
-          {/* Inner dot */}
-          <div 
-            className="w-3 h-3 bg-white rounded-full"
-            style={{
-              boxShadow: '0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(139, 92, 246, 0.6)'
-            }}
-          />
-        </motion.div>
-      </motion.div>
+        <div className="cursor-dot" />
+      </div>
 
       {/* Outer ring */}
-      <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[99998]"
+      <div
+        className={`cursor-ring ${isHovering ? 'hovering' : ''}`}
         style={{
-          x: cursorX,
-          y: cursorY,
+          left: position.x,
+          top: position.y,
         }}
-      >
-        <motion.div
-          className="relative -translate-x-1/2 -translate-y-1/2"
-          animate={{
-            scale: isClicking ? 0.9 : isHovering ? 1.8 : 1,
-            opacity: isHovering ? 0.8 : 0.4,
-          }}
-          transition={{ duration: 0.2, ease: 'easeOut' }}
-        >
-          <div 
-            className="w-8 h-8 border border-cyan-400/50 rounded-full"
-            style={{
-              boxShadow: '0 0 15px rgba(6, 182, 212, 0.3), inset 0 0 10px rgba(6, 182, 212, 0.1)'
-            }}
-          />
-        </motion.div>
-      </motion.div>
-
-      {/* Glow trail effect */}
-      <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[99997]"
-        style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
-        }}
-      >
-        <motion.div
-          className="relative -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full opacity-20"
-          style={{
-            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, rgba(6, 182, 212, 0.2) 40%, transparent 70%)',
-            filter: 'blur(8px)',
-          }}
-          animate={{
-            scale: isHovering ? 1.5 : 1,
-          }}
-          transition={{ duration: 0.3 }}
-        />
-      </motion.div>
+      />
     </>
   );
 };
