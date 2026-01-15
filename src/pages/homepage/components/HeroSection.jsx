@@ -106,7 +106,7 @@ const HeroSection = () => {
             <div className="space-y-4">
               <AnimatedTitle 
                 text="FortisArena"
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight"
                 delay={0.2}
               />
               
@@ -114,7 +114,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
-                className="text-xl sm:text-2xl md:text-3xl font-medium"
+                className="text-lg sm:text-xl md:text-2xl font-medium"
               >
                 <span className="text-gray-300">The Next-Gen </span>
                 <GradientText className="font-bold">Web3 eSports Arena</GradientText>
@@ -128,10 +128,10 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 1 }}
               className="space-y-3"
             >
-              <p className="text-lg sm:text-xl text-gray-300 max-w-xl mx-auto lg:mx-0">
+              <p className="text-base sm:text-lg text-gray-300 max-w-xl mx-auto lg:mx-0">
                 Compete, Earn, and Govern in the future of decentralized gaming.
               </p>
-              <p className="text-base text-gray-400 max-w-lg mx-auto lg:mx-0">
+              <p className="text-sm sm:text-base text-gray-400 max-w-lg mx-auto lg:mx-0">
                 Skill-based tournaments, blockchain rewards, and a thriving community of gamers.
               </p>
             </motion.div>

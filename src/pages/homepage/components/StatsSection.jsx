@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import Icon from '../../../components/AppIcon';
 import { StatsCard } from '../../../components/AnimatedCounter';
 import { GradientMesh } from '../../../components/ParticleField';
+import LogoMarquee from '../../../components/LogoMarquee';
 
 const StatsSection = () => {
   const statsData = [
@@ -133,7 +134,7 @@ const StatsSection = () => {
           </div>
         </motion.div>
 
-        {/* Partners/Backers Section */}
+        {/* Partners/Backers Section - Auto-scroll Marquee */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -145,20 +146,7 @@ const StatsSection = () => {
             Trusted by Leading Web3 Innovators
           </p>
           
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-50 hover:opacity-70 transition-opacity">
-            {['Polygon', 'Ethereum', 'Solana', 'Avalanche', 'BNB Chain'].map((partner, index) => (
-              <motion.div
-                key={partner}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-gray-400 font-medium text-lg"
-              >
-                {partner}
-              </motion.div>
-            ))}
-          </div>
+          <LogoMarquee speed={35} className="py-4" />
         </motion.div>
       </div>
     </section>

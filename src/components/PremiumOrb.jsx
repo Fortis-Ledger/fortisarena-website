@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 
 // Solar System Style Token Orbit - Clean & Attractive
 const PremiumOrb = ({ size = 400, className = '' }) => {
   
+  // Generate random start angles for each token (only once on mount)
+  const randomStartAngles = useMemo(() => {
+    return Array.from({ length: 6 }, () => Math.random() * 360);
+  }, []);
+
   // Token data with orbital properties - using available tokens
   const tokens = [
     { 
@@ -12,7 +17,6 @@ const PremiumOrb = ({ size = 400, className = '' }) => {
       orbitRadius: 0.30, 
       duration: 14, 
       size: 34,
-      delay: 0,
       color: '#627EEA'
     },
     { 
@@ -21,7 +25,6 @@ const PremiumOrb = ({ size = 400, className = '' }) => {
       orbitRadius: 0.38, 
       duration: 18, 
       size: 30,
-      delay: 2,
       color: '#00FFA3'
     },
     { 
@@ -30,7 +33,6 @@ const PremiumOrb = ({ size = 400, className = '' }) => {
       orbitRadius: 0.46, 
       duration: 22, 
       size: 28,
-      delay: 4,
       color: '#8247E5'
     },
     { 
@@ -39,7 +41,6 @@ const PremiumOrb = ({ size = 400, className = '' }) => {
       orbitRadius: 0.54, 
       duration: 26, 
       size: 26,
-      delay: 6,
       color: '#E84142'
     },
     { 
@@ -48,7 +49,6 @@ const PremiumOrb = ({ size = 400, className = '' }) => {
       orbitRadius: 0.62, 
       duration: 30, 
       size: 24,
-      delay: 8,
       color: '#26A17B'
     },
     { 
@@ -57,7 +57,6 @@ const PremiumOrb = ({ size = 400, className = '' }) => {
       orbitRadius: 0.70, 
       duration: 34, 
       size: 22,
-      delay: 10,
       color: '#E6007A'
     },
   ];
@@ -127,9 +126,10 @@ const PremiumOrb = ({ size = 400, className = '' }) => {
         />
       </motion.div>
 
-      {/* Orbiting Tokens */}
+      {/* Orbiting Tokens - Random start positions */}
       {tokens.map((token, index) => {
         const orbitRadius = size * token.orbitRadius;
+        const startAngle = randomStartAngles[index];
         
         return (
           <motion.div
@@ -143,14 +143,16 @@ const PremiumOrb = ({ size = 400, className = '' }) => {
               marginTop: -token.size / 2,
               marginLeft: -token.size / 2,
             }}
+            initial={{
+              rotate: startAngle,
+            }}
             animate={{
-              rotate: [0, 360],
+              rotate: [startAngle, startAngle + 360],
             }}
             transition={{
               duration: token.duration,
               repeat: Infinity,
               ease: 'linear',
-              delay: token.delay,
             }}
           >
             {/* Token positioned at orbit radius */}
@@ -164,14 +166,16 @@ const PremiumOrb = ({ size = 400, className = '' }) => {
                 marginLeft: -token.size / 2,
                 marginTop: -token.size / 2,
               }}
+              initial={{
+                rotate: -startAngle,
+              }}
               animate={{
-                rotate: [0, -360], // Counter-rotate to keep token upright
+                rotate: [-startAngle, -startAngle - 360], // Counter-rotate to keep token upright
               }}
               transition={{
                 duration: token.duration,
                 repeat: Infinity,
                 ease: 'linear',
-                delay: token.delay,
               }}
             >
               {/* Token glow */}
