@@ -4,19 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { AnimatedTitle, AnimatedWords, GradientText } from '../../../components/AnimatedText';
 import PremiumOrb from '../../../components/PremiumOrb';
 import ParticleField, { GradientMesh, GridBackground } from '../../../components/ParticleField';
-import { StatsBar } from '../../../components/AnimatedCounter';
+
 import { GlowButton, AnimatedBorderButton } from '../../../components/MagneticButton';
 
 const HeroSection = () => {
   const navigate = useNavigate();
-
-  // Stats data
-  const stats = useMemo(() => [
-    { value: 125, suffix: 'K+', label: 'Active Players' },
-    { value: 3, suffix: 'K+', label: 'Tournaments' },
-    { value: 15, prefix: '$', suffix: 'M+', label: 'Total Rewards' },
-    { value: 850, suffix: '+', label: 'Communities' },
-  ], []);
 
   // Floating crypto coins
   const cryptoCoins = useMemo(() => [
@@ -208,24 +200,7 @@ const HeroSection = () => {
           </motion.div>
         </div>
 
-        {/* Stats bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.6 }}
-          className="mt-16 pt-8 border-t border-white/10"
-        >
-          <div className="text-center mb-6">
-            <span className="text-sm text-gray-400 uppercase tracking-wider">Powering the Gaming Revolution</span>
-          </div>
-          <StatsBar stats={stats} />
-          <div className="text-center mt-4">
-            <span className="inline-flex items-center gap-2 text-xs text-gray-500">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-              Live data • Updated every 5 minutes
-            </span>
-          </div>
-        </motion.div>
+
       </div>
 
       {/* Bottom gradient fade */}

@@ -7,7 +7,7 @@ import { AnimatedShinyText } from '../../../components/ui/AnimatedShinyText';
 
 const CreatorHero = () => {
   return (
-    <section className="relative min-h-screen bg-gaming-dark overflow-hidden pt-16 pb-8 sm:pt-24 sm:pb-12">
+    <section className="relative min-h-screen bg-gaming-dark overflow-hidden pt-8 pb-8 sm:pt-16 sm:pb-12">
       {/* Neural Network Background */}
       <div className="absolute inset-0 neural-network opacity-30"></div>
       {/* Animated Particles */}

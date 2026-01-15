@@ -1,179 +1,253 @@
-import React, { useRef, useMemo } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
-// CSS-based premium orb (no Three.js dependency for better performance)
+// Solar System Style Token Orbit - Clean & Attractive
 const PremiumOrb = ({ size = 400, className = '' }) => {
-  return (
-    <div className={`relative ${className}`} style={{ width: size, height: size }}>
-      {/* Main orb with gradient */}
-      <motion.div
-        className="absolute inset-0 rounded-full"
-        style={{
-          background: `
-            radial-gradient(circle at 30% 30%, rgba(139, 92, 246, 0.8) 0%, transparent 50%),
-            radial-gradient(circle at 70% 70%, rgba(6, 182, 212, 0.8) 0%, transparent 50%),
-            radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.4) 0%, transparent 60%),
-            linear-gradient(135deg, rgba(139, 92, 246, 0.3) 0%, rgba(6, 182, 212, 0.3) 50%, rgba(236, 72, 153, 0.3) 100%)
-          `,
-          boxShadow: `
-            0 0 60px rgba(139, 92, 246, 0.4),
-            0 0 120px rgba(6, 182, 212, 0.3),
-            0 0 180px rgba(236, 72, 153, 0.2),
-            inset 0 0 60px rgba(255, 255, 255, 0.1)
-          `,
-          backdropFilter: 'blur(40px)',
-        }}
-        animate={{
-          scale: [1, 1.02, 1],
-          rotate: [0, 360],
-        }}
-        transition={{
-          scale: {
-            duration: 4,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          },
-          rotate: {
-            duration: 60,
-            repeat: Infinity,
-            ease: 'linear',
-          },
-        }}
-      />
+  
+  // Token data with orbital properties - using available tokens
+  const tokens = [
+    { 
+      name: 'Ethereum', 
+      image: '/token/Ethereum_3D.svg', 
+      orbitRadius: 0.30, 
+      duration: 14, 
+      size: 34,
+      delay: 0,
+      color: '#627EEA'
+    },
+    { 
+      name: 'Solana', 
+      image: '/token/Solana_3D.svg', 
+      orbitRadius: 0.38, 
+      duration: 18, 
+      size: 30,
+      delay: 2,
+      color: '#00FFA3'
+    },
+    { 
+      name: 'Polygon', 
+      image: '/token/Polygon_3D.svg', 
+      orbitRadius: 0.46, 
+      duration: 22, 
+      size: 28,
+      delay: 4,
+      color: '#8247E5'
+    },
+    { 
+      name: 'Avalanche', 
+      image: '/token/Avalanche_3D.svg', 
+      orbitRadius: 0.54, 
+      duration: 26, 
+      size: 26,
+      delay: 6,
+      color: '#E84142'
+    },
+    { 
+      name: 'USDT', 
+      image: '/token/USDT_3D.svg', 
+      orbitRadius: 0.62, 
+      duration: 30, 
+      size: 24,
+      delay: 8,
+      color: '#26A17B'
+    },
+    { 
+      name: 'DOT', 
+      image: '/token/DOT_3D.svg', 
+      orbitRadius: 0.70, 
+      duration: 34, 
+      size: 22,
+      delay: 10,
+      color: '#E6007A'
+    },
+  ];
 
-      {/* Inner glow layer */}
+  return (
+    <div 
+      className={`relative ${className}`} 
+      style={{ 
+        width: size, 
+        height: size,
+      }}
+    >
+      {/* Orbital paths - subtle rings */}
+      {tokens.map((token, index) => (
+        <div
+          key={`orbit-${index}`}
+          className="absolute rounded-full"
+          style={{
+            top: '50%',
+            left: '50%',
+            width: size * token.orbitRadius * 2,
+            height: size * token.orbitRadius * 2,
+            marginTop: -size * token.orbitRadius,
+            marginLeft: -size * token.orbitRadius,
+            border: '1px solid',
+            borderColor: `rgba(139, 92, 246, ${0.12 - index * 0.015})`,
+          }}
+        />
+      ))}
+
+      {/* Center - FortisArena Token (Round Circle) */}
       <motion.div
-        className="absolute rounded-full"
+        className="absolute rounded-full flex items-center justify-center overflow-hidden"
         style={{
-          top: '10%',
-          left: '10%',
-          right: '10%',
-          bottom: '10%',
-          background: `
-            radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.3) 0%, transparent 40%),
-            radial-gradient(circle at 60% 60%, rgba(139, 92, 246, 0.5) 0%, transparent 50%)
+          top: '50%',
+          left: '50%',
+          width: size * 0.18,
+          height: size * 0.18,
+          marginTop: -size * 0.09,
+          marginLeft: -size * 0.09,
+          boxShadow: `
+            0 0 30px rgba(139, 92, 246, 0.5),
+            0 0 60px rgba(6, 182, 212, 0.3)
           `,
-          filter: 'blur(20px)',
         }}
         animate={{
-          opacity: [0.5, 0.8, 0.5],
+          boxShadow: [
+            '0 0 30px rgba(139, 92, 246, 0.5), 0 0 60px rgba(6, 182, 212, 0.3)',
+            '0 0 50px rgba(139, 92, 246, 0.7), 0 0 80px rgba(6, 182, 212, 0.5)',
+            '0 0 30px rgba(139, 92, 246, 0.5), 0 0 60px rgba(6, 182, 212, 0.3)',
+          ],
         }}
         transition={{
           duration: 3,
           repeat: Infinity,
           ease: 'easeInOut',
         }}
-      />
-
-      {/* Highlight reflection */}
-      <motion.div
-        className="absolute rounded-full"
-        style={{
-          top: '15%',
-          left: '20%',
-          width: '30%',
-          height: '20%',
-          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, transparent 100%)',
-          filter: 'blur(10px)',
-          transform: 'rotate(-30deg)',
-        }}
-        animate={{
-          opacity: [0.4, 0.7, 0.4],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      />
-
-      {/* Orbiting rings */}
-      {[0, 1, 2].map((index) => (
-        <motion.div
-          key={index}
-          className="absolute inset-0"
+      >
+        {/* FortisArena Token Image - Round */}
+        <img
+          src="/token/FortisArena_3D.svg"
+          alt="FortisArena"
+          className="w-full h-full object-cover"
           style={{
-            border: `1px solid rgba(6, 182, 212, ${0.3 - index * 0.1})`,
-            borderRadius: '50%',
-            transform: `rotateX(${60 + index * 10}deg) rotateY(${index * 30}deg)`,
-            transformStyle: 'preserve-3d',
-          }}
-          animate={{
-            rotateZ: [0, 360],
-          }}
-          transition={{
-            duration: 20 + index * 10,
-            repeat: Infinity,
-            ease: 'linear',
+            filter: 'drop-shadow(0 0 8px rgba(139, 92, 246, 0.6))',
           }}
         />
-      ))}
+      </motion.div>
 
-      {/* Floating particles around orb */}
-      {Array.from({ length: 12 }).map((_, i) => {
-        const angle = (i / 12) * Math.PI * 2;
-        const radius = size * 0.6;
-        const x = Math.cos(angle) * radius;
-        const y = Math.sin(angle) * radius;
+      {/* Orbiting Tokens */}
+      {tokens.map((token, index) => {
+        const orbitRadius = size * token.orbitRadius;
         
         return (
           <motion.div
-            key={i}
-            className="absolute w-2 h-2 rounded-full"
+            key={token.name}
+            className="absolute"
             style={{
-              left: '50%',
               top: '50%',
-              background: i % 3 === 0 
-                ? 'rgba(139, 92, 246, 0.8)' 
-                : i % 3 === 1 
-                  ? 'rgba(6, 182, 212, 0.8)' 
-                  : 'rgba(236, 72, 153, 0.8)',
-              boxShadow: `0 0 10px currentColor`,
+              left: '50%',
+              width: token.size,
+              height: token.size,
+              marginTop: -token.size / 2,
+              marginLeft: -token.size / 2,
             }}
             animate={{
-              x: [x * 0.8, x, x * 0.8],
-              y: [y * 0.8, y, y * 0.8],
-              opacity: [0.3, 1, 0.3],
-              scale: [0.5, 1, 0.5],
+              rotate: [0, 360],
             }}
             transition={{
-              duration: 3 + i * 0.2,
+              duration: token.duration,
               repeat: Infinity,
-              ease: 'easeInOut',
-              delay: i * 0.1,
+              ease: 'linear',
+              delay: token.delay,
+            }}
+          >
+            {/* Token positioned at orbit radius */}
+            <motion.div
+              className="absolute flex items-center justify-center"
+              style={{
+                width: token.size,
+                height: token.size,
+                left: orbitRadius,
+                top: 0,
+                marginLeft: -token.size / 2,
+                marginTop: -token.size / 2,
+              }}
+              animate={{
+                rotate: [0, -360], // Counter-rotate to keep token upright
+              }}
+              transition={{
+                duration: token.duration,
+                repeat: Infinity,
+                ease: 'linear',
+                delay: token.delay,
+              }}
+            >
+              {/* Token glow */}
+              <div
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background: `radial-gradient(circle, ${token.color}30 0%, transparent 70%)`,
+                  filter: 'blur(6px)',
+                  transform: 'scale(1.3)',
+                }}
+              />
+              
+              {/* Token image */}
+              <motion.img
+                src={token.image}
+                alt={token.name}
+                className="w-full h-full object-contain relative z-10"
+                style={{
+                  filter: `drop-shadow(0 0 4px ${token.color}60)`,
+                }}
+                animate={{
+                  scale: [1, 1.08, 1],
+                }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                  delay: index * 0.4,
+                }}
+              />
+            </motion.div>
+          </motion.div>
+        );
+      })}
+
+      {/* Subtle particle dust */}
+      {Array.from({ length: 10 }).map((_, i) => {
+        const angle = (i / 10) * Math.PI * 2;
+        const radius = size * (0.25 + (i % 5) * 0.1);
+        const particleSize = 1.5 + (i % 3);
+        
+        return (
+          <motion.div
+            key={`particle-${i}`}
+            className="absolute rounded-full"
+            style={{
+              width: particleSize,
+              height: particleSize,
+              left: '50%',
+              top: '50%',
+              marginLeft: -particleSize / 2,
+              marginTop: -particleSize / 2,
+              background: i % 2 === 0 ? 'rgba(139, 92, 246, 0.5)' : 'rgba(6, 182, 212, 0.5)',
+            }}
+            animate={{
+              x: [
+                Math.cos(angle) * radius * 0.9,
+                Math.cos(angle + Math.PI * 2) * radius,
+                Math.cos(angle) * radius * 0.9,
+              ],
+              y: [
+                Math.sin(angle) * radius * 0.9,
+                Math.sin(angle + Math.PI * 2) * radius,
+                Math.sin(angle) * radius * 0.9,
+              ],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 10 + i * 0.8,
+              repeat: Infinity,
+              ease: 'linear',
+              delay: i * 0.5,
             }}
           />
         );
       })}
-
-      {/* Center logo/icon placeholder */}
-      <motion.div
-        className="absolute inset-0 flex items-center justify-center"
-        animate={{
-          scale: [1, 1.1, 1],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      >
-        <div 
-          className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl flex items-center justify-center"
-          style={{
-            background: 'rgba(255, 255, 255, 0.1)',
-            backdropFilter: 'blur(10px)',
-            border: '1px solid rgba(255, 255, 255, 0.2)',
-            boxShadow: '0 0 30px rgba(139, 92, 246, 0.3)',
-          }}
-        >
-          <img
-            src="/favicon64.ico"
-            alt="FortisArena"
-            className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
-          />
-        </div>
-      </motion.div>
     </div>
   );
 };
