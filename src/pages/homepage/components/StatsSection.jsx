@@ -43,7 +43,7 @@ const StatsSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-black relative overflow-hidden">
+    <section className="py-16 bg-black relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
         <GradientMesh />
@@ -140,7 +140,7 @@ const StatsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
-          className="mt-20 pt-16 border-t border-white/10"
+          className="mt-12 pt-10 border-t border-white/10"
         >
           <p className="text-center text-gray-500 text-sm uppercase tracking-wider mb-8">
             Trusted by Leading Web3 Innovators

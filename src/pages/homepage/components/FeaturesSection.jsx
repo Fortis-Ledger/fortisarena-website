@@ -38,7 +38,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-black relative overflow-hidden">
+    <section className="py-12 bg-black relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
         <GradientMesh />
