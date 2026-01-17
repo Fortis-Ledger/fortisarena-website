@@ -86,7 +86,7 @@ const TokenomicsPage = () => {
     },
     {
       label: 'Token Standard',
-      value: 'ERC-20',
+      value: 'BEP-20',
       description: 'Compatible with all major wallets'
     },
     {
@@ -543,7 +543,7 @@ const TokenomicsPage = () => {
                     </span>
                   </div>
                   <p className="text-xl sm:text-2xl font-bold text-white group-hover:text-accent transition-colors duration-300 mb-2">
-                    Polygon, BSC and Ethereum
+                    BSC, Ethereum and Polygon
                   </p>
                   <p className="text-xs text-white/50">
                     L2 Cross chain Bridge Scaling Solution
@@ -557,7 +557,7 @@ const TokenomicsPage = () => {
                     </span>
                   </div>
                   <p className="text-xl sm:text-2xl font-bold text-white group-hover:text-accent transition-colors duration-300 mb-2">
-                    ERC-20
+                    BEP-20
                   </p>
                   <p className="text-xs text-white/50">
                     Compatible with all major wallets

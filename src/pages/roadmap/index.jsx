@@ -172,7 +172,7 @@ const RoadmapPage = () => {
         { label: "Staking Rewards", value: "10% APY" }
       ],
       technicalSpecs: [
-        "ERC-20 token standard on Ethereum",
+        "BEP-20 token standard on Ethereum",
         "Smart contract-based staking system",
         "Automated reward distribution",
         "Token burn mechanisms for deflation"
@@ -337,7 +337,7 @@ const RoadmapPage = () => {
         { label: "Staking Rewards", value: "15% APY" }
       ],
       technicalSpecs: [
-        "ERC-20 token with governance features",
+        "BEP-20 token with governance features",
         "Voting power calculation system",
         "Premium feature access control",
         "Creator reward distribution"
@@ -460,7 +460,7 @@ const RoadmapPage = () => {
             ))}
           </div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.div 
+            <motion.div
               className="group rounded-full border border-white/10 bg-white/5 text-sm text-white transition-all ease-in hover:cursor-pointer hover:bg-white/10 mb-6 inline-block"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -471,8 +471,8 @@ const RoadmapPage = () => {
                 <span>Roadmap Observatory</span>
               </AnimatedShinyText>
             </motion.div>
-            
-            <motion.h1 
+
+            <motion.h1
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-4 sm:mb-6"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -481,18 +481,18 @@ const RoadmapPage = () => {
               Charting the Future of
               <span className="block text-electric-blue">Decentralized Gaming</span>
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6 sm:mb-8 px-4 sm:px-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Follow our journey from community building (2025) to full DAO governance (2028). 
+              Follow our journey from community building (2025) to full DAO governance (2028).
               Track milestones, participate in governance, and shape the future together.
             </motion.p>
 
-            <motion.div 
+            <motion.div
               className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 px-4 sm:px-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -605,7 +605,7 @@ const RoadmapPage = () => {
           <VisionSection />
         </div>
       </main>
-      
+
       {/* Footer */}
       <Footer />
     </div>
