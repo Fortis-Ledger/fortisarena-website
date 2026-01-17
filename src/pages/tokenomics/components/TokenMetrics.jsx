@@ -15,16 +15,16 @@ const TokenMetrics = () => {
     {
       id: 2,
       label: "Initial Supply",
-      value: "100,000,000",
+      value: "10,000,000",
       symbol: "FRT",
-      change: "+0.0%",
+      change: "+5.0%",
       changeType: "neutral",
       icon: "TrendingUp"
     },
     {
       id: 3,
       label: "Market Cap",
-      value: "Coming Soon",
+      value: "$1,000,000",
       symbol: "USD",
       change: "+0.0%",
       changeType: "neutral",
@@ -33,7 +33,7 @@ const TokenMetrics = () => {
     {
       id: 4,
       label: "Token Price",
-      value: "Coming Soon",
+      value: "$0.10",
       symbol: "USD",
       change: "+0.0%",
       changeType: "neutral",
@@ -79,39 +79,39 @@ const TokenMetrics = () => {
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {metrics?.map((metric) => (
-        <div
-          key={metric?.id}
-          className="bg-card border border-border rounded-xl p-6 hover:shadow-gaming transition-all duration-300 group"
-        >
-          <div className="flex items-start justify-between mb-4">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                <Icon name={metric?.icon} size={20} className="text-accent" />
+        {metrics?.map((metric) => (
+          <div
+            key={metric?.id}
+            className="bg-card border border-border rounded-xl p-6 hover:shadow-gaming transition-all duration-300 group"
+          >
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                  <Icon name={metric?.icon} size={20} className="text-accent" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground font-medium">
+                    {metric?.label}
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="text-sm text-muted-foreground font-medium">
-                  {metric?.label}
-                </p>
+              <div className={`text-xs font-medium ${getChangeColor(metric?.changeType)}`}>
+                {metric?.change}
               </div>
             </div>
-            <div className={`text-xs font-medium ${getChangeColor(metric?.changeType)}`}>
-              {metric?.change}
+
+            <div className="space-y-1">
+              <div className="flex items-baseline space-x-2">
+                <span className="text-2xl font-bold text-foreground">
+                  {metric?.value}
+                </span>
+                <span className="text-sm text-muted-foreground font-medium">
+                  {metric?.symbol}
+                </span>
+              </div>
             </div>
           </div>
-          
-          <div className="space-y-1">
-            <div className="flex items-baseline space-x-2">
-              <span className="text-2xl font-bold text-foreground">
-                {metric?.value}
-              </span>
-              <span className="text-sm text-muted-foreground font-medium">
-                {metric?.symbol}
-              </span>
-            </div>
-          </div>
-        </div>
-      ))}
+        ))}
       </div>
     </div>
   );

@@ -90,13 +90,13 @@ const TokenomicsPage = () => {
       description: 'Compatible with all major wallets'
     },
     {
-      label: 'Initial Price',
+      label: 'Launch Price',
       value: '$0.10',
       description: 'Token generation event price'
     },
     {
       label: 'Current Price',
-      value: 'Coming Soon',
+      value: '$0.075',
       description: 'Real-time market price'
     },
     {
@@ -129,9 +129,9 @@ const TokenomicsPage = () => {
                   >
                     <div className="flex items-start space-x-2 sm:space-x-3">
                       <div className="w-8 h-8 sm:w-10 sm:h-10 bg-muted rounded-lg flex items-center justify-center group-hover:bg-accent/10 transition-colors flex-shrink-0">
-                        <Icon 
-                          name={utility?.icon} 
-                          size={16} 
+                        <Icon
+                          name={utility?.icon}
+                          size={16}
                           className={`${utility?.color} group-hover:text-accent transition-colors sm:w-5 sm:h-5`}
                         />
                       </div>
@@ -218,7 +218,7 @@ const TokenomicsPage = () => {
                       +0.00%
                     </div>
                   </div>
-                  
+
                   <div className="space-y-1">
                     <div className="flex items-baseline space-x-2">
                       <span className="text-2xl font-bold text-foreground">
@@ -247,7 +247,7 @@ const TokenomicsPage = () => {
                       +0.0%
                     </div>
                   </div>
-                  
+
                   <div className="space-y-1">
                     <div className="flex items-baseline space-x-2">
                       <span className="text-2xl font-bold text-foreground">
@@ -276,7 +276,7 @@ const TokenomicsPage = () => {
                       +0.0%
                     </div>
                   </div>
-                  
+
                   <div className="space-y-1">
                     <div className="flex items-baseline space-x-2">
                       <span className="text-2xl font-bold text-foreground">
@@ -305,7 +305,7 @@ const TokenomicsPage = () => {
                       +0.0%
                     </div>
                   </div>
-                  
+
                   <div className="space-y-1">
                     <div className="flex items-baseline space-x-2">
                       <span className="text-2xl font-bold text-foreground">
@@ -334,7 +334,7 @@ const TokenomicsPage = () => {
                       +0.0%
                     </div>
                   </div>
-                  
+
                   <div className="space-y-1">
                     <div className="flex items-baseline space-x-2">
                       <span className="text-2xl font-bold text-foreground">
@@ -363,7 +363,7 @@ const TokenomicsPage = () => {
                       +0.0%
                     </div>
                   </div>
-                  
+
                   <div className="space-y-1">
                     <div className="flex items-baseline space-x-2">
                       <span className="text-2xl font-bold text-foreground">
@@ -589,7 +589,7 @@ const TokenomicsPage = () => {
         return (
           <div className="space-y-8">
             <TokenDistribution />
-            
+
             {/* Separator Line */}
             <div className="flex items-center justify-center py-8">
               <div className="flex items-center space-x-4 w-full max-w-4xl">
@@ -648,15 +648,15 @@ const TokenomicsPage = () => {
             />
           ))}
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <motion.div 
+          <motion.div
             className="text-center"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <motion.div 
+            <motion.div
               className="group rounded-full border border-white/10 bg-white/5 text-sm text-white transition-all ease-in hover:cursor-pointer hover:bg-white/10 mb-6 inline-block"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -667,8 +667,8 @@ const TokenomicsPage = () => {
                 <span>FRT Token Economy</span>
               </AnimatedShinyText>
             </motion.div>
-            
-            <motion.h1 
+
+            <motion.h1
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -677,29 +677,29 @@ const TokenomicsPage = () => {
               Tokenomics
               <span className="block text-accent">Built for Gaming</span>
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8 px-4 sm:px-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Discover the economic model powering the future of decentralized gaming. 
+              Discover the economic model powering the future of decentralized gaming.
               FRT tokens drive tournaments, governance, and rewards in the FortisArena ecosystem.
             </motion.p>
 
-            <motion.div 
+            <motion.div
               className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 px-4 sm:px-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <button 
+              <button
                 className="button w-full sm:w-auto"
               >
                 <span>Download Whitepaper</span>
               </button>
-              <button 
+              <button
                 className="button w-full sm:w-auto"
               >
                 <span>View Live Metrics</span>
@@ -716,11 +716,10 @@ const TokenomicsPage = () => {
               <button
                 key={tab?.id}
                 onClick={() => setActiveTab(tab?.id)}
-                className={`flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-200 ${
-                  activeTab === tab?.id
-                    ? 'bg-accent text-accent-foreground shadow-gaming'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                }`}
+                className={`flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-200 ${activeTab === tab?.id
+                  ? 'bg-accent text-accent-foreground shadow-gaming'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  }`}
               >
                 <Icon name={tab?.icon} size={14} className="sm:w-4 sm:h-4" />
                 <span className="hidden xs:inline">{tab?.label}</span>
@@ -745,7 +744,7 @@ const TokenomicsPage = () => {
           <p className="text-lg text-muted-foreground mb-8">
             Get FRT tokens and become part of the decentralized gaming future
           </p>
-          
+
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 px-4 sm:px-0">
             <button className="button w-full sm:w-auto">
               <span>FRT Soon Available</span>
@@ -756,7 +755,7 @@ const TokenomicsPage = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Footer */}
       <Footer />
     </div>

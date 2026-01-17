@@ -5,8 +5,8 @@ const DualTokenArchitecture = () => {
   const frtToken = {
     name: "FRT (Fortis Token)",
     totalSupply: "200,000,000",
-    initialSupply: "100,000,000",
-    price: "$0.1 - $0.5",
+    initialSupply: "10,000,000",
+    price: "$0.10",
     purpose: "Utility token for staking, governance, and ecosystem support",
     features: [
       "Holders can participate in voting and platform decisions",
@@ -37,7 +37,7 @@ const DualTokenArchitecture = () => {
   const TokenCard = ({ token, isFirst = false }) => (
     <div className={`bg-card border border-border rounded-xl p-6 hover:shadow-gaming transition-all duration-300 h-full flex flex-col ${isFirst ? 'lg:mb-8' : ''}`}>
       <div className="flex items-center space-x-3 mb-4">
-        <div 
+        <div
           className="w-12 h-12 rounded-lg flex items-center justify-center"
           style={{ backgroundColor: `${token.color}20` }}
         >
@@ -74,8 +74,8 @@ const DualTokenArchitecture = () => {
         </div>
         <p className="text-2xl font-bold text-accent">{token.price}</p>
         <p className="text-xs text-muted-foreground mt-1">
-          {token.name === "FRT (Fortis Token)" 
-            ? "Moderate initial pool for stable launch price" 
+          {token.name === "FRT (Fortis Token)"
+            ? "Moderate initial pool for stable launch price"
             : "Larger pool for frequent claims and smooth trading"
           }
         </p>
@@ -86,7 +86,7 @@ const DualTokenArchitecture = () => {
         <div className="space-y-2 flex-1">
           {token.features.map((feature, index) => (
             <div key={index} className="flex items-start space-x-3">
-              <div 
+              <div
                 className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
                 style={{ backgroundColor: token.color }}
               />
@@ -103,7 +103,7 @@ const DualTokenArchitecture = () => {
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold text-foreground mb-4">Dual-Token Architecture</h2>
         <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-          FortisArena ecosystem implements a dual-token architecture that efficiently manages 
+          FortisArena ecosystem implements a dual-token architecture that efficiently manages
           platform sustainability, user engagement, and rewards distribution.
         </p>
       </div>
@@ -118,7 +118,7 @@ const DualTokenArchitecture = () => {
           <Icon name="Zap" size={24} className="text-accent" />
           <h3 className="text-xl font-bold text-foreground">Key Benefits of Dual-Token Model</h3>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-3">
             <div className="flex items-start space-x-3">
@@ -128,7 +128,7 @@ const DualTokenArchitecture = () => {
                 <p className="text-sm text-muted-foreground">Limited supply ensures long-term value appreciation</p>
               </div>
             </div>
-            
+
             <div className="flex items-start space-x-3">
               <div className="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0" />
               <div>
@@ -146,7 +146,7 @@ const DualTokenArchitecture = () => {
                 <p className="text-sm text-muted-foreground">Easy understanding for users and Developers</p>
               </div>
             </div>
-            
+
             <div className="flex items-start space-x-3">
               <div className="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0" />
               <div>

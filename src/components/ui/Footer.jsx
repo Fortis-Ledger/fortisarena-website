@@ -32,9 +32,9 @@ const Footer = () => {
       title: 'Resources',
       links: [
         { name: 'Whitepaper', path: '/docs/FortisArena White Paper.pdf', external: true },
-        { name: 'Documentation', path: 'https://docs.fortisarena.io', external: true },
+        { name: 'Tokenomics', path: 'https://docs.fortisarena.io/tokenomics', external: true },
         { name: 'Tournaments', path: 'https://tournaments.fortisarena.io', external: true },
-        { name: 'API Guide', path: '#' }
+        { name: 'Smart Contract', path: 'https://docs.fortisarena.io/smart-contracts', external: true }
       ]
     },
     legal: {
@@ -70,7 +70,7 @@ const Footer = () => {
       {/* Background gradient */}
       <div className="absolute inset-0">
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
-        <div 
+        <div
           className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] opacity-20"
           style={{
             background: 'radial-gradient(ellipse at center bottom, rgba(139, 92, 246, 0.3) 0%, transparent 70%)',
@@ -82,7 +82,7 @@ const Footer = () => {
         {/* Top Section - Logo and Newsletter */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 pb-16 border-b border-white/10">
           {/* Logo and Description */}
-          <motion.div 
+          <motion.div
             className="space-y-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -91,7 +91,7 @@ const Footer = () => {
           >
             <Link to="/" className="inline-flex items-center gap-3">
               <div className="relative w-12 h-12">
-                <div 
+                <div
                   className="absolute inset-0 rounded-xl bg-gradient-to-br from-purple-500/20 to-cyan-500/20"
                   style={{ boxShadow: '0 0 20px rgba(139, 92, 246, 0.3)' }}
                 />
@@ -106,11 +106,11 @@ const Footer = () => {
                 <span className="text-xs text-gray-400 -mt-0.5">Gaming Liberation</span>
               </div>
             </Link>
-            
+
             <p className="text-gray-400 max-w-md leading-relaxed">
               The future of eSports is decentralized. Join the revolution and own your gaming destiny through skill-based tournaments, NFT rewards, and community governance.
             </p>
-            
+
             {/* Social Links */}
             <div className="flex flex-wrap gap-3">
               {socialLinks.map((social, index) => (
@@ -127,7 +127,7 @@ const Footer = () => {
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <div 
+                  <div
                     className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{
                       background: `linear-gradient(135deg, ${social.color.replace('from-', '').replace(' to-', ', ')})`,
@@ -141,7 +141,7 @@ const Footer = () => {
           </motion.div>
 
           {/* Newsletter */}
-          <motion.div 
+          <motion.div
             className="lg:pl-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -152,7 +152,7 @@ const Footer = () => {
             <p className="text-gray-400 mb-6">
               Get the latest updates on tournaments, token launches, and exclusive rewards.
             </p>
-            
+
             {isSubscribed ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -179,7 +179,7 @@ const Footer = () => {
                 </GlowButton>
               </form>
             )}
-            
+
             <p className="text-xs text-gray-500 mt-3">
               By subscribing, you agree to our Privacy Policy. No spam, ever.
             </p>
@@ -227,7 +227,7 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <motion.p 
+          <motion.p
             className="text-gray-500 text-sm"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -236,8 +236,8 @@ const Footer = () => {
           >
             © {currentYear} FortisArena. All rights reserved.
           </motion.p>
-          
-          <motion.div 
+
+          <motion.div
             className="flex items-center gap-6"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -248,8 +248,8 @@ const Footer = () => {
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
               All systems operational
             </span>
-            <a 
-              href="mailto:support@fortisarena.io" 
+            <a
+              href="mailto:support@fortisarena.io"
               className="text-gray-400 hover:text-white text-sm transition-colors"
             >
               support@fortisarena.io

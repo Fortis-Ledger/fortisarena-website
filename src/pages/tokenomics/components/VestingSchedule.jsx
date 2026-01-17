@@ -39,13 +39,13 @@ const VestingSchedule = () => {
       id: 1,
       name: 'Team & Advisors',
       percentage: '15%',
-      description: '48-month vesting with 6-month cliff',
+      description: '24-month linear vesting with 12-month cliff',
       color: '#FFD700',
       icon: 'Users',
       details: [
         'Core team allocation with performance milestones',
-        '6-month cliff period before any tokens unlock',
-        'Gradual linear vesting over 48 months',
+        '12-month cliff period before any tokens unlock',
+        'Gradual linear vesting over 24 months',
         'Additional performance bonuses available'
       ]
     },
@@ -53,12 +53,12 @@ const VestingSchedule = () => {
       id: 2,
       name: 'Pre-sale / Private Sale',
       percentage: '20%',
-      description: '3-6 months lock post-launch',
+      description: '3 months lock post-launch',
       color: '#8A2BE2',
       icon: 'DollarSign',
       details: [
-        '3-6 months lock to prevent dump',
-        '20% unlocked by Month 6, then stable',
+        '3 months lock to prevent dump',
+        'Linear vesting over 9 months',
         'Early investor protection mechanism',
         'Aligned with long-term project success'
       ]
@@ -80,12 +80,12 @@ const VestingSchedule = () => {
     {
       id: 4,
       name: 'Liquidity (DEX/CEX)',
-      percentage: '20%',
+      percentage: '15%',
       description: 'Immediate unlock for price stability',
       color: '#EF4444',
       icon: 'TrendingUp',
       details: [
-        '20% unlocked at launch for immediate liquidity',
+        '15% unlocked at launch for immediate liquidity',
         'Stable at 20% throughout vesting period',
         'Ensures smooth trading from day one',
         'Maintains healthy market depth'
@@ -240,12 +240,12 @@ const VestingSchedule = () => {
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
-            <XAxis 
-              dataKey="month" 
+            <XAxis
+              dataKey="month"
               stroke="var(--color-muted-foreground)"
               fontSize={12}
             />
-            <YAxis 
+            <YAxis
               stroke="var(--color-muted-foreground)"
               fontSize={12}
               label={{ value: '% Unlocked', angle: -90, position: 'insideLeft' }}
@@ -253,50 +253,50 @@ const VestingSchedule = () => {
             <Tooltip content={<CustomTooltip />} />
             {isFPT ? (
               <>
-                <Line 
-                  type="monotone" 
-                  dataKey="rewards" 
-                  stroke="#00D4FF" 
+                <Line
+                  type="monotone"
+                  dataKey="rewards"
+                  stroke="#00D4FF"
                   strokeWidth={2}
                   name="Reward Pools (Tournaments & Achievements)"
                   dot={{ fill: '#00D4FF', strokeWidth: 2, r: 4 }}
                 />
-                <Line 
-                  type="monotone" 
-                  dataKey="community" 
-                  stroke="#8A2BE2" 
+                <Line
+                  type="monotone"
+                  dataKey="community"
+                  stroke="#8A2BE2"
                   strokeWidth={2}
                   name="Ecosystem Incentives / Community"
                   dot={{ fill: '#8A2BE2', strokeWidth: 2, r: 4 }}
                 />
-                <Line 
-                  type="monotone" 
-                  dataKey="presale" 
-                  stroke="#F59E0B" 
+                <Line
+                  type="monotone"
+                  dataKey="presale"
+                  stroke="#F59E0B"
                   strokeWidth={2}
                   name="Pre-sale / Public & Private Sale"
                   dot={{ fill: '#F59E0B', strokeWidth: 2, r: 4 }}
                 />
-                <Line 
-                  type="monotone" 
-                  dataKey="staking" 
-                  stroke="#FFD700" 
+                <Line
+                  type="monotone"
+                  dataKey="staking"
+                  stroke="#FFD700"
                   strokeWidth={2}
                   name="Staking Rewards (earned via FRT)"
                   dot={{ fill: '#FFD700', strokeWidth: 2, r: 4 }}
                 />
-                <Line 
-                  type="monotone" 
-                  dataKey="liquidity" 
-                  stroke="#EF4444" 
+                <Line
+                  type="monotone"
+                  dataKey="liquidity"
+                  stroke="#EF4444"
                   strokeWidth={2}
                   name="Liquidity / Exchanges"
                   dot={{ fill: '#EF4444', strokeWidth: 2, r: 4 }}
                 />
-                <Line 
-                  type="monotone" 
-                  dataKey="reserve" 
-                  stroke="#6B7280" 
+                <Line
+                  type="monotone"
+                  dataKey="reserve"
+                  stroke="#6B7280"
                   strokeWidth={2}
                   name="Reserve / Future Development"
                   dot={{ fill: '#6B7280', strokeWidth: 2, r: 4 }}
@@ -304,50 +304,50 @@ const VestingSchedule = () => {
               </>
             ) : (
               <>
-                <Line 
-                  type="monotone" 
-                  dataKey="team" 
-                  stroke="#FFD700" 
+                <Line
+                  type="monotone"
+                  dataKey="team"
+                  stroke="#FFD700"
                   strokeWidth={2}
                   name="Team & Advisors"
                   dot={{ fill: '#FFD700', strokeWidth: 2, r: 4 }}
                 />
-                <Line 
-                  type="monotone" 
-                  dataKey="presale" 
-                  stroke="#8A2BE2" 
+                <Line
+                  type="monotone"
+                  dataKey="presale"
+                  stroke="#8A2BE2"
                   strokeWidth={2}
                   name="Pre-sale / Private Sale"
                   dot={{ fill: '#8A2BE2', strokeWidth: 2, r: 4 }}
                 />
-                <Line 
-                  type="monotone" 
-                  dataKey="staking" 
-                  stroke="#00D4FF" 
+                <Line
+                  type="monotone"
+                  dataKey="staking"
+                  stroke="#00D4FF"
                   strokeWidth={2}
                   name="Staking & Governance Rewards"
                   dot={{ fill: '#00D4FF', strokeWidth: 2, r: 4 }}
                 />
-                <Line 
-                  type="monotone" 
-                  dataKey="liquidity" 
-                  stroke="#EF4444" 
+                <Line
+                  type="monotone"
+                  dataKey="liquidity"
+                  stroke="#EF4444"
                   strokeWidth={2}
                   name="Liquidity (DEX/CEX)"
                   dot={{ fill: '#EF4444', strokeWidth: 2, r: 4 }}
                 />
-                <Line 
-                  type="monotone" 
-                  dataKey="ecosystem" 
-                  stroke="#10B981" 
+                <Line
+                  type="monotone"
+                  dataKey="ecosystem"
+                  stroke="#10B981"
                   strokeWidth={2}
                   name="Ecosystem Growth / Partnerships"
                   dot={{ fill: '#10B981', strokeWidth: 2, r: 4 }}
                 />
-                <Line 
-                  type="monotone" 
-                  dataKey="reserve" 
-                  stroke="#6B7280" 
+                <Line
+                  type="monotone"
+                  dataKey="reserve"
+                  stroke="#6B7280"
                   strokeWidth={2}
                   name="Reserve / Contingency"
                   dot={{ fill: '#6B7280', strokeWidth: 2, r: 4 }}
@@ -362,7 +362,7 @@ const VestingSchedule = () => {
         {categories.map((category) => (
           <div key={category.id} className="border border-border rounded-lg p-4">
             <div className="flex items-center space-x-3 mb-3">
-              <div 
+              <div
                 className="w-10 h-10 rounded-lg flex items-center justify-center"
                 style={{ backgroundColor: `${category.color}20` }}
               >
@@ -377,7 +377,7 @@ const VestingSchedule = () => {
             <div className="space-y-1">
               {category.details.map((detail, index) => (
                 <div key={index} className="flex items-start space-x-2">
-                  <div 
+                  <div
                     className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
                     style={{ backgroundColor: category.color }}
                   />
@@ -394,7 +394,7 @@ const VestingSchedule = () => {
   return (
     <div className="space-y-8">
       {/* FRT Vesting Schedule */}
-      <VestingChart 
+      <VestingChart
         data={frtVestingData}
         title="FRT Token Vesting Schedule"
         categories={frtVestingCategories}
@@ -415,7 +415,7 @@ const VestingSchedule = () => {
       </div>
 
       {/* FPT Vesting Schedule */}
-      <VestingChart 
+      <VestingChart
         data={fptVestingData}
         title="FPT Token Vesting Schedule"
         categories={fptVestingCategories}
