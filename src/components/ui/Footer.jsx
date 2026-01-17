@@ -138,6 +138,7 @@ const Footer = () => {
                 </motion.a>
               ))}
             </div>
+
           </motion.div>
 
           {/* Newsletter */}

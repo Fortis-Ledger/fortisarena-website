@@ -103,6 +103,14 @@ const TokenomicsPage = () => {
       label: 'All-Time High',
       value: 'Coming Soon',
       description: 'Peak price achieved'
+    },
+    {
+      label: 'Contract Address (BSC)',
+      value: <div className="flex items-center gap-2 group cursor-pointer" onClick={() => { navigator.clipboard.writeText('0xFf10d933E1Ca7799866B5D2A615e562CAd306c96'); alert('Contract Address Copied!'); }}>
+        <span className="text-xs sm:text-sm font-mono truncate max-w-[150px] sm:max-w-full" title="0xFf10d933E1Ca7799866B5D2A615e562CAd306c96">0xFf10...6c96</span>
+        <Icon name="Copy" size={14} className="text-accent opacity-70 group-hover:opacity-100" />
+      </div>,
+      description: 'Official FRT Contract'
     }
   ];
 
@@ -125,21 +133,21 @@ const TokenomicsPage = () => {
                 {tokenUtilities?.map((utility) => (
                   <div
                     key={utility?.id}
-                    className="border border-border rounded-lg p-3 sm:p-4 hover:shadow-gaming transition-all duration-300 group"
+                    className="bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group"
                   >
-                    <div className="flex items-start space-x-2 sm:space-x-3">
-                      <div className="w-8 h-8 sm:w-10 sm:h-10 bg-muted rounded-lg flex items-center justify-center group-hover:bg-accent/10 transition-colors flex-shrink-0">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-accent/10 flex-shrink-0">
                         <Icon
                           name={utility?.icon}
-                          size={16}
-                          className={`${utility?.color} group-hover:text-accent transition-colors sm:w-5 sm:h-5`}
+                          size={20}
+                          className={`${utility?.color} group-hover:text-accent transition-colors drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]`}
                         />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">
+                        <h4 className="font-bold text-white mb-1.5 text-base group-hover:text-accent transition-colors">
                           {utility?.title}
                         </h4>
-                        <p className="text-xs sm:text-sm text-muted-foreground">
+                        <p className="text-sm text-white/60 leading-relaxed">
                           {utility?.description}
                         </p>
                       </div>
@@ -149,10 +157,10 @@ const TokenomicsPage = () => {
               </div>
             </div>
             {/* FRT Economic Model */}
-            <div className="bg-card border border-border rounded-xl p-6">
-              <div className="mb-6">
-                <h3 className="text-xl font-bold text-foreground mb-2">FRT Economic Model</h3>
-                <p className="text-muted-foreground">
+            <div className="bg-card/50 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8">
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70 mb-2">FRT Economic Model</h3>
+                <p className="text-muted-foreground text-lg">
                   Key metrics and fundamentals of the FRT token economy
                 </p>
               </div>
@@ -161,17 +169,17 @@ const TokenomicsPage = () => {
                 {economicMetrics?.map((metric, index) => (
                   <div
                     key={index}
-                    className="border border-border rounded-lg p-3 sm:p-4"
+                    className="bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group"
                   >
-                    <div className="flex justify-between items-start mb-2">
-                      <span className="text-xs sm:text-sm text-muted-foreground">
+                    <div className="flex justify-between items-start mb-3">
+                      <span className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
                         {metric?.label}
                       </span>
                     </div>
-                    <p className="text-base sm:text-lg font-bold text-foreground mb-1">
+                    <p className="text-xl sm:text-2xl font-bold text-white group-hover:text-accent transition-colors duration-300 mb-2">
                       {metric?.value}
                     </p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-xs text-white/50">
                       {metric?.description}
                     </p>
                   </div>
@@ -193,183 +201,201 @@ const TokenomicsPage = () => {
             </div>
 
             {/* FPT Token Metrics */}
-            <div className="bg-card border border-border rounded-xl p-6">
-              <div className="mb-6">
-                <h3 className="text-xl font-bold text-foreground mb-2">FPT Token Metrics</h3>
-                <p className="text-muted-foreground">
+            <div className="bg-card/50 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8">
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70 mb-2">FPT Token Metrics</h3>
+                <p className="text-muted-foreground text-lg">
                   Fortis Points Token (FPT) - Reward token for tournaments and platform incentives
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div className="bg-card border border-border rounded-xl p-6 hover:shadow-gaming transition-all duration-300 group">
-                  <div className="flex items-start justify-between mb-4">
+                <div className="relative bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group overflow-hidden">
+                  {/* Glow effect */}
+                  <div className="absolute -right-10 -top-10 w-32 h-32 bg-accent/20 blur-[50px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                  <div className="flex items-start justify-between mb-4 relative z-10">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                        <Icon name="Coins" size={20} className="text-accent" />
+                      <div className="w-12 h-12 bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-accent/10">
+                        <Icon name="Coins" size={24} className="text-accent drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" />
                       </div>
                       <div>
-                        <p className="text-sm text-muted-foreground font-medium">
+                        <p className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
                           Total Supply
                         </p>
                       </div>
                     </div>
-                    <div className="text-xs font-medium text-muted-foreground">
+                    <div className="px-2.5 py-1 rounded-full text-xs font-semibold border text-slate-400 bg-slate-400/10 border-slate-400/20">
                       +0.00%
                     </div>
                   </div>
 
-                  <div className="space-y-1">
+                  <div className="space-y-1 relative z-10 pl-1">
                     <div className="flex items-baseline space-x-2">
-                      <span className="text-2xl font-bold text-foreground">
+                      <span className="text-3xl font-bold text-white tracking-tight group-hover:text-accent transition-colors duration-300">
                         1,000,000,000
                       </span>
-                      <span className="text-sm text-muted-foreground font-medium">
+                      <span className="text-sm text-white/50 font-bold">
                         FPT
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-card border border-border rounded-xl p-6 hover:shadow-gaming transition-all duration-300 group">
-                  <div className="flex items-start justify-between mb-4">
+                <div className="relative bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group overflow-hidden">
+                  {/* Glow effect */}
+                  <div className="absolute -right-10 -top-10 w-32 h-32 bg-accent/20 blur-[50px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                  <div className="flex items-start justify-between mb-4 relative z-10">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                        <Icon name="TrendingUp" size={20} className="text-accent" />
+                      <div className="w-12 h-12 bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-accent/10">
+                        <Icon name="TrendingUp" size={24} className="text-accent drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" />
                       </div>
                       <div>
-                        <p className="text-sm text-muted-foreground font-medium">
+                        <p className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
                           Initial Supply
                         </p>
                       </div>
                     </div>
-                    <div className="text-xs font-medium text-muted-foreground">
+                    <div className="px-2.5 py-1 rounded-full text-xs font-semibold border text-slate-400 bg-slate-400/10 border-slate-400/20">
                       +0.0%
                     </div>
                   </div>
 
-                  <div className="space-y-1">
+                  <div className="space-y-1 relative z-10 pl-1">
                     <div className="flex items-baseline space-x-2">
-                      <span className="text-2xl font-bold text-foreground">
+                      <span className="text-3xl font-bold text-white tracking-tight group-hover:text-accent transition-colors duration-300">
                         500,000,000
                       </span>
-                      <span className="text-sm text-muted-foreground font-medium">
+                      <span className="text-sm text-white/50 font-bold">
                         FPT
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-card border border-border rounded-xl p-6 hover:shadow-gaming transition-all duration-300 group">
-                  <div className="flex items-start justify-between mb-4">
+                <div className="relative bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group overflow-hidden">
+                  {/* Glow effect */}
+                  <div className="absolute -right-10 -top-10 w-32 h-32 bg-accent/20 blur-[50px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                  <div className="flex items-start justify-between mb-4 relative z-10">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                        <Icon name="DollarSign" size={20} className="text-accent" />
+                      <div className="w-12 h-12 bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-accent/10">
+                        <Icon name="DollarSign" size={24} className="text-accent drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" />
                       </div>
                       <div>
-                        <p className="text-sm text-muted-foreground font-medium">
+                        <p className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
                           Market Cap
                         </p>
                       </div>
                     </div>
-                    <div className="text-xs font-medium text-muted-foreground">
+                    <div className="px-2.5 py-1 rounded-full text-xs font-semibold border text-slate-400 bg-slate-400/10 border-slate-400/20">
                       +0.0%
                     </div>
                   </div>
 
-                  <div className="space-y-1">
+                  <div className="space-y-1 relative z-10 pl-1">
                     <div className="flex items-baseline space-x-2">
-                      <span className="text-2xl font-bold text-foreground">
+                      <span className="text-3xl font-bold text-white tracking-tight group-hover:text-accent transition-colors duration-300">
                         Coming Soon
                       </span>
-                      <span className="text-sm text-muted-foreground font-medium">
+                      <span className="text-sm text-white/50 font-bold">
                         USD
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-card border border-border rounded-xl p-6 hover:shadow-gaming transition-all duration-300 group">
-                  <div className="flex items-start justify-between mb-4">
+                <div className="relative bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group overflow-hidden">
+                  {/* Glow effect */}
+                  <div className="absolute -right-10 -top-10 w-32 h-32 bg-accent/20 blur-[50px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                  <div className="flex items-start justify-between mb-4 relative z-10">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                        <Icon name="BarChart3" size={20} className="text-accent" />
+                      <div className="w-12 h-12 bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-accent/10">
+                        <Icon name="BarChart3" size={24} className="text-accent drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" />
                       </div>
                       <div>
-                        <p className="text-sm text-muted-foreground font-medium">
+                        <p className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
                           Token Price
                         </p>
                       </div>
                     </div>
-                    <div className="text-xs font-medium text-muted-foreground">
+                    <div className="px-2.5 py-1 rounded-full text-xs font-semibold border text-slate-400 bg-slate-400/10 border-slate-400/20">
                       +0.0%
                     </div>
                   </div>
 
-                  <div className="space-y-1">
+                  <div className="space-y-1 relative z-10 pl-1">
                     <div className="flex items-baseline space-x-2">
-                      <span className="text-2xl font-bold text-foreground">
+                      <span className="text-3xl font-bold text-white tracking-tight group-hover:text-accent transition-colors duration-300">
                         Coming Soon
                       </span>
-                      <span className="text-sm text-muted-foreground font-medium">
+                      <span className="text-sm text-white/50 font-bold">
                         USD
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-card border border-border rounded-xl p-6 hover:shadow-gaming transition-all duration-300 group">
-                  <div className="flex items-start justify-between mb-4">
+                <div className="relative bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group overflow-hidden">
+                  {/* Glow effect */}
+                  <div className="absolute -right-10 -top-10 w-32 h-32 bg-accent/20 blur-[50px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                  <div className="flex items-start justify-between mb-4 relative z-10">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                        <Icon name="Gift" size={20} className="text-accent" />
+                      <div className="w-12 h-12 bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-accent/10">
+                        <Icon name="Gift" size={24} className="text-accent drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" />
                       </div>
                       <div>
-                        <p className="text-sm text-muted-foreground font-medium">
+                        <p className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
                           Daily Rewards
                         </p>
                       </div>
                     </div>
-                    <div className="text-xs font-medium text-muted-foreground">
+                    <div className="px-2.5 py-1 rounded-full text-xs font-semibold border text-slate-400 bg-slate-400/10 border-slate-400/20">
                       +0.0%
                     </div>
                   </div>
 
-                  <div className="space-y-1">
+                  <div className="space-y-1 relative z-10 pl-1">
                     <div className="flex items-baseline space-x-2">
-                      <span className="text-2xl font-bold text-foreground">
+                      <span className="text-3xl font-bold text-white tracking-tight group-hover:text-accent transition-colors duration-300">
                         Coming Soon
                       </span>
-                      <span className="text-sm text-muted-foreground font-medium">
+                      <span className="text-sm text-white/50 font-bold">
                         FPT
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-card border border-border rounded-xl p-6 hover:shadow-gaming transition-all duration-300 group">
-                  <div className="flex items-start justify-between mb-4">
+                <div className="relative bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group overflow-hidden">
+                  {/* Glow effect */}
+                  <div className="absolute -right-10 -top-10 w-32 h-32 bg-accent/20 blur-[50px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                  <div className="flex items-start justify-between mb-4 relative z-10">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                        <Icon name="Users" size={20} className="text-accent" />
+                      <div className="w-12 h-12 bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-accent/10">
+                        <Icon name="Users" size={24} className="text-accent drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" />
                       </div>
                       <div>
-                        <p className="text-sm text-muted-foreground font-medium">
+                        <p className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
                           Active Earners
                         </p>
                       </div>
                     </div>
-                    <div className="text-xs font-medium text-muted-foreground">
+                    <div className="px-2.5 py-1 rounded-full text-xs font-semibold border text-slate-400 bg-slate-400/10 border-slate-400/20">
                       +0.0%
                     </div>
                   </div>
 
-                  <div className="space-y-1">
+                  <div className="space-y-1 relative z-10 pl-1">
                     <div className="flex items-baseline space-x-2">
-                      <span className="text-2xl font-bold text-foreground">
+                      <span className="text-3xl font-bold text-white tracking-tight group-hover:text-accent transition-colors duration-300">
                         Coming Soon
                       </span>
-                      <span className="text-sm text-muted-foreground font-medium">
+                      <span className="text-sm text-white/50 font-bold">
                         Users
                       </span>
                     </div>
@@ -388,96 +414,96 @@ const TokenomicsPage = () => {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                <div className="border border-border rounded-lg p-3 sm:p-4 hover:shadow-gaming transition-all duration-300 group">
-                  <div className="flex items-start space-x-2 sm:space-x-3">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-muted rounded-lg flex items-center justify-center group-hover:bg-accent/10 transition-colors flex-shrink-0">
-                      <Icon name="Trophy" size={16} className="text-golden-cta group-hover:text-accent transition-colors sm:w-5 sm:h-5" />
+                <div className="bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-accent/10 flex-shrink-0">
+                      <Icon name="Trophy" size={20} className="text-golden-cta group-hover:text-accent transition-colors drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">
+                      <h4 className="font-bold text-white mb-1.5 text-base group-hover:text-accent transition-colors">
                         Tournament Rewards
                       </h4>
-                      <p className="text-xs sm:text-sm text-muted-foreground">
+                      <p className="text-sm text-white/60 leading-relaxed">
                         Earn FPT tokens for participating in tournaments and competitions
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="border border-border rounded-lg p-3 sm:p-4 hover:shadow-gaming transition-all duration-300 group">
-                  <div className="flex items-start space-x-2 sm:space-x-3">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-muted rounded-lg flex items-center justify-center group-hover:bg-accent/10 transition-colors flex-shrink-0">
-                      <Icon name="Gift" size={16} className="text-success group-hover:text-accent transition-colors sm:w-5 sm:h-5" />
+                <div className="bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-accent/10 flex-shrink-0">
+                      <Icon name="Gift" size={20} className="text-success group-hover:text-accent transition-colors drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">
+                      <h4 className="font-bold text-white mb-1.5 text-base group-hover:text-accent transition-colors">
                         Micro-Payouts
                       </h4>
-                      <p className="text-xs sm:text-sm text-muted-foreground">
+                      <p className="text-sm text-white/60 leading-relaxed">
                         Receive instant FPT rewards for daily activities and achievements
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="border border-border rounded-lg p-3 sm:p-4 hover:shadow-gaming transition-all duration-300 group">
-                  <div className="flex items-start space-x-2 sm:space-x-3">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-muted rounded-lg flex items-center justify-center group-hover:bg-accent/10 transition-colors flex-shrink-0">
-                      <Icon name="Zap" size={16} className="text-warning group-hover:text-accent transition-colors sm:w-5 sm:h-5" />
+                <div className="bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-accent/10 flex-shrink-0">
+                      <Icon name="Zap" size={20} className="text-warning group-hover:text-accent transition-colors drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">
+                      <h4 className="font-bold text-white mb-1.5 text-base group-hover:text-accent transition-colors">
                         Platform Incentives
                       </h4>
-                      <p className="text-xs sm:text-sm text-muted-foreground">
+                      <p className="text-sm text-white/60 leading-relaxed">
                         Earn FPT for community engagement and platform participation
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="border border-border rounded-lg p-3 sm:p-4 hover:shadow-gaming transition-all duration-300 group">
-                  <div className="flex items-start space-x-2 sm:space-x-3">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-muted rounded-lg flex items-center justify-center group-hover:bg-accent/10 transition-colors flex-shrink-0">
-                      <Icon name="Target" size={16} className="text-neon-purple group-hover:text-accent transition-colors sm:w-5 sm:h-5" />
+                <div className="bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-accent/10 flex-shrink-0">
+                      <Icon name="Target" size={20} className="text-neon-purple group-hover:text-accent transition-colors drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">
+                      <h4 className="font-bold text-white mb-1.5 text-base group-hover:text-accent transition-colors">
                         Game Achievements
                       </h4>
-                      <p className="text-xs sm:text-sm text-muted-foreground">
+                      <p className="text-sm text-white/60 leading-relaxed">
                         Unlock FPT rewards by completing in-game challenges and milestones
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="border border-border rounded-lg p-3 sm:p-4 hover:shadow-gaming transition-all duration-300 group">
-                  <div className="flex items-start space-x-2 sm:space-x-3">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-muted rounded-lg flex items-center justify-center group-hover:bg-accent/10 transition-colors flex-shrink-0">
-                      <Icon name="Calendar" size={16} className="text-destructive group-hover:text-accent transition-colors sm:w-5 sm:h-5" />
+                <div className="bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-accent/10 flex-shrink-0">
+                      <Icon name="Calendar" size={20} className="text-destructive group-hover:text-accent transition-colors drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">
+                      <h4 className="font-bold text-white mb-1.5 text-base group-hover:text-accent transition-colors">
                         Event Payouts
                       </h4>
-                      <p className="text-xs sm:text-sm text-muted-foreground">
+                      <p className="text-sm text-white/60 leading-relaxed">
                         Participate in special events and earn exclusive FPT rewards
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="border border-border rounded-lg p-3 sm:p-4 hover:shadow-gaming transition-all duration-300 group">
-                  <div className="flex items-start space-x-2 sm:space-x-3">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-muted rounded-lg flex items-center justify-center group-hover:bg-accent/10 transition-colors flex-shrink-0">
-                      <Icon name="Heart" size={16} className="text-accent group-hover:text-accent transition-colors sm:w-5 sm:h-5" />
+                <div className="bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-accent/10 flex-shrink-0">
+                      <Icon name="Heart" size={20} className="text-accent group-hover:text-accent transition-colors drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">
+                      <h4 className="font-bold text-white mb-1.5 text-base group-hover:text-accent transition-colors">
                         Community Rewards
                       </h4>
-                      <p className="text-xs sm:text-sm text-muted-foreground">
+                      <p className="text-sm text-white/60 leading-relaxed">
                         Get rewarded for contributing to the FortisArena community
                       </p>
                     </div>
@@ -487,95 +513,95 @@ const TokenomicsPage = () => {
             </div>
 
             {/* FPT Economic Model */}
-            <div className="bg-card border border-border rounded-xl p-6">
-              <div className="mb-6">
-                <h3 className="text-xl font-bold text-foreground mb-2">FPT Economic Model</h3>
-                <p className="text-muted-foreground">
+            <div className="bg-card/50 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8">
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70 mb-2">FPT Economic Model</h3>
+                <p className="text-muted-foreground text-lg">
                   Key metrics and fundamentals of the FPT reward token economy
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                <div className="border border-border rounded-lg p-3 sm:p-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-xs sm:text-sm text-muted-foreground">
+                <div className="bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group">
+                  <div className="flex justify-between items-start mb-3">
+                    <span className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
                       Token Symbol
                     </span>
                   </div>
-                  <p className="text-base sm:text-lg font-bold text-foreground mb-1">
+                  <p className="text-xl sm:text-2xl font-bold text-white group-hover:text-accent transition-colors duration-300 mb-2">
                     FPT
                   </p>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-xs text-white/50">
                     Fortis Points Token
                   </p>
                 </div>
 
-                <div className="border border-border rounded-lg p-3 sm:p-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-xs sm:text-sm text-muted-foreground">
+                <div className="bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group">
+                  <div className="flex justify-between items-start mb-3">
+                    <span className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
                       Blockchain
                     </span>
                   </div>
-                  <p className="text-base sm:text-lg font-bold text-foreground mb-1">
+                  <p className="text-xl sm:text-2xl font-bold text-white group-hover:text-accent transition-colors duration-300 mb-2">
                     Polygon, BSC and Ethereum
                   </p>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-xs text-white/50">
                     L2 Cross chain Bridge Scaling Solution
                   </p>
                 </div>
 
-                <div className="border border-border rounded-lg p-3 sm:p-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-xs sm:text-sm text-muted-foreground">
+                <div className="bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group">
+                  <div className="flex justify-between items-start mb-3">
+                    <span className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
                       Token Standard
                     </span>
                   </div>
-                  <p className="text-base sm:text-lg font-bold text-foreground mb-1">
+                  <p className="text-xl sm:text-2xl font-bold text-white group-hover:text-accent transition-colors duration-300 mb-2">
                     ERC-20
                   </p>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-xs text-white/50">
                     Compatible with all major wallets
                   </p>
                 </div>
 
-                <div className="border border-border rounded-lg p-3 sm:p-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-xs sm:text-sm text-muted-foreground">
+                <div className="bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group">
+                  <div className="flex justify-between items-start mb-3">
+                    <span className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
                       Initial Price
                     </span>
                   </div>
-                  <p className="text-base sm:text-lg font-bold text-foreground mb-1">
+                  <p className="text-xl sm:text-2xl font-bold text-white group-hover:text-accent transition-colors duration-300 mb-2">
                     $0.01 - $0.05
                   </p>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-xs text-white/50">
                     Low price for frequent distribution
                   </p>
                 </div>
 
-                <div className="border border-border rounded-lg p-3 sm:p-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-xs sm:text-sm text-muted-foreground">
+                <div className="bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group">
+                  <div className="flex justify-between items-start mb-3">
+                    <span className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
                       Current Price
                     </span>
                   </div>
-                  <p className="text-base sm:text-lg font-bold text-foreground mb-1">
+                  <p className="text-xl sm:text-2xl font-bold text-white group-hover:text-accent transition-colors duration-300 mb-2">
                     Coming Soon
                   </p>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-xs text-white/50">
                     Real-time market price
                   </p>
                 </div>
 
-                <div className="border border-border rounded-lg p-3 sm:p-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-xs sm:text-sm text-muted-foreground">
+                <div className="bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group">
+                  <div className="flex justify-between items-start mb-3">
+                    <span className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
                       Daily Distribution
                     </span>
                   </div>
-                  <p className="text-base sm:text-lg font-bold text-foreground mb-1">
+                  <p className="text-xl sm:text-2xl font-bold text-white group-hover:text-accent transition-colors duration-300 mb-2">
                     Coming Soon
                   </p>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-xs text-white/50">
                     FPT tokens distributed daily
                   </p>
                 </div>

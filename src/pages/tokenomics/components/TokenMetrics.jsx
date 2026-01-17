@@ -18,7 +18,7 @@ const TokenMetrics = () => {
       value: "10,000,000",
       symbol: "FRT",
       change: "+5.0%",
-      changeType: "neutral",
+      changeType: "positive", // Changed to positive for green color demo
       icon: "TrendingUp"
     },
     {
@@ -62,19 +62,19 @@ const TokenMetrics = () => {
   const getChangeColor = (type) => {
     switch (type) {
       case 'positive':
-        return 'text-success';
+        return 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20';
       case 'negative':
-        return 'text-destructive';
+        return 'text-rose-400 bg-rose-400/10 border-rose-400/20';
       default:
-        return 'text-muted-foreground';
+        return 'text-slate-400 bg-slate-400/10 border-slate-400/20';
     }
   };
 
   return (
-    <div className="bg-card border border-border rounded-xl p-6">
-      <div className="mb-6">
-        <h3 className="text-xl font-bold text-foreground mb-2">FRT Token Metrics</h3>
-        <p className="text-muted-foreground">
+    <div className="bg-card/50 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8">
+      <div className="mb-8">
+        <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70 mb-2">FRT Token Metrics</h3>
+        <p className="text-muted-foreground text-lg">
           Fortis Token (FRT) - Utility token for staking, governance, and ecosystem support
         </p>
       </div>
@@ -82,30 +82,33 @@ const TokenMetrics = () => {
         {metrics?.map((metric) => (
           <div
             key={metric?.id}
-            className="bg-card border border-border rounded-xl p-6 hover:shadow-gaming transition-all duration-300 group"
+            className="relative bg-black/40 border border-white/5 rounded-xl p-5 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group overflow-hidden"
           >
-            <div className="flex items-start justify-between mb-4">
+            {/* Glow effect on hover */}
+            <div className="absolute -right-10 -top-10 w-32 h-32 bg-accent/20 blur-[50px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+            <div className="flex items-start justify-between mb-4 relative z-10">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                  <Icon name={metric?.icon} size={20} className="text-accent" />
+                <div className="w-12 h-12 bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-accent/10">
+                  <Icon name={metric?.icon} size={24} className="text-accent drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground font-medium">
+                  <p className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
                     {metric?.label}
                   </p>
                 </div>
               </div>
-              <div className={`text-xs font-medium ${getChangeColor(metric?.changeType)}`}>
+              <div className={`px-2.5 py-1 rounded-full text-xs font-semibold border ${getChangeColor(metric?.changeType)}`}>
                 {metric?.change}
               </div>
             </div>
 
-            <div className="space-y-1">
+            <div className="space-y-1 relative z-10 pl-1">
               <div className="flex items-baseline space-x-2">
-                <span className="text-2xl font-bold text-foreground">
+                <span className="text-3xl font-bold text-white tracking-tight group-hover:text-accent transition-colors duration-300">
                   {metric?.value}
                 </span>
-                <span className="text-sm text-muted-foreground font-medium">
+                <span className="text-sm text-white/50 font-bold">
                   {metric?.symbol}
                 </span>
               </div>
