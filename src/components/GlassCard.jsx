@@ -110,7 +110,7 @@ export const FeatureCard = ({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, amount: 0.1 }}
     >
       <GlassCard className="h-full p-6 sm:p-8 group cursor-pointer" glowColor={color}>
         {/* Icon */}

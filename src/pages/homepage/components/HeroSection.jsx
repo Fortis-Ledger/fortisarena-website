@@ -29,7 +29,7 @@ const HeroSection = () => {
         <ParticleField count={40} colors={['cyan', 'purple', 'pink']} />
       </div>
 
-      {/* Floating crypto coins */}
+      {/* Floating crypto coins - hidden on mobile for performance */}
       <div className="absolute inset-0 pointer-events-none hidden lg:block">
         {cryptoCoins.map((coin, index) => (
           <motion.div
@@ -42,9 +42,9 @@ const HeroSection = () => {
               height: coin.size,
             }}
             initial={{ opacity: 0, scale: 0, y: 50 }}
-            animate={{ 
-              opacity: 1, 
-              scale: 1, 
+            animate={{
+              opacity: 1,
+              scale: 1,
               y: 0,
             }}
             transition={{
@@ -85,7 +85,7 @@ const HeroSection = () => {
       {/* Main content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-[70vh]">
-          
+
           {/* Left side - Text content */}
           <div className="space-y-8 text-center lg:text-left">
             {/* Badge */}
@@ -104,12 +104,12 @@ const HeroSection = () => {
 
             {/* Main title */}
             <div className="space-y-4">
-              <AnimatedTitle 
+              <AnimatedTitle
                 text="FortisArena"
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight"
                 delay={0.2}
               />
-              
+
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

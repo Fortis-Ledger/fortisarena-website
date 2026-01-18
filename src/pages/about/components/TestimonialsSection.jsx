@@ -11,7 +11,7 @@ const TestimonialsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="text-center mb-16"
         >
           <div className="inline-flex items-center space-x-2 bg-success/10 border border-success/20 rounded-full px-6 py-3 mb-6">
@@ -37,7 +37,7 @@ const TestimonialsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="max-w-4xl mx-auto"
         >
           <div className="glassmorphism rounded-3xl p-12 text-center">

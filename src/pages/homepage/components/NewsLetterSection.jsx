@@ -99,7 +99,7 @@ const NewsletterSection = () => {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             className="space-y-8"
           >
             <div>
@@ -122,7 +122,7 @@ const NewsletterSection = () => {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.1 }}
                   className="flex items-start space-x-4"
                 >
                   <div className="w-12 h-12 bg-gradient-to-br from-electric-blue to-cyan-400 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -146,7 +146,7 @@ const NewsletterSection = () => {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
           >
             <div className="glassmorphism p-8 rounded-3xl border border-white/10 gaming-glow">
               <div className="text-center mb-8">

@@ -32,7 +32,7 @@ const VisionSection = () => {
       className="bg-gradient-to-br from-gaming-dark via-gaming-secondary to-gaming-dark rounded-2xl p-8 lg:p-12 text-white mb-12"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.8 }}
     >
       <div className="text-center mb-12">

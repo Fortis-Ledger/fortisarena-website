@@ -77,7 +77,7 @@ const CallToActionSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="text-center mb-16"
         >
           <div className="inline-flex items-center space-x-2 bg-white/10 border border-white/20 rounded-full px-6 py-3 mb-6">
@@ -102,7 +102,7 @@ const CallToActionSection = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             className="mb-16"
           >
             <button 
@@ -121,7 +121,7 @@ const CallToActionSection = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: card?.delay }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               className="group"
             >
               {card?.external ? (
@@ -176,7 +176,7 @@ const CallToActionSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="glassmorphism rounded-3xl p-8 md:p-12"
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
@@ -185,7 +185,7 @@ const CallToActionSection = () => {
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.1 }}
                 className="text-4xl md:text-5xl font-bold text-electric-blue mb-2"
               >
                 50K+
@@ -199,7 +199,7 @@ const CallToActionSection = () => {
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.1 }}
                 className="text-4xl md:text-5xl font-bold text-neon-purple mb-2"
               >
                 $2M+
@@ -213,7 +213,7 @@ const CallToActionSection = () => {
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.7 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.1 }}
                 className="text-4xl md:text-5xl font-bold text-golden-cta mb-2"
               >
                 Q1 2025
@@ -229,7 +229,7 @@ const CallToActionSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="text-center mt-16"
         >
           <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">

@@ -58,7 +58,7 @@ const ProblemSolutionSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="text-center mb-16"
         >
           <div className="inline-flex items-center space-x-2 bg-destructive/10 border border-destructive/20 rounded-full px-6 py-3 mb-6">
@@ -146,7 +146,7 @@ const ProblemSolutionSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="mt-20"
         >
           <div className="glassmorphism rounded-3xl p-12">

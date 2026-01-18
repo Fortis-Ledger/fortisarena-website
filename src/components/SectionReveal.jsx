@@ -1,24 +1,20 @@
 import React from 'react';
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
 
 // Fade up reveal
-export const FadeUp = ({ 
-  children, 
-  delay = 0, 
+export const FadeUp = ({
+  children,
+  delay = 0,
   duration = 0.6,
   className = '',
   once = true,
 }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once, margin: '-100px' });
-
   return (
     <motion.div
-      ref={ref}
       className={className}
       initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once, amount: 0.1 }}
       transition={{ duration, delay, ease: 'easeOut' }}
     >
       {children}
@@ -27,17 +23,14 @@ export const FadeUp = ({
 };
 
 // Fade in from sides
-export const FadeIn = ({ 
-  children, 
+export const FadeIn = ({
+  children,
   direction = 'left',
-  delay = 0, 
+  delay = 0,
   duration = 0.6,
   className = '',
   once = true,
 }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once, margin: '-100px' });
-
   const directions = {
     left: { x: -50, y: 0 },
     right: { x: 50, y: 0 },
@@ -47,10 +40,10 @@ export const FadeIn = ({
 
   return (
     <motion.div
-      ref={ref}
       className={className}
       initial={{ opacity: 0, ...directions[direction] }}
-      animate={isInView ? { opacity: 1, x: 0, y: 0 } : {}}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      viewport={{ once, amount: 0.1 }}
       transition={{ duration, delay, ease: 'easeOut' }}
     >
       {children}
@@ -59,22 +52,19 @@ export const FadeIn = ({
 };
 
 // Scale up reveal
-export const ScaleUp = ({ 
-  children, 
-  delay = 0, 
+export const ScaleUp = ({
+  children,
+  delay = 0,
   duration = 0.6,
   className = '',
   once = true,
 }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once, margin: '-100px' });
-
   return (
     <motion.div
-      ref={ref}
       className={className}
       initial={{ opacity: 0, scale: 0.8 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once, amount: 0.1 }}
       transition={{ duration, delay, ease: 'easeOut' }}
     >
       {children}
@@ -83,22 +73,19 @@ export const ScaleUp = ({
 };
 
 // Blur reveal
-export const BlurReveal = ({ 
-  children, 
-  delay = 0, 
+export const BlurReveal = ({
+  children,
+  delay = 0,
   duration = 0.8,
   className = '',
   once = true,
 }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once, margin: '-100px' });
-
   return (
     <motion.div
-      ref={ref}
       className={className}
       initial={{ opacity: 0, filter: 'blur(20px)' }}
-      animate={isInView ? { opacity: 1, filter: 'blur(0px)' } : {}}
+      whileInView={{ opacity: 1, filter: 'blur(0px)' }}
+      viewport={{ once, amount: 0.1 }}
       transition={{ duration, delay, ease: 'easeOut' }}
     >
       {children}
@@ -107,21 +94,18 @@ export const BlurReveal = ({
 };
 
 // Staggered children reveal
-export const StaggerContainer = ({ 
-  children, 
+export const StaggerContainer = ({
+  children,
   staggerDelay = 0.1,
   className = '',
   once = true,
 }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once, margin: '-100px' });
-
   return (
     <motion.div
-      ref={ref}
       className={className}
       initial="hidden"
-      animate={isInView ? 'visible' : 'hidden'}
+      whileInView="visible"
+      viewport={{ once, amount: 0.1 }}
       variants={{
         visible: {
           transition: {
@@ -150,8 +134,8 @@ export const StaggerItem = ({ children, className = '' }) => {
 };
 
 // Parallax wrapper
-export const Parallax = ({ 
-  children, 
+export const Parallax = ({
+  children,
   speed = 0.5,
   className = '',
 }) => {
@@ -170,49 +154,53 @@ export const Parallax = ({
 };
 
 // Text reveal line by line
-export const TextReveal = ({ 
-  text, 
+export const TextReveal = ({
+  text,
   className = '',
   delay = 0,
   once = true,
 }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once, margin: '-100px' });
   const lines = text.split('\n');
 
   return (
-    <div ref={ref} className={className}>
+    <motion.div
+      className={className}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once, amount: 0.1 }}
+    >
       {lines.map((line, index) => (
         <div key={index} className="overflow-hidden">
           <motion.div
-            initial={{ y: '100%' }}
-            animate={isInView ? { y: 0 } : {}}
-            transition={{ 
-              duration: 0.6, 
-              delay: delay + index * 0.1,
-              ease: [0.33, 1, 0.68, 1],
+            variants={{
+              hidden: { y: '100%' },
+              visible: {
+                y: 0,
+                transition: {
+                  duration: 0.6,
+                  delay: delay + index * 0.1,
+                  ease: [0.33, 1, 0.68, 1],
+                }
+              }
             }}
           >
             {line}
           </motion.div>
         </div>
       ))}
-    </div>
+    </motion.div>
   );
 };
 
 // Clip path reveal
-export const ClipReveal = ({ 
-  children, 
+export const ClipReveal = ({
+  children,
   delay = 0,
   duration = 1,
   className = '',
   direction = 'up',
   once = true,
 }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once, margin: '-100px' });
-
   const clipPaths = {
     up: {
       initial: 'inset(100% 0 0 0)',
@@ -234,10 +222,10 @@ export const ClipReveal = ({
 
   return (
     <motion.div
-      ref={ref}
       className={className}
       initial={{ clipPath: clipPaths[direction].initial }}
-      animate={isInView ? { clipPath: clipPaths[direction].animate } : {}}
+      whileInView={{ clipPath: clipPaths[direction].animate }}
+      viewport={{ once, amount: 0.1 }}
       transition={{ duration, delay, ease: [0.33, 1, 0.68, 1] }}
     >
       {children}

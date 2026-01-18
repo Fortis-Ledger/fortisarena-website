@@ -1,22 +1,23 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useInView, useSpring, useTransform } from 'framer-motion';
 
-const AnimatedCounter = ({ 
-  value, 
-  suffix = '', 
-  prefix = '', 
+const AnimatedCounter = ({
+  value,
+  suffix = '',
+  prefix = '',
   duration = 2,
   decimals = 0,
-  className = '' 
+  className = ''
 }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-  
-  const spring = useSpring(0, { 
+  // Use amount: 0.1 to trigger when 10% of element is visible - more reliable on mobile
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
+
+  const spring = useSpring(0, {
     duration: duration * 1000,
     bounce: 0,
   });
-  
+
   const display = useTransform(spring, (current) => {
     return `${prefix}${current.toFixed(decimals)}${suffix}`;
   });
@@ -40,7 +41,8 @@ const AnimatedCounter = ({
       ref={ref}
       className={className}
       initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.5 }}
     >
       {displayValue}
@@ -49,19 +51,16 @@ const AnimatedCounter = ({
 };
 
 // Stats card with animated counter
-export const StatsCard = ({ 
-  icon: Icon, 
-  value, 
-  suffix = '', 
+export const StatsCard = ({
+  icon: Icon,
+  value,
+  suffix = '',
   prefix = '',
-  label, 
+  label,
   sublabel,
   color = 'cyan',
-  delay = 0 
+  delay = 0
 }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
-
   const colors = {
     cyan: {
       gradient: 'from-cyan-500 to-blue-500',
@@ -87,13 +86,13 @@ export const StatsCard = ({
 
   return (
     <motion.div
-      ref={ref}
       className="relative group"
       initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.6, delay }}
     >
-      <div 
+      <div
         className="relative p-6 rounded-2xl border border-white/10 overflow-hidden"
         style={{
           background: 'rgba(255, 255, 255, 0.03)',
@@ -109,7 +108,7 @@ export const StatsCard = ({
         />
 
         {/* Animated border */}
-        <div 
+        <div
           className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           style={{
             background: `linear-gradient(135deg, ${colors[color].glow}, transparent, ${colors[color].glow})`,
@@ -135,9 +134,9 @@ export const StatsCard = ({
 
           {/* Value */}
           <div className={`text-3xl sm:text-4xl font-bold ${colors[color].text} mb-2`}>
-            <AnimatedCounter 
-              value={value} 
-              suffix={suffix} 
+            <AnimatedCounter
+              value={value}
+              suffix={suffix}
               prefix={prefix}
               duration={2}
             />
@@ -145,7 +144,7 @@ export const StatsCard = ({
 
           {/* Label */}
           <div className="text-white font-medium mb-1">{label}</div>
-          
+
           {/* Sublabel */}
           {sublabel && (
             <div className="text-gray-400 text-sm">{sublabel}</div>
@@ -158,15 +157,12 @@ export const StatsCard = ({
 
 // Compact stats bar (like Cosmos)
 export const StatsBar = ({ stats }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
-
   return (
     <motion.div
-      ref={ref}
       className="flex flex-wrap justify-center gap-8 sm:gap-12 py-6 px-4"
       initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.6 }}
     >
       {stats.map((stat, index) => (
@@ -174,14 +170,15 @@ export const StatsBar = ({ stats }) => {
           key={index}
           className="text-center"
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6, delay: index * 0.1 }}
         >
           <div className="flex items-baseline justify-center gap-1">
             <span className="text-2xl sm:text-3xl font-bold text-white">
-              <AnimatedCounter 
-                value={stat.value} 
-                suffix={stat.suffix || ''} 
+              <AnimatedCounter
+                value={stat.value}
+                suffix={stat.suffix || ''}
                 prefix={stat.prefix || ''}
                 duration={2}
               />
