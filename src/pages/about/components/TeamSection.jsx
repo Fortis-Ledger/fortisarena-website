@@ -18,6 +18,13 @@ const teamMembers = [
         linkedin: 'https://www.linkedin.com/in/yasir-malik-321a593a6'
     },
     {
+        name: 'Talha',
+        role: 'COO',
+        description: 'Managing operations and overseeing live streaming broadcasts.',
+        image: '/profile/talha.jpeg',
+        linkedin: 'https://www.linkedin.com/in/mohammad-talha0'
+    },
+    {
         name: 'Awais',
         role: 'eSports Manager',
         description: 'Orchestrating professional matches and managing the competitive ecosystem.',
