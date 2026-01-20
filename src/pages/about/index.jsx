@@ -8,6 +8,7 @@ import ProblemSolutionSection from './components/ProblemSolutionSection';
 import EvolutionTimeline from './components/EvolutionTimeline';
 import TestimonialsSection from './components/TestimonialsSection';
 import CallToActionSection from './components/CallToActionSection';
+import TeamSection from './components/TeamSection';
 
 const About = () => {
   useEffect(() => {
@@ -18,9 +19,9 @@ const About = () => {
     <>
       <Helmet>
         <title>About - FortisArena | Gaming Liberation Revolution</title>
-        <meta 
-          name="description" 
-          content="Discover FortisArena's revolutionary vision for decentralized gaming. Where players own their digital destiny through blockchain technology, fair rewards, and community governance." 
+        <meta
+          name="description"
+          content="Discover FortisArena's revolutionary vision for decentralized gaming. Where players own their digital destiny through blockchain technology, fair rewards, and community governance."
         />
         <meta name="keywords" content="decentralized gaming, blockchain eSports, player ownership, gaming revolution, Web3 gaming, FortisArena" />
         <meta property="og:title" content="About FortisArena - The Gaming Liberation Revolution" />
@@ -31,16 +32,17 @@ const About = () => {
 
       <div className="min-h-screen bg-background">
         <Header />
-        
+
         <main className="pt-14 sm:pt-16">
           <HeroSection />
           <VisionSection />
           <ProblemSolutionSection />
           <EvolutionTimeline />
+          <TeamSection />
           <TestimonialsSection />
           <CallToActionSection />
         </main>
-        
+
         {/* Footer */}
         <Footer />
       </div>

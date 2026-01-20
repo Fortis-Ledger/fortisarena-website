@@ -44,38 +44,21 @@ const HeroSection = () => {
               <span>Revolution Manifesto</span>
             </AnimatedShinyText>
           </div>
-          
+
           <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 sm:mb-6 leading-tight">
             Gaming
             <span className="block text-transparent bg-gradient-to-r from-electric-blue to-neon-purple bg-clip-text">
               Liberation
             </span>
           </h1>
-          
+
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed px-4 sm:px-0">
-            Where players aren't just participants but owners of their digital destiny. 
+            Where players aren't just participants but owners of their digital destiny.
             The intersection of cutting-edge technology and gaming passion.
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 px-4 sm:px-0"
-        >
-          <button 
-            className="button w-full sm:w-auto"
-          >
-            <span>Experience the Vision</span>
-          </button>
-          
-          <button 
-            className="button w-full sm:w-auto"
-          >
-            <span>Read Manifesto</span>
-          </button>
-        </motion.div>
+
 
       </div>
     </section>

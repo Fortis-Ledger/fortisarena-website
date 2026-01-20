@@ -720,16 +720,15 @@ const TokenomicsPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <button
-                className="button w-full sm:w-auto"
+              <a
+                href="/docs/FortisArena White Paper.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="button w-full sm:w-auto inline-flex items-center justify-center"
               >
-                <span>Download Whitepaper</span>
-              </button>
-              <button
-                className="button w-full sm:w-auto"
-              >
-                <span>View Live Metrics</span>
-              </button>
+                <span>Whitepaper</span>
+              </a>
+
             </motion.div>
           </motion.div>
         </div>
@@ -772,12 +771,14 @@ const TokenomicsPage = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 px-4 sm:px-0">
-            <button className="button w-full sm:w-auto">
-              <span>FRT Soon Available</span>
-            </button>
-            <button className="button w-full sm:w-auto">
+            <a
+              href="https://discord.com/invite/qTTYxTnK3s"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button w-full sm:w-auto inline-flex items-center justify-center"
+            >
               <span>Join Community</span>
-            </button>
+            </a>
           </div>
         </div>
       </section>

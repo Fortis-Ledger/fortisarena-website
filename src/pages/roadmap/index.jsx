@@ -498,16 +498,14 @@ const RoadmapPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <button
-                className="button w-full sm:w-auto"
-              >
-                <span>Join Governance</span>
-              </button>
-              <button
-                className="button w-full sm:w-auto"
+              <a
+                href="/docs/FortisArena White Paper.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="button w-full sm:w-auto inline-flex items-center justify-center"
               >
                 <span>Download Whitepaper</span>
-              </button>
+              </a>
             </motion.div>
           </div>
         </section>
