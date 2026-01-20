@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaLinkedin, FaTwitter, FaTiktok } from 'react-icons/fa';
 
 const teamMembers = [
     {
@@ -11,35 +11,35 @@ const teamMembers = [
         linkedin: 'https://www.linkedin.com/in/ahmadfarazllc'
     },
     {
-        name: 'Yasir',
+        name: 'Yasir Malik',
         role: 'CFO',
         description: 'Managing financial operations and ensuring sustainable economic growth.',
         image: '/profile/yasir.jpeg',
         linkedin: 'https://www.linkedin.com/in/yasir-malik-321a593a6'
     },
     {
-        name: 'Talha',
+        name: 'Mohammad Talha',
         role: 'COO',
         description: 'Managing operations and overseeing live streaming broadcasts.',
         image: '/profile/talha.jpeg',
         linkedin: 'https://www.linkedin.com/in/mohammad-talha0'
     },
     {
-        name: 'Awais',
+        name: 'Muhammad Awais',
         role: 'eSports Manager',
         description: 'Orchestrating professional matches and managing the competitive ecosystem.',
         image: '/profile/awais.jpeg',
-        linkedin: '#'
+        linkedin: 'https://www.linkedin.com/in/muhammad-awais-13a573307'
     },
     {
-        name: 'Sanan',
+        name: 'M-Sanan',
         role: 'Lead Designer',
         description: 'Crafting the UI/UX and visual identity with a focus on premium aesthetics.',
         image: '/profile/sanan.jpeg',
-        linkedin: '#'
+        linkedin: 'https://www.linkedin.com/in/muhammad-sannan-1ba49b229'
     },
     {
-        name: 'Ahmad',
+        name: 'Ahmad Khan',
         role: 'Lead Developer',
         description: 'Designing complex algorithms and logic, driving the core development.',
         image: '/profile/ahmad.jpeg',
@@ -58,7 +58,7 @@ const teamMembers = [
         description: 'Creating high-quality video content and managing live streams for matches.',
         // Assuming image name based on pattern
         image: '/profile/ali shair.jpeg',
-        linkedin: '#'
+        TikTok: 'https://www.tiktok.com/@alishairs1?_r=1&_t=ZN-93EajUuC9YM'
     }
 ];
 
@@ -122,12 +122,13 @@ const TeamSection = () => {
 
                                     <div className="flex justify-center space-x-4">
                                         <a
-                                            href={member.linkedin}
+                                            href={member.linkedin || member.TikTok}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-gray-400 hover:text-[#0077b5] transition-colors duration-300 text-xl"
+                                            className={`text-gray-400 transition-colors duration-300 text-xl ${member.TikTok ? 'hover:text-[#ff0050]' : 'hover:text-[#0077b5]'
+                                                }`}
                                         >
-                                            <FaLinkedin />
+                                            {member.TikTok ? <FaTiktok /> : <FaLinkedin />}
                                         </a>
                                     </div>
                                 </div>
