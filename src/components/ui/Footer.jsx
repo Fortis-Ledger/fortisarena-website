@@ -250,10 +250,10 @@ const Footer = () => {
               All systems operational
             </span>
             <a
-              href="mailto:support@fortisarena.io"
+              href="mailto:admin@fortisarena.io"
               className="text-gray-400 hover:text-white text-sm transition-colors"
             >
-              support@fortisarena.io
+              admin@fortisarena.io
             </a>
           </motion.div>
         </div>
