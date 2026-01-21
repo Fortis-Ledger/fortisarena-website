@@ -33,10 +33,10 @@ const teamMembers = [
     },
     {
         name: 'M-Sanan',
-        role: 'Lead Designer',
-        description: 'Crafting the UI/UX and visual identity with a focus on premium aesthetics.',
+        role: 'Full Stack Engineer',
+        description: 'Architecting end-to-end solutions, bridging powerful backend systems with dynamic user interfaces.',
         image: '/profile/sanan.jpeg',
-        linkedin: 'https://www.linkedin.com/in/muhammad-sannan-1ba49b229'
+        linkedin: 'https://www.linkedin.com/in/muhammad-sanan-043b03224'
     },
     {
         name: 'Ahmad Khan',
