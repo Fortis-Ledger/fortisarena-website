@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
+import { SOCIAL_LINKS } from '../../../config/socialLinks';
 
 const CallToActionSection = () => {
   const actionCards = [
@@ -20,7 +21,7 @@ const CallToActionSection = () => {
       title: "Join Community",
       description: "Connect with thousands of players building the future",
       action: "Join Discord",
-      link: "https://discord.com/invite/qTTYxTnK3s",
+      link: SOCIAL_LINKS.discord,
       color: "from-neon-purple to-purple-600",
       delay: 0.1,
       external: true

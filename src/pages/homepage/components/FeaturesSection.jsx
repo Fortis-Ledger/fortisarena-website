@@ -4,6 +4,7 @@ import Icon from '../../../components/AppIcon';
 import GlassCard, { FeatureCard } from '../../../components/GlassCard';
 import { GlowButton } from '../../../components/MagneticButton';
 import { GradientMesh } from '../../../components/ParticleField';
+import { SOCIAL_LINKS } from '../../../config/socialLinks';
 
 const FeaturesSection = () => {
   const features = [
@@ -131,7 +132,7 @@ const FeaturesSection = () => {
               <GlowButton
                 variant="secondary"
                 size="lg"
-                onClick={() => window.open('https://discord.com/invite/qTTYxTnK3s', '_blank')}
+                onClick={() => window.open(SOCIAL_LINKS.discord, '_blank')}
               >
                 <Icon name="MessageSquare" className="w-5 h-5" />
                 <span>Join Discord</span>

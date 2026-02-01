@@ -4,8 +4,6 @@ import { Helmet } from 'react-helmet';
 import Header from '../../components/ui/Header';
 import Footer from '../../components/ui/Footer';
 import Icon from '../../components/AppIcon';
-import Button from '../../components/ui/Button';
-import { RainbowButton } from '../../components/ui/RainbowButton';
 import { AnimatedShinyText } from '../../components/ui/AnimatedShinyText';
 import TimelineItem from './components/TimelineItem';
 import RoadmapStats from './components/RoadmapStats';

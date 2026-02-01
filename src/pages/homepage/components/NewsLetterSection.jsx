@@ -4,6 +4,7 @@ import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 import { RainbowButton } from '../../../components/ui/RainbowButton';
 import Input from '../../../components/ui/Input';
+import { SOCIAL_LINKS } from '../../../config/socialLinks';
 
 const NewsletterSection = () => {
   const [email, setEmail] = useState('');
@@ -69,7 +70,7 @@ const NewsletterSection = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 className="button"
-                onClick={() => window.open('https://discord.com/invite/qTTYxTnK3s', '_blank')}
+                onClick={() => window.open(SOCIAL_LINKS.discord, '_blank')}
               >
                 <span>Join Discord</span>
               </button>

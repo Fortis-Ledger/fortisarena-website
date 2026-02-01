@@ -1,14 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, CheckCircle, User, Mail, MapPin, Gamepad2, Users } from 'lucide-react';
 import Button from '../../components/ui/Button';
+import Toast from '../../components/ui/Toast';
 
 const Waitlist = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState({ visible: false, message: '', type: 'success' });
+
+  const showToast = useCallback((message, type = 'success') => {
+    setToast({ visible: true, message, type });
+  }, []);
+
+  const hideToast = useCallback(() => {
+    setToast(prev => ({ ...prev, visible: false }));
+  }, []);
   
   // Get the previous page from location state, default to home
   const previousPage = location.state?.from || '/';
@@ -55,7 +65,7 @@ const Waitlist = () => {
       
     } catch (error) {
       console.error('Error:', error);
-      alert('Error submitting form. Check console for details.');
+      showToast('Something went wrong. Please try again.', 'error');
     } finally {
       setIsSubmitting(false);
     }
@@ -153,9 +163,10 @@ const Waitlist = () => {
 
   return (
     <div className="min-h-screen bg-black overflow-hidden">
+      <Toast message={toast.message} type={toast.type} isVisible={toast.visible} onClose={hideToast} />
       {/* Animated Background Elements */}
       <div className="absolute inset-0 neural-network opacity-30"></div>
-      
+
       {/* Floating Particles */}
       <div className="absolute inset-0">
         {[...Array(20)]?.map((_, i) => (

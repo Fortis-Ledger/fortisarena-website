@@ -5,6 +5,7 @@ import GlassCard from '../../../components/GlassCard';
 import { GlowButton } from '../../../components/MagneticButton';
 import { StatsCard } from '../../../components/AnimatedCounter';
 import { GradientMesh } from '../../../components/ParticleField';
+import { SOCIAL_LINKS } from '../../../config/socialLinks';
 
 const CommunitySection = () => {
   const communityStats = [
@@ -14,7 +15,7 @@ const CommunitySection = () => {
       members: '500+',
       description: 'Active community members',
       color: 'purple',
-      link: 'https://discord.com/invite/qTTYxTnK3s'
+      link: SOCIAL_LINKS.discord
     },
     {
       platform: 'Twitter',
@@ -22,7 +23,7 @@ const CommunitySection = () => {
       members: '1000+',
       description: 'Followers and supporters',
       color: 'cyan',
-      link: 'https://x.com/fortisarena'
+      link: SOCIAL_LINKS.twitter
     },
     {
       platform: 'Telegram',
@@ -30,7 +31,7 @@ const CommunitySection = () => {
       members: '500+',
       description: 'Community discussions',
       color: 'cyan',
-      link: 'https://t.me/fortisarena'
+      link: SOCIAL_LINKS.telegram
     },
     {
       platform: 'YouTube',
@@ -38,7 +39,7 @@ const CommunitySection = () => {
       members: '1000+',
       description: 'Subscribers and viewers',
       color: 'orange',
-      link: 'https://youtube.com/@fortisarena'
+      link: SOCIAL_LINKS.youtube
     }
   ];
 
@@ -218,7 +219,7 @@ const CommunitySection = () => {
               <GlowButton
                 variant="primary"
                 size="lg"
-                onClick={() => window.open('https://discord.com/invite/qTTYxTnK3s', '_blank')}
+                onClick={() => window.open(SOCIAL_LINKS.discord, '_blank')}
               >
                 <Icon name="MessageSquare" className="w-5 h-5" />
                 <span>Join Discord</span>
@@ -227,7 +228,7 @@ const CommunitySection = () => {
               <GlowButton
                 variant="secondary"
                 size="lg"
-                onClick={() => window.open('https://x.com/fortisarena', '_blank')}
+                onClick={() => window.open(SOCIAL_LINKS.twitter, '_blank')}
               >
                 <Icon name="Twitter" className="w-5 h-5" />
                 <span>Follow on X</span>

@@ -56,6 +56,38 @@ const Homepage = () => {
           content="Join 125,000+ gamers in the decentralized gaming revolution. Play, earn, govern, and own your gaming destiny." 
         />
         <link rel="canonical" href="https://fortisarena.com" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "FortisArena",
+          "url": "https://fortisarena.com",
+          "logo": "https://fortisarena.com/favicon256.ico",
+          "description": "Revolutionary Web3 eSports ecosystem combining blockchain technology, AI-powered matchmaking, and community governance.",
+          "sameAs": [
+            "https://x.com/fortisarena",
+            "https://discord.com/invite/qTTYxTnK3s",
+            "https://t.me/fortisarena",
+            "https://youtube.com/@fortisarena",
+            "https://github.com/Fortis-Ledger",
+            "https://linkedin.com/company/fortisarena"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "admin@fortisarena.io",
+            "contactType": "customer support"
+          }
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "FortisArena",
+          "url": "https://fortisarena.com",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://fortisarena.com/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        })}</script>
       </Helmet>
 
       <div className="min-h-screen bg-gaming-dark">

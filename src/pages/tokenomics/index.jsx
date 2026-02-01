@@ -13,6 +13,7 @@ import StakingCalculator from './components/StakingCalculator';
 import VestingSchedule from './components/VestingSchedule';
 import SecurityAudits from './components/SecurityAudits';
 import PartnershipShowcase from './components/PartnershipShowcase';
+import { SOCIAL_LINKS } from '../../config/socialLinks';
 import DualTokenArchitecture from './components/DualTokenArchitecture';
 
 const TokenomicsPage = () => {
@@ -772,7 +773,7 @@ const TokenomicsPage = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 px-4 sm:px-0">
             <a
-              href="https://discord.com/invite/qTTYxTnK3s"
+              href={SOCIAL_LINKS.discord}
               target="_blank"
               rel="noopener noreferrer"
               className="button w-full sm:w-auto inline-flex items-center justify-center"

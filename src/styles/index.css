@@ -280,11 +280,7 @@ body::before {
 }
 
 
-@keyframes holographic-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
+/* holographic-shift keyframe - defined in tailwind.css */
 
 /* Floating Colorful Particles */
 .floating-particles {
@@ -366,10 +362,7 @@ body::before {
   animation: matrix-scroll 20s linear infinite;
 }
 
-@keyframes matrix-scroll {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100%); }
-}
+/* matrix-scroll keyframe - defined in tailwind.css */
 
 
 /* 3D Card Hover Effects */
@@ -419,21 +412,7 @@ body::before {
   animation: float-3d 8s ease-in-out infinite;
 }
 
-/* Electric Pulse Animation */
-@keyframes electric-pulse {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
-    transform: scale(1);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(0, 212, 255, 0.6);
-    transform: scale(1.05);
-  }
-}
-
-.electric-pulse {
-  animation: electric-pulse 2s ease-in-out infinite;
-}
+/* Electric Pulse - defined in tailwind.css */
 
 /* Cyber Grid Background */
 .cyber-grid {
@@ -548,10 +527,7 @@ body::before {
   font-size: 18px;
 }
 
-/* Electric Pulse for Buttons */
-.electric-pulse {
-  animation: electric-pulse 2s ease-in-out infinite;
-}
+/* Electric Pulse for Buttons - defined in tailwind.css */
 
 /* 3D Transform Effects */
 .transform-gpu {
@@ -640,12 +616,7 @@ header {
    PREMIUM WEB3 ANIMATIONS & EFFECTS
    ============================================ */
 
-/* Hide default cursor on desktop */
-@media (pointer: fine) {
-  * {
-    cursor: none !important;
-  }
-}
+/* Custom cursor styles - keeping default cursor for accessibility */
 
 /* Gradient border animation */
 @keyframes gradient-shift {
@@ -688,12 +659,7 @@ header {
   animation: glow-pulse 3s ease-in-out infinite;
 }
 
-/* Float animation */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-
+/* Float animation - using definition from above */
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }

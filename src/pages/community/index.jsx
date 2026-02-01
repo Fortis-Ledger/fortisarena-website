@@ -13,6 +13,7 @@ import CommunityContent from './components/CommunityContent';
 import SocialIntegration from './components/SocialIntegration';
 import { AnimatedShinyText } from '../../components/ui/AnimatedShinyText';
 import Icon from '../../components/AppIcon';
+import { SOCIAL_LINKS } from '../../config/socialLinks';
 
 const CommunityPage = () => {
   const [showDAOPopup, setShowDAOPopup] = useState(false);
@@ -117,7 +118,7 @@ const CommunityPage = () => {
               >
                 <button
                   className="button w-full sm:w-auto"
-                  onClick={() => window.open('https://discord.com/invite/qTTYxTnK3s', '_blank')}
+                  onClick={() => window.open(SOCIAL_LINKS.discord, '_blank')}
                 >
                   <span>Join Discord Community</span>
                 </button>

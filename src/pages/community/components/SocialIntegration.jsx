@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
+import { SOCIAL_LINKS } from '../../../config/socialLinks';
 
 const SocialIntegration = () => {
   const [connectedPlatforms, setConnectedPlatforms] = useState(['discord']);
@@ -15,7 +16,7 @@ const SocialIntegration = () => {
       members: '500+',
       status: 'online',
       description: 'Join our main community hub for real-time chat and events',
-      url: 'https://discord.com/invite/qTTYxTnK3s'
+      url: SOCIAL_LINKS.discord
     },
     {
       id: 'twitter',
@@ -26,7 +27,7 @@ const SocialIntegration = () => {
       members: '200+',
       status: 'active',
       description: 'Follow for updates, announcements, and community highlights',
-      url: 'https://x.com/fortisarena'
+      url: SOCIAL_LINKS.twitter
     },
     {
       id: 'youtube',
@@ -37,7 +38,7 @@ const SocialIntegration = () => {
       members: '100+',
       status: 'active',
       description: 'Watch tutorials, highlights, and community content',
-      url: 'https://youtube.com/@fortisarena'
+      url: SOCIAL_LINKS.youtube
     },
     {
       id: 'telegram',
@@ -48,11 +49,9 @@ const SocialIntegration = () => {
       members: '300+',
       status: 'active',
       description: 'Get instant updates and participate in community discussions',
-      url: 'https://t.me/fortisarena'
+      url: SOCIAL_LINKS.telegram
     }
   ];
-
-  const recentActivity = [];
 
   const toggleConnection = (platformId) => {
     setConnectedPlatforms(prev => 
@@ -69,11 +68,6 @@ const SocialIntegration = () => {
       case 'active': return 'text-electric-blue bg-electric-blue';
       default: return 'text-muted-foreground bg-muted-foreground';
     }
-  };
-
-  const getPlatformIcon = (platform) => {
-    const platformData = socialPlatforms?.find(p => p?.id === platform);
-    return platformData ? platformData?.icon : 'MessageSquare';
   };
 
   return (
@@ -173,7 +167,7 @@ const SocialIntegration = () => {
           <Button 
             variant="outline" 
             className="flex-col h-auto py-4"
-            onClick={() => window.open('https://discord.com/invite/qTTYxTnK3s', '_blank')}
+            onClick={() => window.open(SOCIAL_LINKS.discord, '_blank')}
           >
             <Icon name="MessageSquare" size={20} className="mb-2" />
             <span className="text-sm">Join Discord</span>
@@ -182,7 +176,7 @@ const SocialIntegration = () => {
           <Button 
             variant="outline" 
             className="flex-col h-auto py-4"
-            onClick={() => window.open('https://x.com/fortisarena', '_blank')}
+            onClick={() => window.open(SOCIAL_LINKS.twitter, '_blank')}
           >
             <Icon name="Twitter" size={20} className="mb-2" />
             <span className="text-sm">Follow Twitter</span>
@@ -191,7 +185,7 @@ const SocialIntegration = () => {
           <Button 
             variant="outline" 
             className="flex-col h-auto py-4"
-            onClick={() => window.open('https://youtube.com/@fortisarena', '_blank')}
+            onClick={() => window.open(SOCIAL_LINKS.youtube, '_blank')}
           >
             <Icon name="Youtube" size={20} className="mb-2" />
             <span className="text-sm">Subscribe YouTube</span>
@@ -200,7 +194,7 @@ const SocialIntegration = () => {
           <Button 
             variant="outline" 
             className="flex-col h-auto py-4"
-            onClick={() => window.open('https://t.me/fortisarena', '_blank')}
+            onClick={() => window.open(SOCIAL_LINKS.telegram, '_blank')}
           >
             <Icon name="Send" size={20} className="mb-2" />
             <span className="text-sm">Join Telegram</span>

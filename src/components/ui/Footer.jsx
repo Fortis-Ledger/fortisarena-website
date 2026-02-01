@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Icon from '../AppIcon';
 import { GlowButton } from '../MagneticButton';
+import { SOCIAL_LINKS, EXTERNAL_LINKS } from '../../config/socialLinks';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -22,10 +23,10 @@ const Footer = () => {
     community: {
       title: 'Community',
       links: [
-        { name: 'Discord', path: 'https://discord.com/invite/qTTYxTnK3s', external: true },
-        { name: 'Twitter', path: 'https://x.com/fortisarena', external: true },
-        { name: 'Telegram', path: 'https://t.me/fortisarena', external: true },
-        { name: 'YouTube', path: 'https://youtube.com/@fortisarena', external: true }
+        { name: 'Discord', path: SOCIAL_LINKS.discord, external: true },
+        { name: 'Twitter', path: SOCIAL_LINKS.twitter, external: true },
+        { name: 'Telegram', path: SOCIAL_LINKS.telegram, external: true },
+        { name: 'YouTube', path: SOCIAL_LINKS.youtube, external: true }
       ]
     },
     resources: {
@@ -49,12 +50,12 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { name: 'Discord', icon: 'MessageSquare', url: 'https://discord.com/invite/qTTYxTnK3s', color: 'from-indigo-500 to-purple-500' },
-    { name: 'Twitter', icon: 'Twitter', url: 'https://x.com/fortisarena', color: 'from-blue-400 to-cyan-400' },
-    { name: 'Telegram', icon: 'Send', url: 'https://t.me/fortisarena', color: 'from-cyan-400 to-blue-500' },
-    { name: 'YouTube', icon: 'Youtube', url: 'https://youtube.com/@fortisarena', color: 'from-red-500 to-pink-500' },
-    { name: 'GitHub', icon: 'Github', url: 'https://github.com/Fortis-Ledger', color: 'from-gray-400 to-gray-600' },
-    { name: 'LinkedIn', icon: 'Linkedin', url: 'https://linkedin.com/company/fortisarena', color: 'from-blue-500 to-blue-700' }
+    { name: 'Discord', icon: 'MessageSquare', url: SOCIAL_LINKS.discord, color: 'from-indigo-500 to-purple-500' },
+    { name: 'Twitter', icon: 'Twitter', url: SOCIAL_LINKS.twitter, color: 'from-blue-400 to-cyan-400' },
+    { name: 'Telegram', icon: 'Send', url: SOCIAL_LINKS.telegram, color: 'from-cyan-400 to-blue-500' },
+    { name: 'YouTube', icon: 'Youtube', url: SOCIAL_LINKS.youtube, color: 'from-red-500 to-pink-500' },
+    { name: 'GitHub', icon: 'Github', url: SOCIAL_LINKS.github, color: 'from-gray-400 to-gray-600' },
+    { name: 'LinkedIn', icon: 'Linkedin', url: SOCIAL_LINKS.linkedin, color: 'from-blue-500 to-blue-700' }
   ];
 
   const handleSubscribe = (e) => {
